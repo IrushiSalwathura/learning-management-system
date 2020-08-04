@@ -121,7 +121,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="27.0" layoutY="653.0" prefHeight="165.0" prefWidth="871.0" style="-fx-background-color: white;">
                      <children>
-                        <Label layoutX="34.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Attachments">
+                        <Label layoutX="34.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Content">
                            <font>
                               <Font size="24.0" />
                            </font>
