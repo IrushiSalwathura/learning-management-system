@@ -2,7 +2,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 
-public class AdminMainFormController {
+public class AdminStudentFormController {
     public void btnDashboard_OnAction(ActionEvent actionEvent) {
     }
 
@@ -13,5 +13,14 @@ public class AdminMainFormController {
     }
 
     public void btnAccount_OnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnDelete_OnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnSave_OnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnAdd_OnAction(ActionEvent actionEvent) {
     }
 }
