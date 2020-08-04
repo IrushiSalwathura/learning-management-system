@@ -93,9 +93,9 @@
                         <!--<CharmListView fx:id="lstAnnouncements" layoutX="36.0" layoutY="77.0" prefHeight="279.0" prefWidth="820.0" />-->
                      </children>
                   </AnchorPane>
-                  <JFXComboBox fx:id="cmbCourses" layoutX="27.0" layoutY="42.0" prefHeight="31.0" prefWidth="871.0" />
+                  <JFXComboBox fx:id="cmbCourses" layoutX="27.0" layoutY="42.0" prefHeight="31.0" prefWidth="871.0" promptText="Course" />
                   <ButtonBar layoutX="39.0" layoutY="616.0" prefHeight="31.0" prefWidth="626.0" />
-                  <JFXComboBox fx:id="cmbFaculty" layoutX="27.0" layoutY="11.0" prefHeight="31.0" prefWidth="871.0" />
+                  <JFXComboBox fx:id="cmbFaculty" layoutX="27.0" layoutY="11.0" prefHeight="31.0" prefWidth="871.0" promptText="Faculty" />
                </children>
             </AnchorPane>
          </children></AnchorPane>
