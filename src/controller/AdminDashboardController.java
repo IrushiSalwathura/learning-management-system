@@ -2,7 +2,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 
-public class AdminMainFormController {
+public class AdminDashboardController {
     public void btnDashboard_OnAction(ActionEvent actionEvent) {
     }
 
