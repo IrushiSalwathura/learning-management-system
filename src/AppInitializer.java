@@ -19,7 +19,7 @@ public class AppInitializer extends Application {
         primaryStage.setScene(mainScene);
         primaryStage.centerOnScreen();
         primaryStage.show();
-        primaryStage.setHeight(1000);
-        primaryStage.setWidth(1300);
+//        primaryStage.setHeight(1000);
+//        primaryStage.setWidth(1300);
     }
 }

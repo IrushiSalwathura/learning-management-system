@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #EBEBEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModuleFormController">
+<AnchorPane fx:id="root" prefHeight="801.0" prefWidth="1300.0" style="-fx-background-color: #EBEBEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LecturerModulesFormController">
    <children>
       <AnchorPane prefHeight="1000.0" prefWidth="301.0" style="-fx-background-color: #11333D;">
          <children>
@@ -64,9 +64,9 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="300.0" prefHeight="1000.0" prefWidth="1001.0" style="-fx-background-color: #EBEBEB;">
+      <AnchorPane fx:id="subAnchorPane" layoutX="300.0" prefHeight="1000.0" prefWidth="1001.0" style="-fx-background-color: #EBEBEB;">
          <children>
-            <Label fx:id="lblCourseName" layoutX="34.0" layoutY="14.0" prefHeight="63.0" prefWidth="595.0" text="CourseID - Bsc. Hons Software Engineering">
+            <Label layoutX="34.0" layoutY="14.0" prefHeight="63.0" prefWidth="404.0" text="Courses">
                <font>
                   <Font name="Courier" size="24.0" />
                </font>
@@ -74,65 +74,28 @@
             <Line endX="844.0" endY="-1.52587890625E-5" layoutX="121.0" layoutY="89.0" startX="-100.0" />
             <AnchorPane layoutX="23.0" layoutY="129.0" prefHeight="847.0" prefWidth="956.0" style="-fx-background-color: #D7D7D7;">
                <children>
-                  <AnchorPane layoutX="27.0" layoutY="121.0" prefHeight="148.0" prefWidth="871.0" style="-fx-background-color: white;">
+                  <AnchorPane layoutX="27.0" layoutY="85.0" prefHeight="95.0" prefWidth="871.0" style="-fx-background-color: white;">
                      <children>
-                        <Label fx:id="lblDescription" layoutX="37.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Introduction">
+                        <Label fx:id="lblDescription" layoutX="37.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Description">
                            <font>
                               <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblModuleDescription" layoutX="37.0" layoutY="62.0" prefHeight="41.0" prefWidth="804.0" text="This course module covers the classical internal algorithms and structures of operating systems...etc">
-                           <font>
-                              <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="27.0" layoutY="286.0" prefHeight="148.0" prefWidth="871.0" style="-fx-background-color: white;">
+                  <AnchorPane layoutX="27.0" layoutY="202.0" prefHeight="372.0" prefWidth="871.0" style="-fx-background-color: white;">
                      <children>
-                        <Label layoutX="34.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Duration">
+                        <Label layoutX="34.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Announcements">
                            <font>
                               <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblDuration" layoutX="35.0" layoutY="71.0" prefHeight="41.0" prefWidth="804.0" text="Semester 1 - 3 months">
-                           <font>
-                              <Font size="18.0" />
                            </font>
                         </Label>
                         <!--<CharmListView fx:id="lstAnnouncements" layoutX="36.0" layoutY="77.0" prefHeight="279.0" prefWidth="820.0" />-->
                      </children>
                   </AnchorPane>
-                  <JFXComboBox fx:id="cmbModules" layoutX="27.0" layoutY="27.0" prefHeight="31.0" prefWidth="871.0" promptText="Modules" />
+                  <JFXComboBox fx:id="cmbCourses" layoutX="27.0" layoutY="42.0" prefHeight="31.0" prefWidth="871.0" promptText="Course" />
                   <ButtonBar layoutX="39.0" layoutY="616.0" prefHeight="31.0" prefWidth="626.0" />
-                  <AnchorPane layoutX="26.0" layoutY="461.0" prefHeight="165.0" prefWidth="871.0" style="-fx-background-color: white;">
-                     <children>
-                        <Label layoutX="34.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Credits">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblCredits" layoutX="34.0" layoutY="63.0" prefHeight="41.0" prefWidth="804.0" text="12 Credits">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="27.0" layoutY="653.0" prefHeight="165.0" prefWidth="871.0" style="-fx-background-color: white;">
-                     <children>
-                        <Label layoutX="34.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Attachments">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-                  <Label fx:id="lblModuleTitle" layoutX="27.0" layoutY="72.0" prefHeight="41.0" prefWidth="804.0" text="CS 5310 - Operating Systems">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
+                  <JFXComboBox fx:id="cmbFaculty" layoutX="27.0" layoutY="11.0" prefHeight="31.0" prefWidth="871.0" promptText="Faculty" />
                </children>
             </AnchorPane>
          </children></AnchorPane>
