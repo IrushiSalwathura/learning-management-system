@@ -14,4 +14,10 @@ public class AdminModuleFormController {
 
     public void btnAccount_OnAction(ActionEvent actionEvent) {
     }
+
+    public void btnStudent_OnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnLecturer_OnAction(ActionEvent actionEvent) {
+    }
 }

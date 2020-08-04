@@ -23,4 +23,10 @@ public class AdminLecturerFormController {
 
     public void btnSave_OnAction(ActionEvent actionEvent) {
     }
+
+    public void btnStudent_OnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnLecturers_OnAction(ActionEvent actionEvent) {
+    }
 }
