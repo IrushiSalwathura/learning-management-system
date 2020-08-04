@@ -80,7 +80,7 @@
                <children>
                   <JFXComboBox fx:id="cmbCourses" layoutX="27.0" layoutY="27.0" prefHeight="31.0" prefWidth="871.0" promptText="Course" />
                   <ButtonBar layoutX="39.0" layoutY="616.0" prefHeight="31.0" prefWidth="626.0" />
-                  <AnchorPane layoutX="27.0" layoutY="144.0" prefHeight="692.0" prefWidth="871.0" style="-fx-background-color: white;">
+                  <AnchorPane layoutX="27.0" layoutY="150.0" prefHeight="692.0" prefWidth="871.0" style="-fx-background-color: white;">
                      <children>
                         <ListView fx:id="lstContent" layoutX="23.0" layoutY="23.0" prefHeight="641.0" prefWidth="820.0" />
                      </children>
@@ -92,7 +92,12 @@
                      </font>
                   </Label>
                   <ComboBox fx:id="cmbModuleId" layoutX="25.0" layoutY="80.0" prefHeight="41.0" prefWidth="244.0" promptText="Module ID" />
-                  <Button layoutX="679.0" layoutY="114.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="217.0" text="Add Content" />
+                  <Button layoutX="679.0" layoutY="114.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="217.0" style="-fx-background-color: #11333D;" text="Add Content" textFill="#e8dcdc" />
+                  <ImageView fitHeight="16.0" fitWidth="22.0" layoutX="691.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/add-icon.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children></AnchorPane>

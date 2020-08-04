@@ -46,8 +46,11 @@
                   <JFXComboBox fx:id="cmbCourses" layoutX="27.0" layoutY="42.0" prefHeight="31.0" prefWidth="871.0" promptText="Course" />
                   <ButtonBar layoutX="39.0" layoutY="616.0" prefHeight="31.0" prefWidth="626.0" />
                   <JFXComboBox fx:id="cmbFaculty" layoutX="27.0" layoutY="11.0" prefHeight="31.0" prefWidth="871.0" promptText="Faculty" />
+                  <JFXButton layoutX="766.0" layoutY="616.0" style="-fx-background-color: #11333D;" text="Save" textFill="#ebe4e4" />
+                  <JFXButton layoutX="826.0" layoutY="616.0" style="-fx-background-color: #11333D;" text="Delete" textFill="#ebe1e1" />
                </children>
             </AnchorPane>
+            <JFXButton layoutX="869.0" layoutY="96.0" style="-fx-background-color: #11333D;" text="Add Course" textFill="#eee9e9" />
          </children></AnchorPane>
       <AnchorPane prefHeight="1000.0" prefWidth="301.0" style="-fx-background-color: #11333D;">
          <children>
