@@ -102,16 +102,21 @@
                   <TreeTableColumn prefWidth="196.0" text="Contact Number" />
                </columns>
             </JFXTreeTableView>
-            <JFXButton fx:id="btnAdd" layoutX="14.0" layoutY="506.0" onAction="#btnAdd_OnAction" text="Add Student" />
+            <JFXButton fx:id="btnAdd" layoutX="14.0" layoutY="506.0" onAction="#btnAdd_OnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-background-color: #11333D;" text="Add Student" textFill="#fff9f9" />
             <JFXTextField fx:id="txtId" editable="false" layoutX="11.0" layoutY="635.0" prefHeight="27.0" prefWidth="145.0" promptText="Student Id" />
             <JFXTextField fx:id="txtTel" layoutX="11.0" layoutY="784.0" promptText="Tel" />
             <JFXTextField fx:id="txtAddress" layoutX="11.0" layoutY="735.0" prefHeight="27.0" prefWidth="653.0" text="Address" />
             <JFXTextField fx:id="txtName" layoutX="11.0" layoutY="686.0" prefHeight="27.0" prefWidth="653.0" promptText="Name" />
             <JFXTextField fx:id="txtPassword" layoutX="390.0" layoutY="834.0" prefHeight="27.0" prefWidth="290.0" promptText="Password" />
             <JFXTextField fx:id="txtUsername" layoutX="11.0" layoutY="834.0" prefHeight="27.0" prefWidth="301.0" promptText="Username" />
-            <JFXButton fx:id="btnDelete" layoutX="487.0" layoutY="934.0" onAction="#btnDelete_OnAction" prefHeight="27.0" prefWidth="196.0" text="Delete" />
-            <JFXButton fx:id="btnSave" layoutX="272.0" layoutY="934.0" onAction="#btnSave_OnAction" prefHeight="27.0" prefWidth="196.0" text="Save" />
+            <JFXButton fx:id="btnDelete" layoutX="487.0" layoutY="934.0" onAction="#btnDelete_OnAction" prefHeight="27.0" prefWidth="196.0" style="-fx-background-color: #11333D;" text="Delete" textFill="#ebe7e7" />
+            <JFXButton fx:id="btnSave" layoutX="272.0" layoutY="934.0" onAction="#btnSave_OnAction" prefHeight="27.0" prefWidth="196.0" style="-fx-background-color: #11333D;" text="Save" textFill="#ebe8e8" />
             <JFXTextField fx:id="txtUsername1" layoutX="295.0" layoutY="784.0" prefHeight="27.0" prefWidth="385.0" promptText="Username" text="Email" />
+            <ImageView fitHeight="27.0" fitWidth="23.0" layoutX="17.0" layoutY="506.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/add-icon.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
-public class ModuleFormController {
+public class StudentModuleFormController {
     public AnchorPane root;
     public JFXButton btnDashboard;
     public JFXButton btnCourses;

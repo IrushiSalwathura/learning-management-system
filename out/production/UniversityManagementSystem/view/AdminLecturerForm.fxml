@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminMainFormController">
+<AnchorPane prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminLecturerFormController">
    <children>
       <AnchorPane layoutY="-12.0" prefHeight="1000.0" prefWidth="301.0" style="-fx-background-color: #11333D;">
          <children>
@@ -82,20 +86,32 @@
       </AnchorPane>
       <AnchorPane layoutX="301.0" prefHeight="1000.0" prefWidth="1001.0">
          <children>
-            <Label layoutX="28.0" prefHeight="63.0" prefWidth="404.0" text="WELCOME!">
+            <Label layoutX="28.0" prefHeight="63.0" prefWidth="404.0" text="Lecturers">
                <font>
                   <Font name="Courier" size="24.0" />
                </font>
             </Label>
             <Line endX="844.0" endY="-1.52587890625E-5" layoutX="115.0" layoutY="75.0" startX="-100.0" />
-            <AnchorPane layoutX="21.0" layoutY="104.0" prefHeight="305.0" prefWidth="936.0">
-               <children>
-                  <AnchorPane layoutX="36.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EBEBEB;" />
-                  <AnchorPane layoutX="268.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EBEBEB;" />
-                  <AnchorPane layoutX="494.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EBEBEB;" />
-                  <AnchorPane layoutX="716.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EBEBEB;" />
-               </children>
-            </AnchorPane>
+            <JFXComboBox layoutX="11.0" layoutY="583.0" prefHeight="27.0" prefWidth="687.0" promptText="Faculty" />
+            <JFXComboBox layoutX="11.0" layoutY="540.0" prefHeight="27.0" prefWidth="687.0" promptText="Course" />
+            <JFXTreeTableView layoutX="14.0" layoutY="90.0" prefHeight="400.0" prefWidth="931.0">
+               <columns>
+                  <TreeTableColumn prefWidth="182.0" text="Lecturer Id" />
+                  <TreeTableColumn prefWidth="245.0" text="Name" />
+                  <TreeTableColumn prefWidth="307.0" text="Address" />
+                  <TreeTableColumn prefWidth="196.0" text="Contact Number" />
+               </columns>
+            </JFXTreeTableView>
+            <JFXButton fx:id="btnAdd" layoutX="14.0" layoutY="506.0" onAction="#btnAdd_OnAction" text="Add Lecturer" />
+            <JFXTextField fx:id="txtId" editable="false" layoutX="11.0" layoutY="635.0" prefHeight="27.0" prefWidth="145.0" promptText="Student Id" text="Lecturer Id" />
+            <JFXTextField fx:id="txtTel" layoutX="11.0" layoutY="784.0" promptText="Tel" />
+            <JFXTextField fx:id="txtAddress" layoutX="11.0" layoutY="735.0" prefHeight="27.0" prefWidth="653.0" text="Address" />
+            <JFXTextField fx:id="txtName" layoutX="11.0" layoutY="686.0" prefHeight="27.0" prefWidth="653.0" promptText="Name" />
+            <JFXTextField fx:id="txtPassword" layoutX="390.0" layoutY="834.0" prefHeight="27.0" prefWidth="290.0" promptText="Password" />
+            <JFXTextField fx:id="txtUsername" layoutX="11.0" layoutY="834.0" prefHeight="27.0" prefWidth="301.0" promptText="Username" />
+            <JFXButton fx:id="btnDelete" layoutX="487.0" layoutY="934.0" onAction="#btnDelete_OnAction" prefHeight="27.0" prefWidth="196.0" text="Delete" />
+            <JFXButton fx:id="btnSave" layoutX="272.0" layoutY="934.0" onAction="#btnSave_OnAction" prefHeight="27.0" prefWidth="196.0" text="Save" />
+            <JFXTextField fx:id="txtUsername1" layoutX="295.0" layoutY="784.0" prefHeight="27.0" prefWidth="385.0" promptText="Username" text="Email" />
          </children>
       </AnchorPane>
    </children>
