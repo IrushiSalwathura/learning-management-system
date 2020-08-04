@@ -1,2 +1,4 @@
-package controller;public class PaymentController {
+package controller;
+
+public class PaymentController {
 }
