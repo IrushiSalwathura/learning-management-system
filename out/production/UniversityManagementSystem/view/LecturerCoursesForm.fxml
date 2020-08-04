@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--<?import com.gluonhq.charm.glisten.control.CharmListView?>-->
+
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.ButtonBar?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #EBEBEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentCoursesFormController">
+<AnchorPane fx:id="root" prefHeight="801.0" prefWidth="1300.0" style="-fx-background-color: #EBEBEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LecturerCoursesFormController">
    <children>
       <AnchorPane prefHeight="1000.0" prefWidth="301.0" style="-fx-background-color: #11333D;">
          <children>
@@ -92,8 +93,9 @@
                         <!--<CharmListView fx:id="lstAnnouncements" layoutX="36.0" layoutY="77.0" prefHeight="279.0" prefWidth="820.0" />-->
                      </children>
                   </AnchorPane>
-                  <JFXComboBox fx:id="cmbCourses" layoutX="27.0" layoutY="27.0" prefHeight="31.0" prefWidth="871.0" />
+                  <JFXComboBox fx:id="cmbCourses" layoutX="27.0" layoutY="42.0" prefHeight="31.0" prefWidth="871.0" promptText="Course" />
                   <ButtonBar layoutX="39.0" layoutY="616.0" prefHeight="31.0" prefWidth="626.0" />
+                  <JFXComboBox fx:id="cmbFaculty" layoutX="27.0" layoutY="11.0" prefHeight="31.0" prefWidth="871.0" promptText="Faculty" />
                </children>
             </AnchorPane>
          </children></AnchorPane>

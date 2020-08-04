@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--<?import com.gluonhq.charm.glisten.control.CharmListView?>-->
+
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #EBEBEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentCoursesFormController">
+<AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #EBEBEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainFormController">
    <children>
       <AnchorPane prefHeight="1000.0" prefWidth="301.0" style="-fx-background-color: #11333D;">
          <children>
@@ -65,7 +68,7 @@
       </AnchorPane>
       <AnchorPane fx:id="subAnchorPane" layoutX="300.0" prefHeight="1000.0" prefWidth="1001.0" style="-fx-background-color: #EBEBEB;">
          <children>
-            <Label layoutX="34.0" layoutY="14.0" prefHeight="63.0" prefWidth="404.0" text="Courses">
+            <Label layoutX="34.0" layoutY="14.0" prefHeight="63.0" prefWidth="404.0" text="Payment">
                <font>
                   <Font name="Courier" size="24.0" />
                </font>
@@ -73,27 +76,16 @@
             <Line endX="844.0" endY="-1.52587890625E-5" layoutX="121.0" layoutY="89.0" startX="-100.0" />
             <AnchorPane layoutX="23.0" layoutY="129.0" prefHeight="847.0" prefWidth="956.0" style="-fx-background-color: #D7D7D7;">
                <children>
-                  <AnchorPane layoutX="27.0" layoutY="85.0" prefHeight="95.0" prefWidth="871.0" style="-fx-background-color: white;">
-                     <children>
-                        <Label fx:id="lblDescription" layoutX="37.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Description">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="27.0" layoutY="202.0" prefHeight="372.0" prefWidth="871.0" style="-fx-background-color: white;">
-                     <children>
-                        <Label layoutX="34.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Announcements">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <!--<CharmListView fx:id="lstAnnouncements" layoutX="36.0" layoutY="77.0" prefHeight="279.0" prefWidth="820.0" />-->
-                     </children>
-                  </AnchorPane>
                   <JFXComboBox fx:id="cmbCourses" layoutX="27.0" layoutY="27.0" prefHeight="31.0" prefWidth="871.0" />
                   <ButtonBar layoutX="39.0" layoutY="616.0" prefHeight="31.0" prefWidth="626.0" />
+                  <TableView layoutX="39.0" layoutY="111.0" prefHeight="200.0" prefWidth="871.0">
+                    <columns>
+                        <TableColumn prefWidth="181.0" text="Student ID" />
+                      <TableColumn prefWidth="197.0" text="Course Details" />
+                        <TableColumn prefWidth="244.0" text="Course Details" />
+                        <TableColumn prefWidth="241.0" text="Due Date" />
+                    </columns>
+                  </TableView>
                </children>
             </AnchorPane>
          </children></AnchorPane>
