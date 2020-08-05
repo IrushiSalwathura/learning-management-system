@@ -1,4 +1,9 @@
 package dao.custom;
 
-public interface ModuleDAO {
+import dao.CrudDAO;
+import entity.Module;
+
+public interface ModuleDAO extends CrudDAO<Module,String> {
+    public String getLastModuleId() throws Exception;
+
 }
