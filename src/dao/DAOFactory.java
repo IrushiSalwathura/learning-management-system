@@ -14,18 +14,6 @@ public class DAOFactory {
         return (daoFactory == null) ? daoFactory = new DAOFactory() : daoFactory;
     }
 
-    /*    public CustomerDAO getCustomerDAO(){
-            return new CustomerDAOImpl();
-        }
-        public ItemDAO getItemDAO(){
-            return new ItemDAOImpl();
-        }
-        public OrderDAO getOrderDAO(){
-            return new OrderDAOImpl();
-        }
-        public OrderDetailDAO getOrderDetailDAO(){
-            return new OrderDetailDAOImpl();
-        }*/
     public <T extends SuperDAO> T getDAO(DAOType daoType) {
         switch (daoType) {
             case ADMIN:
