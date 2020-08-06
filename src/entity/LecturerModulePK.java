@@ -1,6 +1,6 @@
 package entity;
 
-public class LecturerModulePK {
+public class LecturerModulePK implements SuperEntity{
     private String moduleId;
     private String lecturerId;
 
