@@ -24,6 +24,8 @@ public class BOFactory {
                 return (T) new CourseBOImpl();
             case ANNOUNCEMENT:
                 return (T) new AnnouncementBOImpl();
+            case LECTURER:
+                return (T) new LecturerBOImpl();
             default:
                 return null;
         }
