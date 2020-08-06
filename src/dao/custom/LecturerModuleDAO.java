@@ -1,4 +1,8 @@
 package dao.custom;
 
-public interface LecturerModuleDAO {
+import dao.CrudDAO;
+import entity.LecturerModule;
+
+
+public interface LecturerModuleDAO extends CrudDAO<LecturerModule,String> {
 }
