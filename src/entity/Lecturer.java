@@ -1,23 +1,30 @@
 package entity;
 
-public class Student implements SuperEntity {
+import java.io.Serializable;
+
+public class Lecturer implements SuperEntity {
+
     private String id;
-    private String facultyId;
+    private String courseId;
     private String name;
     private String address;
     private String contact;
+    private String username;
+    private String password;
     private String nic;
     private String email;
 
-    public Student() {
+    public Lecturer() {
     }
 
-    public Student(String id, String facultyId, String name, String address, String contact, String nic, String email) {
+    public Lecturer(String id, String courseId, String name, String address, String contact, String username, String password, String nic, String email) {
         this.id = id;
-        this.facultyId = facultyId;
+        this.courseId = courseId;
         this.name = name;
         this.address = address;
         this.contact = contact;
+        this.username = username;
+        this.password = password;
         this.nic = nic;
         this.email = email;
     }
@@ -30,12 +37,12 @@ public class Student implements SuperEntity {
         this.id = id;
     }
 
-    public String getFacultyId() {
-        return facultyId;
+    public String getCourseId() {
+        return courseId;
     }
 
-    public void setFacultyId(String facultyId) {
-        this.facultyId = facultyId;
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
     public String getName() {
@@ -62,6 +69,22 @@ public class Student implements SuperEntity {
         this.contact = contact;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getNic() {
         return nic;
     }
@@ -80,12 +103,14 @@ public class Student implements SuperEntity {
 
     @Override
     public String toString() {
-        return "StudentDAO{" +
+        return "Lecturer{" +
                 "id='" + id + '\'' +
-                ", facultyId='" + facultyId + '\'' +
+                ", courseId='" + courseId + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", contact='" + contact + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 ", nic='" + nic + '\'' +
                 ", email='" + email + '\'' +
                 '}';

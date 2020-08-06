@@ -16,6 +16,7 @@ public class CourseDAOImpl implements CourseDAO {
             courses.add(new Course(rst.getString(1),rst.getString(2),rst.getString(3),rst.getDouble(4)));
         }
         return courses;
+
     }
 
     public Course find(String pk) throws Exception{
