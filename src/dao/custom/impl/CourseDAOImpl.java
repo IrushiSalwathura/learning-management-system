@@ -11,11 +11,11 @@ import java.util.List;
 public class CourseDAOImpl implements CourseDAO {
     public List<Course> findAll() throws Exception{
         ResultSet rst = CrudUtil.execute("SELECT * FROM Course");
-        ArrayList<Course> customers = new ArrayList<>();
+        ArrayList<Course> courses = new ArrayList<>();
         while(rst.next()){
-            customers.add(new Course(rst.getString(1),rst.getString(2),rst.getString(3),rst.getDouble(4)));
+            courses.add(new Course(rst.getString(1),rst.getString(2),rst.getString(3),rst.getDouble(4)));
         }
-        return customers;
+        return courses;
     }
 
     public Course find(String pk) throws Exception{
