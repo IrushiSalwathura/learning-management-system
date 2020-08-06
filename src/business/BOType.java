@@ -1,5 +1,5 @@
 package business;
 
 public enum BOType {
-    LECTURER, MODULE, STUDENT, CONTENT;
+    LECTURER, MODULE, STUDENT, CONTENT, COURSE;
 }
