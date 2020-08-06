@@ -36,22 +36,23 @@ public class AdminBOImpl implements AdminBO {
         List<Admin> allAdmins = adminDAO.findAll();
         ArrayList<AdminTM> admins = new ArrayList<>();
         for (Admin admin : allAdmins) {
-            admins.add(new AdminTM())
+            admins.add(new AdminTM(admin.getId(),admin.getName(),admin.getContact(),admin.getUserName(),admin.getPassword()))
         }
+        return admins;
     }
 
     @Override
     public boolean saveAdmin(String id, String name, String contact, String username, String password) throws Exception {
-        return false;
+        return adminDAO.save(new Admin(id,name,contact,username,password));
     }
 
     @Override
     public boolean deleteAdmin(String id) throws Exception {
-        return false;
+        return adminDAO.delete(id);
     }
 
     @Override
-    public boolean updateAdmin(String name, String contact, String username, String password) throws Exception {
-        return false;
+    public boolean updateAdmin(String name, String contact, String username, String password,String id) throws Exception {
+        return adminDAO.update(new Admin(name,contact,username,password,id));
     }
 }
