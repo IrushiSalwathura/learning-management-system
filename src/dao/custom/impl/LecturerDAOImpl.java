@@ -70,13 +70,13 @@ public class LecturerDAOImpl implements LecturerDAO {
                 lecturer.getCourseId(), lecturer.getName(),
                 lecturer.getAddress(), lecturer.getContact(),
                 lecturer.getUsername(), lecturer.getPassword(),
-                lecturer.getNic(), lecturer.getEmail(), lecturer.getLecturerId());
+                lecturer.getNic(), lecturer.getEmail(), lecturer.getId());
     }
 
     @Override
     public boolean save(Lecturer lecturer) throws Exception {
         return CrudUtil.execute("INSERT INTO Lecturer VALUES (?,?,?,?,?.?,?,?,?)",
-                lecturer.getLecturerId(), lecturer.getCourseId(),
+                lecturer.getId(), lecturer.getCourseId(),
                 lecturer.getName(), lecturer.getAddress(),
                 lecturer.getContact(),
                 lecturer.getUsername(), lecturer.getPassword(),
