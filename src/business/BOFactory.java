@@ -1,6 +1,7 @@
 package business;
 
 import business.custom.impl.ContentBOImpl;
+import business.custom.impl.CourseBOImpl;
 import business.custom.impl.ModuleBOImpl;
 import business.custom.impl.StudentBOImpl;
 
@@ -22,7 +23,9 @@ public class BOFactory {
                 return (T) new ModuleBOImpl();
             case CONTENT:
                 return (T) new ContentBOImpl();
-                default:
+            case COURSE:
+                return (T) new CourseBOImpl();
+            default:
                 return null;
         }
     }
