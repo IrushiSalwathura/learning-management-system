@@ -3,10 +3,16 @@ package business.custom.impl;
 import business.custom.StudentBO;
 import dao.DAOFactory;
 import dao.DAOType;
+import dao.SuperDAO;
+import dao.custom.QueryDAO;
 import dao.custom.StudentDAO;
+import entity.Course;
 import entity.Student;
+import util.CourseTM;
+import util.ModuleTM;
 import util.StudentTM;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,5 +66,16 @@ public class StudentBOImpl implements StudentBO {
     public boolean updateStudent(String facultyId, String name, String address, String contact, String username, String password, String nic, String email, String id) throws Exception {
         return studentDAO.update(new Student(id,facultyId,name, address,contact,username,password,nic,email));
 
+    }
+
+    public List<CourseTM> getStudentCourses(String studentId) throws SQLException {
+        QueryDAO queryDAO= DAOFactory.getInstance().getDAO(DAOType.QUERY);
+        List<Course> studentCourses = queryDAO.findStudentCourses(studentId);
+        ArrayList<CourseTM> courses = new ArrayList<>();
+
+        for (Course course : studentCourses) {
+            courses.add(new CourseTM(course.getId(),course.getTitle(),course.getType(),course.getDuration()));
+        }
+        return courses;
     }
 }
