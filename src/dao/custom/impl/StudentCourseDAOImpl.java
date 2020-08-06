@@ -1,10 +1,7 @@
 package dao.custom.impl;
-
 import dao.CrudUtil;
 import dao.custom.StudentCourseDAO;
-import entity.Course;
 import entity.StudentCourse;
-
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
