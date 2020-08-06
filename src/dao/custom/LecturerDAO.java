@@ -1,4 +1,10 @@
 package dao.custom;
 
-public interface LecturerDAO {
+
+import dao.CrudDAO;
+import entity.Lecturer;
+
+public interface LecturerDAO extends CrudDAO<Lecturer,String> {
+
+    String getLastLecturerId() throws Exception;
 }
