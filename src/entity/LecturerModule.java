@@ -6,6 +6,10 @@ public class LecturerModule {
     public LecturerModule() {
     }
 
+    public LecturerModule(String moduleId, String lectureId) {
+        this.lecturerModulePK = new LecturerModulePK(moduleId,lectureId);
+    }
+
     public LecturerModule(LecturerModulePK lecturerModulePK) {
         this.lecturerModulePK = lecturerModulePK;
     }
