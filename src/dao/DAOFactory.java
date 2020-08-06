@@ -1,8 +1,6 @@
 package dao;
 
-import dao.custom.impl.AdminDAOImpl;
-import dao.custom.impl.ModuleDAOImpl;
-import dao.custom.impl.StudentDAOImpl;
+import dao.custom.impl.*;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
