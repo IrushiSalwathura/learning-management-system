@@ -27,7 +27,7 @@ public class LecturerModuleDAOImpl implements LecturerModuleDAO {
         return null;
     }
 
-    public boolean Save(LecturerModule entity) throws SQLException {
+    public boolean save(LecturerModule entity) throws SQLException {
         Boolean result = CrudUtil.execute("INSERT INTO LecturerModule VALUES(?,?)",entity.getLecturerModulePK().getModuleId(),entity.getLecturerModulePK().getLecturerId());
         if(!result){
             return false;
@@ -35,7 +35,7 @@ public class LecturerModuleDAOImpl implements LecturerModuleDAO {
         return true;
     }
 
-    public boolean Update(LecturerModule entity) throws SQLException {
+    public boolean update(LecturerModule entity) throws SQLException {
         Boolean result = CrudUtil.execute("UPDATE LecturerModule SET lectureId=? WHERE moduleId=?",entity.getLecturerModulePK().getLecturerId(),entity.getLecturerModulePK().getModuleId());
         if(!result){
             return false;
@@ -43,7 +43,7 @@ public class LecturerModuleDAOImpl implements LecturerModuleDAO {
         return true;
     }
 
-    public boolean Delete(String pk) throws SQLException {
+    public boolean delete(String pk) throws SQLException {
         Boolean result = CrudUtil.execute("DELETE FROM LecturerModule WHERE moduleId=?",pk);
         if(!result){
             return false;
