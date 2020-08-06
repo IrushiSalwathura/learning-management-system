@@ -13,7 +13,7 @@ public class CourseDAOImpl implements CourseDAO {
         ResultSet rst = CrudUtil.execute("SELECT * FROM Course");
         ArrayList<Course> courses = new ArrayList<>();
         while(rst.next()){
-            courses.add(new Course(rst.getString(1),rst.getString(2),rst.getString(3),rst.getDouble(4)));
+            courses.add(new Course(rst.getString(1),rst.getString(2),rst.getString(3),rst.getString(4)));
         }
         return courses;
 
@@ -22,7 +22,7 @@ public class CourseDAOImpl implements CourseDAO {
     public Course find(String pk) throws Exception{
         ResultSet rst = CrudUtil.execute("SELECT * FROM Course WHERE id = ?",pk);
         while(rst.next()){
-            return new Course(rst.getString(1),rst.getString(2),rst.getString(3),rst.getDouble(4));
+            return new Course(rst.getString(1),rst.getString(2),rst.getString(3),rst.getString(4));
         }
         return null;
 

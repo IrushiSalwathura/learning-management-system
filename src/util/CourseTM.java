@@ -4,17 +4,18 @@ public class CourseTM {
     private String id;
     private String title;
     private String type;
-    private double duration;
+    private String duration;
 
     public CourseTM() {
     }
 
-    public CourseTM(String id, String title, String type, double duration) {
-        this.id = id;
-        this.title = title;
-        this.type = type;
-        this.duration = duration;
+    public CourseTM(String id, String title, String type, String duration) {
+        this.setId(id);
+        this.setTitle(title);
+        this.setType(type);
+        this.setDuration(duration);
     }
+
 
     public String getId() {
         return id;
@@ -40,21 +41,16 @@ public class CourseTM {
         this.type = type;
     }
 
-    public double getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(double duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
     @Override
     public String toString() {
-        return "CourseTM{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", type='" + type + '\'' +
-                ", duration=" + duration +
-                '}';
+        return getId();
     }
 }

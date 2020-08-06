@@ -4,17 +4,11 @@ public class Course implements SuperEntity{
     private String id;
     private String title;
     private String type;
-    private double duration;
+    private String duration;
 
-    public Course() {
+    public Course(String string, String rstString, String s, String string1) {
     }
 
-    public Course(String id, String title, String type, double duration) {
-        this.id = id;
-        this.title = title;
-        this.type = type;
-        this.duration = duration;
-    }
 
     public String getId() {
         return id;
@@ -40,11 +34,11 @@ public class Course implements SuperEntity{
         this.type = type;
     }
 
-    public double getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(double duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
@@ -54,7 +48,7 @@ public class Course implements SuperEntity{
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", type='" + type + '\'' +
-                ", duration=" + duration +
+                ", duration='" + duration + '\'' +
                 '}';
     }
 }

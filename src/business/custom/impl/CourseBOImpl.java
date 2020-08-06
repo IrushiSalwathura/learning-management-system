@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseBOImpl implements CourseBO {
+
+
     @Override
     public List<CourseTM> getAllCourses() throws Exception {
         try {
@@ -28,7 +30,7 @@ public class CourseBOImpl implements CourseBO {
     }
 
     @Override
-    public boolean saveCourseDetails(String id, String title, String type, double duration) throws Exception {
+    public boolean saveCourseDetails(String id, String title, String type, String duration) throws Exception {
         try {
             CourseDAO courseDAO = DAOFactory.getInstance().getDAO(DAOType.COURSE);
             return courseDAO.save(new Course(id,title,type,duration));
@@ -50,7 +52,7 @@ public class CourseBOImpl implements CourseBO {
     }
 
     @Override
-    public boolean updateCourse(String title, String type, double duration, String id) throws Exception {
+    public boolean updateCourse(String title, String type, String duration, String id) throws Exception {
         try {
             CourseDAO courseDAO = DAOFactory.getInstance().getDAO(DAOType.COURSE);
             return courseDAO.update(new Course(id, title, type,duration));
