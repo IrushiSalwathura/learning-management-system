@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Lecturer implements Serializable {
 
-    private String lecturerId;
+    private String id;
     private String courseId;
     private String name;
     private String address;
@@ -17,8 +17,8 @@ public class Lecturer implements Serializable {
     public Lecturer() {
     }
 
-    public Lecturer(String lecturerId, String courseId, String name, String address, String contact, String username, String password, String nic, String email) {
-        this.lecturerId = lecturerId;
+    public Lecturer(String id, String courseId, String name, String address, String contact, String username, String password, String nic, String email) {
+        this.id = id;
         this.courseId = courseId;
         this.name = name;
         this.address = address;
@@ -29,12 +29,12 @@ public class Lecturer implements Serializable {
         this.email = email;
     }
 
-    public String getLecturerId() {
-        return lecturerId;
+    public String getId() {
+        return id;
     }
 
-    public void setLecturerId(String lecturerId) {
-        this.lecturerId = lecturerId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCourseId() {
@@ -104,7 +104,7 @@ public class Lecturer implements Serializable {
     @Override
     public String toString() {
         return "Lecturer{" +
-                "lecturerId='" + lecturerId + '\'' +
+                "id='" + id + '\'' +
                 ", courseId='" + courseId + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +

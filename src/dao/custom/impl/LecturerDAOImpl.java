@@ -40,9 +40,9 @@ public class LecturerDAOImpl implements LecturerDAO {
     }
 
     @Override
-    public Lecturer find(String pk) throws Exception {
+    public Lecturer find(String key) throws Exception {
 
-        ResultSet rst = CrudUtil.execute("SELECT * FROM Lecturer WHERE id=?", pk);
+        ResultSet rst = CrudUtil.execute("SELECT * FROM Lecturer WHERE id=?", key);
         if (rst.next()) {
             return new Lecturer(rst.getString(1),
                     rst.getString(2),
@@ -59,8 +59,8 @@ public class LecturerDAOImpl implements LecturerDAO {
     }
 
     @Override
-    public boolean delete(String pk) throws Exception {
-        return CrudUtil.execute("DELETE FROM Lecturer WHERE id=?");
+    public boolean delete(String key) throws Exception {
+        return CrudUtil.execute("DELETE FROM Lecturer WHERE id=?",key);
     }
 
     @Override
