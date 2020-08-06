@@ -2,7 +2,7 @@ package entity;
 
 import java.io.Serializable;
 
-public class Lecturer implements Serializable {
+public class Lecturer implements SuperEntity {
 
     private String id;
     private String courseId;

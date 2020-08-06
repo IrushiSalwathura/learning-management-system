@@ -2,7 +2,7 @@ package entity;
 
 import java.sql.Date;
 
-public class Content {
+public class Content implements SuperEntity{
     private String id;
     private String title;
     private Date date;
