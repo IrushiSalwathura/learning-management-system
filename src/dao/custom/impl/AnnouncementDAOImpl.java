@@ -22,7 +22,7 @@ public class AnnouncementDAOImpl implements AnnouncementDAO {
 
     @Override
     public Announcement find(String pk) throws Exception {
-        ResultSet rst = CrudUtil.execute("SELECT * FROM Announcement WHERE id = ?",pk);
+        ResultSet rst = CrudUtil.execute("SELECT * FROM Announcement WHERE courseId = ?",pk);
         while(rst.next()){
             return new Announcement(rst.getString(1),rst.getString(2),rst.getDate(3),rst.getString(4));
         }
