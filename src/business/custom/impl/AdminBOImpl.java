@@ -37,7 +37,7 @@ public class AdminBOImpl implements AdminBO {
         List<Admin> allAdmins = adminDAO.findAll();
         ArrayList<AdminTM> admins = new ArrayList<>();
         for (Admin admin : allAdmins) {
-            admins.add(new AdminTM(admin.getId(),admin.getName(),admin.getContact(),admin.getUserName(),admin.getPassword()))
+            admins.add(new AdminTM(admin.getId(),admin.getName(),admin.getContact(),admin.getUserName(),admin.getPassword()));
         }
         return admins;
     }
