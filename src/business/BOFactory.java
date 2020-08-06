@@ -1,9 +1,6 @@
 package business;
 
-import business.custom.impl.ContentBOImpl;
-import business.custom.impl.CourseBOImpl;
-import business.custom.impl.ModuleBOImpl;
-import business.custom.impl.StudentBOImpl;
+import business.custom.impl.*;
 
 public class BOFactory {
     private static BOFactory boFactory;
@@ -25,6 +22,8 @@ public class BOFactory {
                 return (T) new ContentBOImpl();
             case COURSE:
                 return (T) new CourseBOImpl();
+            case ANNOUNCEMENT:
+                return (T) new AnnouncementBOImpl();
             default:
                 return null;
         }
