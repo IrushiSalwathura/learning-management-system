@@ -16,7 +16,7 @@ public class StudentDAOImpl implements StudentDAO {
         ArrayList<Student> students = new ArrayList<>();
         while (rst.next()){
             students.add( new Student(rst.getString(1), rst.getString(2),
-                    rst.getString(3),rst.getString(4),rst.getString(5),rst.getString(6),rst.getString(7)));
+                    rst.getString(3),rst.getString(4),rst.getString(5),rst.getString(6),rst.getString(7),rst.getString(8),rst.getString(9)));
         }
         return students;
     }
@@ -26,7 +26,7 @@ public class StudentDAOImpl implements StudentDAO {
         ResultSet rst = CrudUtil.execute("SELECT * FROM Student WHERE id =?",key);
         if (rst.next()){
             return new Student(rst.getString(1), rst.getString(2),
-                    rst.getString(3),rst.getString(4),rst.getString(5),rst.getString(6),rst.getString(7));
+                    rst.getString(3),rst.getString(4),rst.getString(5),rst.getString(6),rst.getString(7),rst.getString(8),rst.getString(9));
         }
         return null;
     }
