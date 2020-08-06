@@ -9,6 +9,9 @@ public class FacultyLecturer {
     public FacultyLecturer(FacultyLecturerPK facultyLecturerPK) {
         this.facultyLecturerPK = facultyLecturerPK;
     }
+    public FacultyLecturer(String facultyId, String lecturerId) {
+        this.facultyLecturerPK = new FacultyLecturerPK(facultyId,lecturerId);
+    }
 
     public FacultyLecturerPK getFacultyLecturerPK() {
         return facultyLecturerPK;
