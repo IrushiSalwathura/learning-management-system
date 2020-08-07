@@ -68,7 +68,7 @@ public class StudentBOImpl implements StudentBO {
 
     }
 
-    public List<CourseTM> getStudentCourses(String studentId) throws SQLException {
+    public List<CourseTM> getStudentCourses(String studentId) throws Exception {
         QueryDAO queryDAO= DAOFactory.getInstance().getDAO(DAOType.QUERY);
         List<Course> studentCourses = queryDAO.findStudentCourses(studentId);
         ArrayList<CourseTM> courses = new ArrayList<>();

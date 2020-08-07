@@ -7,5 +7,5 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface QueryDAO extends SuperDAO {
-    List<Course> findStudentCourses(String pk) throws SQLException;
+    List<Course> findStudentCourses(String pk) throws Exception;
 }
