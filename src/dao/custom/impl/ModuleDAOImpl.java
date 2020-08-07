@@ -2,7 +2,6 @@ package dao.custom.impl;
 
 import dao.CrudUtil;
 import dao.custom.ModuleDAO;
-import entity.Admin;
 import entity.Module;
 
 import java.sql.ResultSet;
@@ -57,4 +56,16 @@ public class ModuleDAOImpl implements ModuleDAO {
             return null;
         }
     }
+
+    public List<Module> getCourseModules(String courseId) throws Exception {
+        ResultSet resultSet= CrudUtil.execute("SELECT * FROM Module WHERE courseId=?", courseId);
+        ArrayList<Module> courseModules = new ArrayList<>();
+
+        while(resultSet.next()){
+            courseModules.add(new Module(resultSet.getString(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5)));
+        }
+        return courseModules;
+    }
+
+
 }

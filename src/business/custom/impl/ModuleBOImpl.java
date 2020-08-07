@@ -8,6 +8,7 @@ import dao.custom.ModuleDAO;
 import entity.Module;
 import util.ModuleTM;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,5 +57,15 @@ public class ModuleBOImpl implements ModuleBO {
     @Override
     public boolean updateModule(String title, String duration, String credits, String courseId, String id) throws Exception {
         return moduleDAO.update(new Module(id,title,duration,credits,courseId));
+    }
+
+    public List<ModuleTM> getCourseModules(String courseId) throws Exception {
+        List<Module> courseModules = moduleDAO.getCourseModules(courseId);
+        ArrayList<ModuleTM> modules = new ArrayList<>();
+
+        for (Module module :courseModules) {
+            modules.add(new ModuleTM(module.getId(),module.getTitle(),module.getDuration(),module.getCredits(),module.getCourseId()));
+        }
+        return modules;
     }
 }
