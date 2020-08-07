@@ -6,9 +6,15 @@ public class Course implements SuperEntity{
     private String type;
     private String duration;
 
-    public Course(String string, String rstString, String s, String string1) {
+    public Course() {
     }
 
+    public Course(String id, String title, String type, String duration) {
+        this.id = id;
+        this.title = title;
+        this.type = type;
+        this.duration = duration;
+    }
 
     public String getId() {
         return id;
