@@ -3,6 +3,7 @@ package dao.custom.impl;
 import dao.CrudUtil;
 import dao.custom.QueryDAO;
 import entity.Course;
+import entity.Module;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class QueryDAOImpl implements QueryDAO {
 
-    public List<Course> findStudentCourses(String pk) throws SQLException {
+    public List<Course> findStudentCourses(String pk) throws Exception {
         ResultSet resultSet = CrudUtil.execute("SELECT C.id,C.title,C.type,C.duration FROM StudentCourse S\n" +
                 "INNER JOIN Course C on S.courseId = C.id\n" +
                 "WHERE S.studentId=?", pk);

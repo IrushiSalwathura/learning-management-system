@@ -6,10 +6,10 @@ import util.ModuleTM;
 import java.util.List;
 
 public interface ModuleBO extends SuperBO {
-    public String getNewModuleId() throws Exception;
-    public List<ModuleTM> getAllModules() throws Exception;
-    public boolean saveModule(String id,String title,String duration, String credits,String courseId) throws Exception;
-    public boolean deleteModule(String id)throws Exception;
-    public boolean updateModule(String title,String duration, String credits,String courseId,String id)throws Exception;
-
+    String getNewModuleId() throws Exception;
+    List<ModuleTM> getAllModules() throws Exception;
+    boolean saveModule(String id,String title,String duration, String credits,String courseId) throws Exception;
+    boolean deleteModule(String id)throws Exception;
+    boolean updateModule(String title,String duration, String credits,String courseId,String id)throws Exception;
+    List<ModuleTM> getCourseModules(String courseId) throws Exception;
 }
