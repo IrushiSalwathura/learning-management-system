@@ -33,8 +33,8 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public boolean save(Student student) throws Exception {
-        return CrudUtil.execute("INSERT INTO Student VALUES (?,?,?,?,?,?,?)",
-                student.getId(),student.getFacultyId(),student.getName(),student.getAddress(),student.getContact(),student.getNic(),student.getEmail());
+        return CrudUtil.execute("INSERT INTO Student VALUES (?,?,?,?,?,?,?,?,?)",
+                student.getId(),student.getFacultyId(),student.getName(),student.getAddress(),student.getContact(),student.getUsername(),student.getPassword(),student.getNic(),student.getEmail());
     }
 
     @Override
