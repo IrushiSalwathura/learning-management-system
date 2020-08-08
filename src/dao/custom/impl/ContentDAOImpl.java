@@ -49,6 +49,6 @@ public class ContentDAOImpl implements ContentDAO {
             return false;
         }
         return true;
-        //"DELETE FROM Content WHERE id=?"
     }
+
 }
