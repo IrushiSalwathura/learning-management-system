@@ -73,9 +73,9 @@
                     </font>
                 </Label>
                 <Line endX="844.0" endY="-1.52587890625E-5" layoutX="121.0" layoutY="89.0" startX="-100.0" />
-                <AnchorPane  layoutX="23.0" layoutY="129.0" prefHeight="847.0" prefWidth="956.0" style="-fx-background-color: #D7D7D7;">
+                <AnchorPane layoutX="23.0" layoutY="129.0" prefHeight="847.0" prefWidth="956.0" style="-fx-background-color: #D7D7D7;">
                     <children>
-                        <AnchorPane layoutX="27.0" layoutY="28.0" prefHeight="774.0" prefWidth="871.0" style="-fx-background-color: white;">
+                        <AnchorPane layoutX="27.0" layoutY="28.0" prefHeight="814.0" prefWidth="871.0" style="-fx-background-color: white;">
                             <children>
                                 <Label layoutX="37.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Edit Profile">
                                     <font>
@@ -142,56 +142,66 @@
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="34.0" layoutY="358.0" prefHeight="41.0" prefWidth="804.0" text="Change Password">
+                                <Label layoutX="27.0" layoutY="438.0" prefHeight="41.0" prefWidth="804.0" text="Change Password">
                                     <font>
                                         <Font name="System Bold" size="24.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="36.0" layoutY="430.0" text="User Name">
+                                <Label layoutX="36.0" layoutY="517.0" text="User Name">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                                <JFXTextField fx:id="txtUserName" layoutX="247.0" layoutY="424.0" prefHeight="39.0" prefWidth="202.0" promptText="STD/20/001">
+                                <JFXTextField fx:id="txtUserName" layoutX="247.0" layoutY="505.0" prefHeight="39.0" prefWidth="202.0" promptText="STD/20/001">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </JFXTextField>
-                                <Label layoutX="28.0" layoutY="482.0" text="Current Password">
+                                <Label layoutX="31.0" layoutY="584.0" text="Current Password">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                                <JFXPasswordField fx:id="txtCurrentPassword" layoutX="247.0" layoutY="481.0" prefHeight="30.0" prefWidth="202.0" text="1111111">
+                                <JFXPasswordField fx:id="txtCurrentPassword" layoutX="247.0" layoutY="583.0" prefHeight="30.0" prefWidth="202.0" text="1111111">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </JFXPasswordField>
-                                <Label layoutX="27.0" layoutY="546.0" text="New Password">
+                                <Label layoutX="27.0" layoutY="639.0" text="New Password">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                                <JFXPasswordField fx:id="txtNewPassword" layoutX="247.0" layoutY="545.0" prefHeight="30.0" prefWidth="202.0" text="1111111">
+                                <JFXPasswordField fx:id="txtNewPassword" layoutX="247.0" layoutY="651.0" prefHeight="30.0" prefWidth="202.0" text="1111111">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </JFXPasswordField>
-                                <Label layoutX="27.0" layoutY="620.0" text="ReEnter New Password">
+                                <Label layoutX="21.0" layoutY="706.0" text="ReEnter New Password">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                                <JFXPasswordField fx:id="txtNewPassword2" layoutX="247.0" layoutY="605.0" prefHeight="30.0" prefWidth="202.0" text="1111111">
+                                <JFXPasswordField fx:id="txtNewPassword2" layoutX="247.0" layoutY="705.0" prefHeight="30.0" prefWidth="202.0" text="1111111">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </JFXPasswordField>
-                                <Button fx:id="btnSave" layoutX="533.0" layoutY="680.0" mnemonicParsing="false" onAction="#btnSave_OnAction" prefHeight="32.0" prefWidth="140.0" text="Save">
+                                <Button fx:id="btnUpdate" layoutX="543.0" layoutY="753.0" mnemonicParsing="false" onAction="#btnUpdate_OnAction" prefHeight="32.0" prefWidth="140.0" text="Save">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Button>
+                        <Label layoutX="35.0" layoutY="347.0" text="Course ID">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtCourseId" layoutX="136.0" layoutY="346.0" prefHeight="25.0" prefWidth="424.0" promptText="012-3456789">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </JFXTextField>
                             </children>
                         </AnchorPane>
                     </children>

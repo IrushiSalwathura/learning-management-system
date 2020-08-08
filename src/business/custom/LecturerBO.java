@@ -1,6 +1,7 @@
 package business.custom;
 
 import business.SuperBO;
+import entity.Lecturer;
 import util.CourseTM;
 import util.FacultyTM;
 import util.LectureTM;
@@ -22,4 +23,6 @@ public interface LecturerBO extends SuperBO {
     List<FacultyTM> getLecturerFaculties(String lecturerId) throws Exception;
 
     List<CourseTM> getLecturerFacultyCourses(String lecturerId, String facultyId) throws Exception;
+
+    LectureTM getLecturer(String id)throws Exception;
 }
