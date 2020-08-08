@@ -78,7 +78,7 @@
                   <JFXComboBox fx:id="cmbCourses" layoutX="27.0" layoutY="42.0" prefHeight="31.0" prefWidth="871.0" promptText="Course" />
                   <ButtonBar layoutX="39.0" layoutY="616.0" prefHeight="31.0" prefWidth="626.0" />
                   <JFXComboBox fx:id="cmbFaculty" layoutX="27.0" layoutY="11.0" prefHeight="31.0" prefWidth="871.0" promptText="Faculty" />
-                  <ListView layoutX="27.0" layoutY="132.0" prefHeight="628.0" prefWidth="885.0" />
+                  <ListView fx:id="lstModules" layoutX="27.0" layoutY="132.0" prefHeight="628.0" prefWidth="885.0" />
                </children>
             </AnchorPane>
          </children></AnchorPane>
