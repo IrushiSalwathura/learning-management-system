@@ -1,8 +1,10 @@
 package controller;
 
 import business.custom.CourseBO;
+import business.custom.ModuleBO;
 import business.custom.StudentBO;
 import business.custom.impl.CourseBOImpl;
+import business.custom.impl.ModuleBOImpl;
 import business.custom.impl.StudentBOImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -16,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import util.CourseTM;
+import util.ModuleTM;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,8 +41,9 @@ public class StudentModuleFormController {
 
     public void initialize() throws Exception {
         loadAllCoursesOfStudent("S001");
+        loadAllCourseModules("C001");
+        getModuleDetails("M001");
     }
-
 
     public void btnDashboard_OnAction(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(this.getClass().getResource(""));
@@ -75,10 +79,28 @@ public class StudentModuleFormController {
 
     public void loadAllCoursesOfStudent(String studentId) throws Exception {
         cmbCourses.getItems().clear();
-        CourseBO courseBO = new CourseBOImpl();
         StudentBO studentBO = new StudentBOImpl();
         List<CourseTM> courses = studentBO.getStudentCourses(studentId);
         ObservableList<CourseTM> courseTM = FXCollections.observableArrayList(courses);
         cmbCourses.setItems(courseTM);
     }
+//
+    //TODO: call this method when a course is selected from cmbCourses
+    public void loadAllCourseModules(String courseId) throws Exception {
+        cmbModules.getItems().clear();
+        ModuleBO moduleBO = new ModuleBOImpl();
+        List<ModuleTM> modules = moduleBO.getCourseModules(courseId);
+        ObservableList<ModuleTM> moduleTMS = FXCollections.observableArrayList(modules);
+        cmbModules.setItems(moduleTMS);
+    }
+
+    public void getModuleDetails(String moduleId) throws Exception {
+        ModuleBOImpl moduleBO = new ModuleBOImpl();
+        ModuleTM module = moduleBO.getModule(moduleId);
+        lblCredits.setText(module.getCredits());
+        lblDuration.setText(module.getDuration());
+        lblDescription.setText("Add description attribute to the Module table!!!!!!!!!!!!!!!!!!!!!!!");
+    }
+
+    //TODO: add a method to get the amount of module content
 }
