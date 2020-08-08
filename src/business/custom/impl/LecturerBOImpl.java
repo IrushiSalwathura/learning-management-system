@@ -10,6 +10,7 @@ import dao.custom.LecturerDAO;
 import dao.custom.StudentCourseDAO;
 import entity.Course;
 import entity.Lecturer;
+import entity.Student;
 import entity.StudentCourse;
 import util.CourseTM;
 import util.LectureTM;
@@ -37,7 +38,7 @@ public class LecturerBOImpl implements LecturerBO {
     }
 
     @Override
-    public boolean saveLecturer(String id, String courseId, String name,String address,String contact,String username,String password,String nic,String email) throws Exception {
+    public boolean saveLecturer(String id, String courseId, String name, String address, String contact, String username, String password, String nic, String email) throws Exception {
         return lecturerDAO.save(new Lecturer(id,courseId,name,address,contact,username,password,nic,email));
 
     }
@@ -48,8 +49,8 @@ public class LecturerBOImpl implements LecturerBO {
     }
 
     @Override
-    public boolean updateLecturer(String id, String courseId, String name,String address, String contact,String username,String password,String nic,String email) throws Exception {
-        return lecturerDAO.update(new Lecturer(id,courseId,name,address,contact,username,password,nic,email));
+    public boolean updateLecturer(String courseId, String name, String address, String contact, String username, String password, String nic, String email, String id) throws Exception {
+        return lecturerDAO.update(new Lecturer(id,courseId,name, address,contact,username,password,nic,email));
     }
 
     @Override
