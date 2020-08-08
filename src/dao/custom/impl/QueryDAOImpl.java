@@ -3,6 +3,7 @@ package dao.custom.impl;
 import dao.CrudUtil;
 import dao.custom.QueryDAO;
 import entity.Course;
+import entity.Faculty;
 import entity.Module;
 
 import java.sql.ResultSet;
@@ -22,4 +23,29 @@ public class QueryDAOImpl implements QueryDAO {
         }
         return studentCourses;
     }
+
+    public List<Faculty> findLecturerFaculties(String pk) throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT F.id,F.name,F.address FROM Faculty F\n" +
+                "INNER JOIN FacultyLecturer FL on F.id = FL.facultyId\n" +
+                "WHERE lecturerId=?", pk);
+        ArrayList<Faculty> lecturerFaculties = new ArrayList<>();
+
+        while (resultSet.next()) {
+            lecturerFaculties.add(new Faculty(resultSet.getString(1),resultSet.getString(2),resultSet.getString(3)));
+        }
+        return lecturerFaculties;
+    }
+
+    public List<Course> findLecturerFacultyCourses(String pk1, String pk2 ) throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT C.id,C.title,C.type,C.duration FROM Course C\n" +
+                "INNER JOIN Lecturer L on C.id = L.courseId\n" +
+                "INNER JOIN FacultyLecturer FL on L.id = FL.lecturerId\n" +
+                "WHERE lecturerId=? AND FL.facultyId=?", pk1,pk2);
+        ArrayList<Course> courses = new ArrayList<>();
+        while(resultSet.next()){
+            courses.add(new Course(resultSet.getString(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4)));
+        }
+        return courses;
+    }
+
 }
