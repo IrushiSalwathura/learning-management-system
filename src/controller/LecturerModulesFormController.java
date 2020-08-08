@@ -6,6 +6,8 @@ import business.custom.impl.LecturerBOImpl;
 import business.custom.impl.ModuleBOImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,8 +22,6 @@ import util.FacultyTM;
 import util.ModuleTM;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 public class LecturerModulesFormController {
@@ -29,12 +29,27 @@ public class LecturerModulesFormController {
     public JFXButton btnDashboard;
     public JFXComboBox cmbCourses;
     public JFXComboBox cmbFaculty;
-    public ListView lstModules;
+    public ListView<ModuleTM> lstModules;
 
     public void initialize() throws Exception {
         loadAllFacultiesOfLecturer("L001");
         loadAllCoursesOfLecturerInFaculty("L001","F001");
         loadAllCourseModules("C001");
+
+        lstModules.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ModuleTM>() {
+            @Override
+            public void changed(ObservableValue<? extends ModuleTM> observable, ModuleTM oldValue, ModuleTM selectedModule) {
+                if(selectedModule==null){
+                    return;
+                }
+                try {
+                    loadModuleContent();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     public void btnDashboard_OnAction(ActionEvent actionEvent) throws IOException {
@@ -91,6 +106,14 @@ public class LecturerModulesFormController {
         List<ModuleTM> courseModules = moduleBO.getCourseModules(courseId);
         ObservableList<ModuleTM> moduleTMS = FXCollections.observableArrayList(courseModules);
         lstModules.setItems(moduleTMS);
+    }
+
+    public void loadModuleContent() throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/LecturerModuleContent.fxml"));
+        Scene mainScene = new Scene(root);
+        Stage mainStage = (Stage) this.root.getScene().getWindow();
+        mainStage.setScene(mainScene);
+        mainStage.centerOnScreen();
     }
 
 }
