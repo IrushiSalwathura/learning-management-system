@@ -78,36 +78,36 @@
                <children>
                   <AnchorPane layoutX="27.0" layoutY="85.0" prefHeight="95.0" prefWidth="871.0" style="-fx-background-color: white;">
                      <children>
-                        <Label fx:id="lblType" layoutX="437.0" layoutY="27.0" prefHeight="41.0" prefWidth="404.0" text="Type">
+                        <Label fx:id="lblTitle" layoutX="37.0" layoutY="27.0" prefHeight="41.0" prefWidth="404.0" text="Title">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblTitle" layoutX="25.0" layoutY="27.0" prefHeight="41.0" prefWidth="404.0" text="Title">
+                        <Label fx:id="lblType" layoutX="453.0" layoutY="27.0" prefHeight="41.0" prefWidth="404.0" text="Type">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="25.0" layoutY="6.0" text="Course Title :">
+                        <Label layoutX="28.0" layoutY="4.0" text="Course Title :">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="429.0" layoutY="6.0" text="Course Type :">
+                        <Label layoutX="453.0" layoutY="6.0" text="Course Type :">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="27.0" layoutY="202.0" prefHeight="372.0" prefWidth="871.0" style="-fx-background-color: white;">
+                  <AnchorPane layoutX="27.0" layoutY="202.0" prefHeight="433.0" prefWidth="871.0" style="-fx-background-color: white;">
                      <children>
                         <Label layoutX="34.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Announcements">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <VBox fx:id="vBoxAnnouncements" layoutX="34.0" layoutY="68.0" prefHeight="265.0" prefWidth="804.0" />
+                        <VBox fx:id="vBoxAnnouncements" layoutX="30.0" layoutY="68.0" prefHeight="351.0" prefWidth="806.0" />
                         <!--<CharmListView fx:id="lstAnnouncements" layoutX="36.0" layoutY="77.0" prefHeight="279.0" prefWidth="820.0" />-->
                      </children>
                   </AnchorPane>
@@ -115,8 +115,8 @@
                   <ButtonBar layoutX="39.0" layoutY="616.0" prefHeight="31.0" prefWidth="626.0" />
                </children>
             </AnchorPane>
-            <Label layoutX="762.0" layoutY="8.0" text="Student ID :" />
-            <JFXTextField fx:id="txtStudentID" editable="false" layoutX="830.0" layoutY="4.0" prefHeight="25.0" prefWidth="139.0" />
+            <Label layoutX="770.0" layoutY="14.0" text="Student ID :" />
+            <JFXTextField fx:id="txtStudentID" layoutX="844.0" layoutY="10.0" />
          </children></AnchorPane>
    </children>
 </AnchorPane>
