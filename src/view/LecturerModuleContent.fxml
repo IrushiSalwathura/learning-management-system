@@ -92,7 +92,7 @@
                      </font>
                   </Label>
                   <ComboBox fx:id="cmbModuleId" layoutX="25.0" layoutY="80.0" prefHeight="41.0" prefWidth="244.0" promptText="Module ID" />
-                  <Button layoutX="679.0" layoutY="114.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="217.0" style="-fx-background-color: #11333D;" text="Add Content" textFill="#e8dcdc" />
+                  <Button fx:id="btnAddContent" layoutX="679.0" layoutY="114.0" mnemonicParsing="false" onAction="#btnAddContent_OnAction" prefHeight="27.0" prefWidth="217.0" style="-fx-background-color: #11333D;" text="Add Content" textFill="#e8dcdc" />
                   <ImageView fitHeight="16.0" fitWidth="22.0" layoutX="691.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/add-icon.png" />

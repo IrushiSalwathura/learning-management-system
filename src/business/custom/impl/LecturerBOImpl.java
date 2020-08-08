@@ -5,16 +5,14 @@ import dao.CrudUtil;
 import dao.DAOFactory;
 import dao.DAOType;
 import dao.SuperDAO;
-import dao.custom.CourseDAO;
-import dao.custom.LecturerDAO;
-import dao.custom.StudentCourseDAO;
-import entity.Course;
-import entity.Lecturer;
-import entity.Student;
-import entity.StudentCourse;
+import dao.custom.*;
+import entity.*;
 import util.CourseTM;
+import util.FacultyTM;
 import util.LectureTM;
+import util.ModuleTM;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,5 +74,38 @@ public class LecturerBOImpl implements LecturerBO {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public List<FacultyTM> getLecturerFaculties(String lecturerId) throws Exception {
+        QueryDAO queryDAO = DAOFactory.getInstance().getDAO(DAOType.QUERY);
+        List<Faculty> lecturerFaculties = queryDAO.findLecturerFaculties(lecturerId);
+        ArrayList<FacultyTM> facultyTMS = new ArrayList<>();
+
+        for (Faculty faculty : lecturerFaculties) {
+            facultyTMS.add(new FacultyTM(faculty.getId(),faculty.getName(),faculty.getAddress()));
+        }
+        return facultyTMS;
+    }
+
+    public List<CourseTM> getLecturerFacultyCourses(String lecturerId, String facultyId) throws Exception {
+        QueryDAO queryDAO = DAOFactory.getInstance().getDAO(DAOType.QUERY);
+        List<Course> lecturerFacultyCourses = queryDAO.findLecturerFacultyCourses(lecturerId,facultyId);
+        ArrayList<CourseTM> courseTMS = new ArrayList<>();
+
+        for (Course course : lecturerFacultyCourses) {
+            courseTMS.add(new CourseTM(course.getId(),course.getTitle(),course.getType(),course.getDuration()));
+        }
+        return courseTMS;
+    }
+
+    public List<ModuleTM> getCourseModules(String courseId) throws Exception {
+        ModuleDAO moduleDAO = DAOFactory.getInstance().getDAO(DAOType.MODULE);
+        List<Module> courseModules = moduleDAO.getCourseModules(courseId);
+        ArrayList<ModuleTM> moduleTMS = new ArrayList<>();
+
+        for (Module module : courseModules) {
+            moduleTMS.add(new ModuleTM(module.getId(),module.getTitle(),module.getDuration(),module.getCredits(),module.getCourseId()));
+        }
+        return moduleTMS;
     }
 }

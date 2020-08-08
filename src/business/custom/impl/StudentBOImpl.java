@@ -7,7 +7,9 @@ import dao.SuperDAO;
 import dao.custom.QueryDAO;
 import dao.custom.StudentDAO;
 import entity.Course;
+import entity.CustomEntity;
 import entity.Student;
+import util.AnnouncementTM;
 import util.CourseTM;
 import util.ModuleTM;
 import util.StudentTM;
@@ -78,4 +80,22 @@ public class StudentBOImpl implements StudentBO {
         }
         return courses;
     }
+
+    public CourseTM getCourseDetails(String studentId, String courseId) throws Exception{
+            QueryDAO queryDAO = DAOFactory.getInstance().getDAO(DAOType.QUERY);
+            CustomEntity courseDetails =  queryDAO.getCourseDetails(studentId,courseId);
+            return new CourseTM(courseDetails.getTitle(),courseDetails.getType());
+    }
+
+    public List<AnnouncementTM> getAnnouncements(String courseId) throws Exception {
+        QueryDAO queryDAO= DAOFactory.getInstance().getDAO(DAOType.QUERY);
+        List<CustomEntity> announcements = queryDAO.getAnnouncements(courseId);
+        ArrayList<AnnouncementTM> announcement = new ArrayList<>();
+
+        for (CustomEntity ann : announcements) {
+            announcement.add(new AnnouncementTM(ann.getCourseId(),ann.getLecturerId(),ann.getDate(),ann.getAnnouncement()));
+        }
+        return announcement;
+    }
+
 }

@@ -52,11 +52,6 @@ public class AnnouncementTM {
 
     @Override
     public String toString() {
-        return "AnnouncementTM{" +
-                "courseId='" + courseId + '\'' +
-                ", lecturerId='" + lecturerId + '\'' +
-                ", date=" + date +
-                ", announcement='" + announcement + '\'' +
-                '}';
+        return announcement;
     }
 }
