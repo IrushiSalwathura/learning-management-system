@@ -79,7 +79,7 @@ public class AdminModuleFormController {
                 btnSave.setText("Update");
                 btnSave.setDisable(false);
                 btnDelete.setDisable(false);
-                txtModuleId.setDisable(true);
+                txtModuleId.setDisable(false);
                 txtModuleName.setDisable(false);
                 txtDuration.setDisable(false);
                 txtCredits.setDisable(false);
