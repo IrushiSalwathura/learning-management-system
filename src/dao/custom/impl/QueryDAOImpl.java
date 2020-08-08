@@ -2,6 +2,7 @@ package dao.custom.impl;
 
 import dao.CrudUtil;
 import dao.custom.QueryDAO;
+import entity.Content;
 import entity.Course;
 import entity.Faculty;
 import entity.Module;
@@ -48,4 +49,14 @@ public class QueryDAOImpl implements QueryDAO {
         return courses;
     }
 
+    public List<Content> findModuleContent(String moduleId) throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT C.id,C.title,C.date,C.lecturerID,C.moduleId FROM Content C\n" +
+                "INNER JOIN Module M on C.moduleId = M.id\n" +
+                "WHERE moduleId=?", moduleId);
+        ArrayList<Content> content = new ArrayList<>();
+        while(resultSet.next()){
+            content.add(new Content(resultSet.getString(1),resultSet.getString(2),resultSet.getDate(3),resultSet.getString(4),resultSet.getString(5)));
+        }
+        return content;
+    }
 }
