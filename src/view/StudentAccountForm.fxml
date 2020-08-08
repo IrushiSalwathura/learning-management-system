@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #EBEBEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainFormController">
+<AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #EBEBEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentAccountFormController">
     <children>
         <AnchorPane prefHeight="1000.0" prefWidth="301.0" style="-fx-background-color: #11333D;">
             <children>
@@ -68,7 +68,7 @@
         </AnchorPane>
         <AnchorPane fx:id="subAnchorPane" layoutX="300.0" prefHeight="1000.0" prefWidth="1001.0" style="-fx-background-color: #EBEBEB;">
             <children>
-                <Label layoutX="34.0" layoutY="14.0" prefHeight="63.0" prefWidth="570.0" text="Account Information">
+                <Label layoutX="34.0" layoutY="14.0" prefHeight="63.0" prefWidth="570.0" text="Student Account Information">
                     <font>
                         <Font name="Courier" size="24.0" />
                     </font>
@@ -76,135 +76,135 @@
                 <Line endX="844.0" endY="-1.52587890625E-5" layoutX="121.0" layoutY="89.0" startX="-100.0" />
                 <AnchorPane layoutX="23.0" layoutY="129.0" prefHeight="847.0" prefWidth="956.0" style="-fx-background-color: #D7D7D7;">
                     <children>
-                        <AnchorPane layoutX="27.0" layoutY="28.0" prefHeight="419.0" prefWidth="871.0" style="-fx-background-color: white;">
+                        <AnchorPane layoutX="27.0" layoutY="28.0" prefHeight="814.0" prefWidth="871.0" style="-fx-background-color: white;">
                             <children>
-                                <Label fx:id="lblDescription" layoutX="37.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Edit Profile">
+                                <Label layoutX="37.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Edit Profile">
                                     <font>
                                         <Font name="System Bold" size="24.0" />
                                     </font>
                                 </Label>
-                        <JFXTextField layoutX="136.0" layoutY="77.0" prefHeight="25.0" prefWidth="424.0" promptText="STD/20/001">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </JFXTextField>
-                        <Label layoutX="37.0" layoutY="84.0" text="Reg. No">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <JFXTextField layoutX="136.0" layoutY="122.0" prefHeight="25.0" prefWidth="424.0" promptText="name">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </JFXTextField>
-                        <Label layoutX="37.0" layoutY="129.0" text="Name">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <JFXTextField layoutX="136.0" layoutY="167.0" prefHeight="25.0" prefWidth="424.0" promptText="012345678V">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </JFXTextField>
-                        <Label layoutX="37.0" layoutY="174.0" text="NIC">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <JFXTextField layoutX="136.0" layoutY="209.0" prefHeight="25.0" prefWidth="424.0" promptText="Galle">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </JFXTextField>
-                        <Label layoutX="37.0" layoutY="216.0" text="Address">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <JFXTextField layoutX="136.0" layoutY="253.0" prefHeight="25.0" prefWidth="424.0" promptText="somthing@ymail.com">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </JFXTextField>
-                        <Label layoutX="37.0" layoutY="260.0" text="Email">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <JFXTextField layoutX="136.0" layoutY="295.0" prefHeight="25.0" prefWidth="424.0" promptText="012-3456789">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </JFXTextField>
-                        <Label layoutX="37.0" layoutY="302.0" text="Contact No">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Button layoutX="673.0" layoutY="342.0" mnemonicParsing="false" text="Save">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
+                                <JFXTextField fx:id="txtId" layoutX="136.0" layoutY="77.0" prefHeight="25.0" prefWidth="424.0" promptText="S001">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </JFXTextField>
+                                <Label layoutX="37.0" layoutY="84.0" text="Student ID">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <JFXTextField fx:id="txtName" layoutX="136.0" layoutY="122.0" prefHeight="25.0" prefWidth="424.0" promptText="name">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </JFXTextField>
+                                <Label layoutX="37.0" layoutY="129.0" text="Name">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <JFXTextField fx:id="txtNIC" layoutX="136.0" layoutY="167.0" prefHeight="25.0" prefWidth="424.0" promptText="012345678V">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </JFXTextField>
+                                <Label layoutX="37.0" layoutY="174.0" text="NIC">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <JFXTextField fx:id="txtAddress" layoutX="136.0" layoutY="209.0" prefHeight="25.0" prefWidth="424.0" promptText="Galle">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </JFXTextField>
+                                <Label layoutX="37.0" layoutY="216.0" text="Address">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <JFXTextField fx:id="txtEmail" layoutX="136.0" layoutY="253.0" prefHeight="25.0" prefWidth="424.0" promptText="somthing@ymail.com">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </JFXTextField>
+                                <Label layoutX="37.0" layoutY="260.0" text="Email">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <JFXTextField fx:id="txtContact" layoutX="136.0" layoutY="295.0" prefHeight="25.0" prefWidth="424.0" promptText="012-3456789">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </JFXTextField>
+                                <Label layoutX="37.0" layoutY="302.0" text="Contact No">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="27.0" layoutY="438.0" prefHeight="41.0" prefWidth="804.0" text="Change Password">
+                                    <font>
+                                        <Font name="System Bold" size="24.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="36.0" layoutY="517.0" text="User Name">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <JFXTextField fx:id="txtUserName" layoutX="247.0" layoutY="505.0" prefHeight="39.0" prefWidth="202.0" promptText="STD/20/001">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </JFXTextField>
+                                <Label layoutX="31.0" layoutY="584.0" text="Current Password">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <JFXPasswordField fx:id="txtCurrentPassword" layoutX="247.0" layoutY="583.0" prefHeight="30.0" prefWidth="202.0" text="1111111">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </JFXPasswordField>
+                                <Label layoutX="27.0" layoutY="639.0" text="New Password">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <JFXPasswordField fx:id="txtNewPassword" layoutX="247.0" layoutY="651.0" prefHeight="30.0" prefWidth="202.0" text="1111111">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </JFXPasswordField>
+                                <Label layoutX="21.0" layoutY="706.0" text="ReEnter New Password">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <JFXPasswordField fx:id="txtNewPassword2" layoutX="247.0" layoutY="705.0" prefHeight="30.0" prefWidth="202.0" text="1111111">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </JFXPasswordField>
+                                <Button fx:id="btnUpdate" layoutX="150.0" layoutY="280.0" mnemonicParsing="false" onAction="#btnUpdate_OnAction" prefHeight="32.0" prefWidth="140.0" text="Save">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Button>
+                                <Label layoutX="35.0" layoutY="347.0" text="Faculty ID">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <JFXTextField fx:id="txtFacultyId" layoutX="136.0" layoutY="346.0" prefHeight="25.0" prefWidth="424.0" promptText="F001">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </JFXTextField>
                             </children>
                         </AnchorPane>
-                        <ButtonBar layoutX="39.0" layoutY="616.0" prefHeight="31.0" prefWidth="626.0" />
-                  <AnchorPane layoutX="27.0" layoutY="465.0" prefHeight="336.0" prefWidth="871.0" style="-fx-background-color: white;">
-                     <children>
-                        <Label fx:id="lblDescription1" layoutX="37.0" layoutY="27.0" prefHeight="41.0" prefWidth="804.0" text="Change Password">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <JFXPasswordField layoutX="228.0" layoutY="118.0" text="1111111">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </JFXPasswordField>
-                        <Label layoutX="37.0" layoutY="130.0" text="Current Password">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <JFXTextField layoutX="229.0" layoutY="79.0" prefHeight="39.0" prefWidth="202.0" promptText="STD/20/001">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </JFXTextField>
-                        <Label layoutX="37.0" layoutY="86.0" text="User Name">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <JFXPasswordField layoutX="228.0" layoutY="163.0" text="1111111">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </JFXPasswordField>
-                        <Label layoutX="37.0" layoutY="175.0" text="New Password">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <JFXPasswordField layoutX="228.0" layoutY="202.0" text="1111111">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </JFXPasswordField>
-                        <Label layoutX="37.0" layoutY="214.0" text="ReEnter New Password">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Button layoutX="568.0" layoutY="269.0" mnemonicParsing="false" text="Change">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
                     </children>
                 </AnchorPane>
             </children></AnchorPane>

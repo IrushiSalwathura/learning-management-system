@@ -1,5 +1,9 @@
 package controller;
 
+import business.BOFactory;
+import business.BOType;
+import business.custom.LecturerBO;
+import business.custom.StudentBO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -7,24 +11,56 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import util.LectureTM;
+import util.StudentTM;
 
 import java.io.IOException;
 
 public class StudentAccountFormController {
     public JFXButton btnDashboard;
-    public JFXTextField txtStudentId;
-    public JFXTextField txtStudentName;
-    public JFXTextField txtNic;
+    public AnchorPane root;
+    public JFXButton btnCourses;
+    public JFXButton btnModules;
+    public JFXButton btnAccount;
+    public AnchorPane subAnchorPane;
+    public JFXTextField txtId;
+    public JFXTextField txtName;
+    public JFXTextField txtNIC;
     public JFXTextField txtAddress;
     public JFXTextField txtEmail;
     public JFXTextField txtContact;
-    public JFXPasswordField txtOldPassword;
     public JFXTextField txtUserName;
-    public JFXPasswordField txtNewPassword1;
+    public JFXPasswordField txtCurrentPassword;
+    public JFXPasswordField txtNewPassword;
     public JFXPasswordField txtNewPassword2;
-    public AnchorPane root;
+    public Button btnUpdate;
+    public JFXTextField txtFacultyId;
+    private StudentBO studentBO = BOFactory.getInstance().getBO(BOType.STUDENT);
+    public void initialize(){
+        try {
+            StudentTM studentDetails = studentBO.getStudent("S001");
+            txtId.setEditable(false);
+            txtId.setText(studentDetails.getId());
+            txtFacultyId.setText(studentDetails.getFacultyId());
+            txtName.setText(studentDetails.getName());
+            txtAddress.setText(studentDetails.getAddress());
+            txtContact.setText(studentDetails.getContact());
+            txtUserName.setText(studentDetails.getUsername());
+            txtCurrentPassword.setText(studentDetails.getPassword());
+            txtNIC.setText(studentDetails.getNic());
+            txtEmail.setText(studentDetails.getEmail());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     public void btnDashboard_OnAction(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(this.getClass().getResource(""));
@@ -58,9 +94,15 @@ public class StudentAccountFormController {
         mainStage.centerOnScreen();
     }
 
-    public void btnSave_OnAction(ActionEvent actionEvent) {
-    }
-
-    public void btnPasswordChange_OnAction(ActionEvent actionEvent) {
+    public void btnUpdate_OnAction(ActionEvent actionEvent) {
+        try {
+            studentBO.updateStudent(txtFacultyId.getText(),
+                    txtName.getText(),txtAddress.getText(),txtContact.getText(),txtUserName.getText(),
+                    txtNewPassword2.getText(),txtNIC.getText(),
+                    txtEmail.getText(),txtId.getText());
+            new Alert(Alert.AlertType.INFORMATION,"your details have been updated successfully", ButtonType.OK).showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
