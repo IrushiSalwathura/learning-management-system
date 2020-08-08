@@ -65,22 +65,14 @@ public class LecturerDAOImpl implements LecturerDAO {
 
     @Override
     public boolean update(Lecturer lecturer) throws Exception {
-        return CrudUtil.execute("UPDATE Lecturer SET courseId=?, name=?, address=? contact=?, username=?," +
-                        "password=?, nic=?, email=? WHERE id=?",
-                lecturer.getCourseId(), lecturer.getName(),
-                lecturer.getAddress(), lecturer.getContact(),
-                lecturer.getUsername(), lecturer.getPassword(),
-                lecturer.getNic(), lecturer.getEmail(), lecturer.getId());
+        return CrudUtil.execute("UPDATE Lecturer SET courseId=?, name=?,address=?,contact=?,username=?,password=?,nic=?,email=? WHERE id=?",
+                lecturer.getCourseId(),lecturer.getName(),lecturer.getAddress(),lecturer.getContact(),lecturer.getUsername(),lecturer.getPassword(),lecturer.getNic(),lecturer.getEmail(),lecturer.getId());
     }
 
     @Override
     public boolean save(Lecturer lecturer) throws Exception {
-        return CrudUtil.execute("INSERT INTO Lecturer VALUES (?,?,?,?,?.?,?,?,?)",
-                lecturer.getId(), lecturer.getCourseId(),
-                lecturer.getName(), lecturer.getAddress(),
-                lecturer.getContact(),
-                lecturer.getUsername(), lecturer.getPassword(),
-                lecturer.getNic(), lecturer.getEmail());
+        return CrudUtil.execute("INSERT INTO Lecturer VALUES (?,?,?,?,?,?,?,?,?)",lecturer.getId(),lecturer.getCourseId(),
+                lecturer.getName(),lecturer.getAddress(),lecturer.getContact(),lecturer.getUsername(),lecturer.getPassword(),lecturer.getNic(),lecturer.getEmail());
 
     }
 

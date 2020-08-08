@@ -13,7 +13,7 @@ public interface LecturerBO extends SuperBO {
 
     public boolean deleteLecturer(String id)throws Exception;
 
-    public boolean updateLecturer(String id, String courseId, String name,String address, String contact,String username,String password,String nic,String email)throws Exception;
+    public boolean updateLecturer(String courseId, String name,String address, String contact,String username,String password,String nic,String email,String id)throws Exception;
 
     public String getNewLecturerId()throws Exception;
 }
