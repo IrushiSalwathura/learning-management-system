@@ -1,7 +1,9 @@
 package business.custom;
 
 import business.SuperBO;
+import entity.CustomEntity;
 import util.AdminTM;
+import util.AnnouncementTM;
 import util.CourseTM;
 import util.StudentTM;
 
@@ -15,4 +17,6 @@ public interface StudentBO extends SuperBO {
     boolean deleteStudent(String id)throws Exception;
     boolean updateStudent(String facultyId, String name,String address, String contact,String username, String password,String nic, String email,String id)throws Exception;
     List<CourseTM> getStudentCourses(String studentId) throws Exception;
+    CourseTM getCourseDetails(String studentId, String courseId) throws Exception;
+    List<AnnouncementTM> getAnnouncements(String courseId) throws Exception;
 }
