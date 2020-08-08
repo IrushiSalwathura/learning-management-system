@@ -3,16 +3,16 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminLecturerFormController">
+<AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminLecturerFormController">
    <children>
       <AnchorPane layoutY="-12.0" prefHeight="1015.0" prefWidth="301.0" style="-fx-background-color: #11333D;">
          <children>
@@ -92,26 +92,27 @@
                </font>
             </Label>
             <Line endX="844.0" endY="-1.52587890625E-5" layoutX="115.0" layoutY="75.0" startX="-100.0" />
-            <JFXComboBox layoutX="11.0" layoutY="583.0" prefHeight="27.0" prefWidth="687.0" promptText="Faculty" />
-            <JFXComboBox layoutX="11.0" layoutY="540.0" prefHeight="27.0" prefWidth="687.0" promptText="Course" />
-            <JFXTreeTableView layoutX="14.0" layoutY="90.0" prefHeight="400.0" prefWidth="931.0">
+            <JFXComboBox fx:id="cmbCourseId" layoutX="14.0" layoutY="608.0" prefHeight="31.0" prefWidth="244.0" promptText="Course" />
+            <TableView fx:id="tblAdminLecturer" layoutX="14.0" layoutY="90.0" prefHeight="400.0" prefWidth="931.0">
                <columns>
-                  <TreeTableColumn prefWidth="182.0" text="Lecturer Id" />
-                  <TreeTableColumn prefWidth="245.0" text="Name" />
-                  <TreeTableColumn prefWidth="307.0" text="Address" />
-                  <TreeTableColumn prefWidth="196.0" text="Contact Number" />
+                  <TableColumn prefWidth="182.0" text="Lecturer Id" />
+                  <TableColumn prefWidth="245.0" text="Name" />
+                  <TableColumn prefWidth="307.0" text="Address" />
+                  <TableColumn prefWidth="196.0" text="Contact Number" />
                </columns>
-            </JFXTreeTableView>
+            </TableView>
             <JFXButton fx:id="btnAdd" layoutX="14.0" layoutY="506.0" onAction="#btnAdd_OnAction" style="-fx-background-color: #11333D;" text="Add Lecturer" textFill="#f2ebeb" />
-            <JFXTextField fx:id="txtId" editable="false" layoutX="11.0" layoutY="635.0" prefHeight="27.0" prefWidth="145.0" promptText="Student Id" text="Lecturer Id" />
-            <JFXTextField fx:id="txtTel" layoutX="11.0" layoutY="784.0" promptText="Tel" />
-            <JFXTextField fx:id="txtAddress" layoutX="11.0" layoutY="735.0" prefHeight="27.0" prefWidth="653.0" text="Address" />
-            <JFXTextField fx:id="txtName" layoutX="11.0" layoutY="686.0" prefHeight="27.0" prefWidth="653.0" promptText="Name" />
-            <JFXTextField fx:id="txtPassword" layoutX="390.0" layoutY="834.0" prefHeight="27.0" prefWidth="290.0" promptText="Password" />
-            <JFXTextField fx:id="txtUsername" layoutX="11.0" layoutY="834.0" prefHeight="27.0" prefWidth="301.0" promptText="Username" />
+            <JFXTextField fx:id="txtId" editable="false" layoutX="14.0" layoutY="561.0" prefHeight="27.0" prefWidth="145.0" promptText="Lecturer Id" />
+            <JFXTextField fx:id="txtTel" layoutX="14.0" layoutY="826.0" promptText="Tel" />
+            <JFXTextField fx:id="txtAddress" layoutX="11.0" layoutY="727.0" prefHeight="27.0" prefWidth="653.0" promptText="Address" />
+            <JFXTextField fx:id="txtName" layoutX="11.0" layoutY="672.0" prefHeight="27.0" prefWidth="653.0" promptText="Name" />
+            <JFXTextField fx:id="txtPassword" layoutX="382.0" layoutY="877.0" prefHeight="27.0" prefWidth="290.0" promptText="Password" />
+            <JFXTextField fx:id="txtUsername" layoutX="14.0" layoutY="877.0" prefHeight="27.0" prefWidth="301.0" promptText="Username" />
             <JFXButton fx:id="btnDelete" layoutX="487.0" layoutY="934.0" onAction="#btnDelete_OnAction" prefHeight="27.0" prefWidth="196.0" style="-fx-background-color: #11333D;" text="Delete" textFill="#f5e5e5" />
             <JFXButton fx:id="btnSave" layoutX="272.0" layoutY="934.0" onAction="#btnSave_OnAction" prefHeight="27.0" prefWidth="196.0" style="-fx-background-color: #11333D;" text="Save" textFill="#eeebeb" />
-            <JFXTextField fx:id="txtUsername1" layoutX="295.0" layoutY="784.0" prefHeight="27.0" prefWidth="385.0" promptText="Username" text="Email" />
+            <JFXTextField fx:id="txtEmail" layoutX="287.0" layoutY="826.0" prefHeight="27.0" prefWidth="385.0" promptText="Email" />
+            <JFXTextField fx:id="txtCourseName" layoutX="319.0" layoutY="608.0" prefHeight="31.0" prefWidth="364.0" promptText="CourseName" />
+            <JFXTextField fx:id="txtNIC" layoutX="11.0" layoutY="776.0" prefHeight="27.0" prefWidth="653.0" promptText="NIC" />
          </children>
       </AnchorPane>
    </children>
