@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface QueryDAO extends SuperDAO {
     List<Course> findStudentCourses(String pk) throws Exception;
-    CustomEntity getCourseDetails(String studentId, String courseId) throws Exception;
+    CustomEntity getStudentCourseDetails(String studentId, String courseId) throws Exception;
     List<CustomEntity> getAnnouncements(String courseId) throws Exception;
     List<Faculty> findLecturerFaculties(String pk) throws Exception;
     List<Course> findLecturerFacultyCourses(String pk1, String pk2 ) throws Exception;
