@@ -116,7 +116,7 @@ public class StudentModuleFormController {
     private void loadAllModules(String courseId) {
         cmbModules.getItems().clear();
         try {
-            cmbModules.setItems(FXCollections.observableArrayList(moduleBO.getAllModules()));
+            cmbModules.setItems(FXCollections.observableArrayList(moduleBO.getCourseModules(courseId)));
         } catch (Exception e) {
             e.printStackTrace();
         }
