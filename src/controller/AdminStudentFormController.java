@@ -68,18 +68,7 @@ public class AdminStudentFormController {
         readOnly = false;
 
         //Basic Initialization
-        txtId.setDisable(true);
-        txtName.setDisable(true);
-        txtAddress.setDisable(true);
-        txtTel.setDisable(true);
-        txtEmail.setDisable(true);
-        txtUsername.setDisable(true);
-        txtPassword.setDisable(true);
-        txtNIC.setDisable(true);
-        txtPassword.setDisable(true);
-        txtUsername.setDisable(true);
-        cmbFacultyId.setDisable(true);
-        txtFacultyName.setDisable(true);
+        disableFields();
 
         //load all students
         loadAllStudents();
@@ -183,7 +172,6 @@ public class AdminStudentFormController {
         });
     }
 
-
     public void btnDashboard_OnAction(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(this.getClass().getResource("/view/AdminDashboard.fxml"));
         Scene mainScene =  new Scene(root);
@@ -283,7 +271,7 @@ public class AdminStudentFormController {
         String facultyId = String.valueOf(cmbFacultyId.getSelectionModel().getSelectedItem());
         String name = txtName.getText();
         String address = txtAddress.getText();
-        String contact = txtAddress.getText();
+        String contact = txtTel.getText();
         String username = txtUsername.getText();
         String password = txtPassword.getText();
         String nic = txtNIC.getText();
@@ -305,6 +293,7 @@ public class AdminStudentFormController {
                         txtName.getText(),txtAddress.getText(),
                         txtTel.getText(),txtUsername.getText(),
                         txtPassword.getText(),txtNIC.getText(),txtEmail.getText());
+                new Alert(Alert.AlertType.INFORMATION,"Student saved successfully",ButtonType.OK).showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -335,7 +324,7 @@ public class AdminStudentFormController {
     public void btnAdd_OnAction(ActionEvent actionEvent) {
 
         clearFields();
-        disableFields();
+        enableFields();
         cmbFacultyId.getSelectionModel().clearSelection();
         tblAdminStudent.getSelectionModel().clearSelection();
 
@@ -349,7 +338,7 @@ public class AdminStudentFormController {
 
     }
 
-    private void disableFields() {
+    private void enableFields() {
         txtId.setDisable(false);
         txtName.setDisable(false);
         txtAddress.setDisable(false);
@@ -373,6 +362,19 @@ public class AdminStudentFormController {
         txtUsername.clear();
         txtPassword.clear();
         txtFacultyName.clear();
+    }
+
+    private void disableFields() {
+        txtId.setDisable(true);
+        txtName.setDisable(true);
+        txtAddress.setDisable(true);
+        txtTel.setDisable(true);
+        txtEmail.setDisable(true);
+        txtUsername.setDisable(true);
+        txtPassword.setDisable(true);
+        txtNIC.setDisable(true);
+        cmbFacultyId.setDisable(true);
+        txtFacultyName.setDisable(true);
     }
 
 

@@ -5,8 +5,10 @@ import dao.DAOFactory;
 import dao.DAOType;
 import dao.SuperDAO;
 import dao.custom.ContentDAO;
+import dao.custom.QueryDAO;
 import entity.Content;
 import util.ContentTM;
+import util.ModuleTM;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -46,5 +48,16 @@ public class ContentBOImpl implements ContentBO {
         ContentDAO contentDao = DAOFactory.getInstance().getDAO(DAOType.CONTENT);
         boolean delete = contentDao.delete(id);
         return delete;
+    }
+
+    public List<ContentTM> getModuleContent(String moduleId) throws Exception {
+        QueryDAO queryDAO = DAOFactory.getInstance().getDAO(DAOType.QUERY);
+        List<Content> moduleContent = queryDAO.findModuleContent(moduleId);
+        ArrayList<ContentTM> contentTMS = new ArrayList<>();
+
+        for (Content content : moduleContent) {
+            contentTMS.add(new ContentTM(content.getId(),content.getTitle(),content.getDate(),content.getLecturerID(),content.getModuleId()));
+        }
+        return contentTMS;
     }
 }
