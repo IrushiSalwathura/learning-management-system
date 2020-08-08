@@ -27,7 +27,7 @@ public class QueryDAOImpl implements QueryDAO {
     }
 
     @Override
-    public CustomEntity getCourseDetails(String studentId, String courseId) throws Exception {
+    public CustomEntity getStudentCourseDetails(String studentId, String courseId) throws Exception {
         ResultSet rst = CrudUtil.execute("SELECT C.title,C.type from StudentCourse sc INNER JOIN Course C on sc.courseId = C.id\n" +
                 "WHERE studentId=? AND courseId=?", studentId,courseId);
 
@@ -43,7 +43,8 @@ public class QueryDAOImpl implements QueryDAO {
         ResultSet resultSet = CrudUtil.execute("SELECT A.courseId,A.lecturerId,A.date,A.announcement\n" +
                 "FROM Course C\n" +
                 "INNER JOIN Announcement A on C.id = A.courseId\n" +
-                "WHERE C.id =?", courseId);
+                "WHERE C.id =?\n" +
+                "ORDER BY A.date DESC LIMIT 4", courseId);
         ArrayList<CustomEntity> announcements = new ArrayList<>();
         while(resultSet.next()){
             announcements.add(new CustomEntity(resultSet.getString(1),resultSet.getString(2),

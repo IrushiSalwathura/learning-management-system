@@ -7,10 +7,7 @@ import dao.DAOType;
 import dao.SuperDAO;
 import dao.custom.*;
 import entity.*;
-import util.CourseTM;
-import util.FacultyTM;
-import util.LectureTM;
-import util.ModuleTM;
+import util.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -107,5 +104,16 @@ public class LecturerBOImpl implements LecturerBO {
             moduleTMS.add(new ModuleTM(module.getId(),module.getTitle(),module.getDuration(),module.getCredits(),module.getCourseId()));
         }
         return moduleTMS;
+    }
+
+    public List<AnnouncementTM> getAnnouncements(String courseId) throws Exception {
+        QueryDAO queryDAO= DAOFactory.getInstance().getDAO(DAOType.QUERY);
+        List<CustomEntity> announcements = queryDAO.getAnnouncements(courseId);
+        ArrayList<AnnouncementTM> announcement = new ArrayList<>();
+
+        for (CustomEntity ann : announcements) {
+            announcement.add(new AnnouncementTM(ann.getCourseId(),ann.getLecturerId(),ann.getDate(),ann.getAnnouncement()));
+        }
+        return announcement;
     }
 }
