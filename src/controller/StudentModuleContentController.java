@@ -66,10 +66,8 @@ public class StudentModuleContentController {
                 String moduleId = selectedModule.getId();
                 try {
                     loadAllModuleContent(moduleId);
-                    System.out.println("Done");
                 } catch (Exception e) {
                     e.printStackTrace();
-                    System.out.println("error");
                 }
             }
         });
