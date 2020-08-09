@@ -137,8 +137,14 @@ public class LecturerCoursesFormController {
     }
 
     public void btnSubmit_OnAction(ActionEvent actionEvent) {
+        lblTitle.setText("");
+        lblType.setText("");
         String announcement = txtAnnouncement.getText();
 
+        if (announcement.trim().length() == 0 || lblTitle.getText().trim().length() == 0 || lblType.getText().trim().length() == 0) {
+            new Alert(Alert.AlertType.ERROR, "Select a course!", ButtonType.OK).show();
+            return;
+        }
         //vBoxAnnouncements.getChildren().clear();
         Label label = new Label(announcement);
         vBoxAnnouncements.getChildren().add(0,label);
