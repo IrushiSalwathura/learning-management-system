@@ -6,8 +6,6 @@ public class Student implements SuperEntity{
     private String name;
     private String address;
     private String contact;
-    private String username;
-    private String password;
     private String nic;
     private String email;
 
@@ -20,8 +18,6 @@ public class Student implements SuperEntity{
         this.name = name;
         this.address = address;
         this.contact = contact;
-        this.username = username;
-        this.password = password;
         this.nic = nic;
         this.email = email;
     }
@@ -82,22 +78,6 @@ public class Student implements SuperEntity{
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     @Override
     public String toString() {
         return "StudentTM{" +
@@ -106,8 +86,6 @@ public class Student implements SuperEntity{
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", contact='" + contact + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 ", nic='" + nic + '\'' +
                 ", email='" + email + '\'' +
                 '}';
