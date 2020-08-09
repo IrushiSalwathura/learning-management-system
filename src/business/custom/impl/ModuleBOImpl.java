@@ -6,6 +6,7 @@ import dao.DAOFactory;
 import dao.DAOType;
 import dao.custom.ModuleDAO;
 import entity.Module;
+import util.CourseTM;
 import util.ModuleTM;
 
 import java.sql.SQLException;
@@ -67,5 +68,10 @@ public class ModuleBOImpl implements ModuleBO {
             modules.add(new ModuleTM(module.getId(),module.getTitle(),module.getDuration(),module.getCredits(),module.getCourseId()));
         }
         return modules;
+    }
+    public ModuleTM getModule(String moduleId) throws Exception {
+        ModuleDAO moduleDAO = DAOFactory.getInstance().getDAO(DAOType.MODULE);
+        Module module= moduleDAO.find(moduleId);
+        return new ModuleTM(module.getId(),module.getTitle(),module.getDuration(),module.getCredits(),module.getCourseId());
     }
 }

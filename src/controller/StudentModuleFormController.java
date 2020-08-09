@@ -1,11 +1,12 @@
 package controller;
 
-import business.BOFactory;
-import business.BOType;
+import business.custom.ContentBO;
 import business.custom.CourseBO;
 import business.custom.ModuleBO;
 import business.custom.StudentBO;
+import business.custom.impl.ContentBOImpl;
 import business.custom.impl.CourseBOImpl;
+import business.custom.impl.ModuleBOImpl;
 import business.custom.impl.StudentBOImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -17,8 +18,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import util.CourseTM;
@@ -42,63 +43,72 @@ public class StudentModuleFormController {
     public Label lblCredits;
     public Label lblModuleTitle;
     public JFXComboBox<CourseTM> cmbCourses;
-    public TableView tblContent;
-    private ModuleBO moduleBO = BOFactory.getInstance().getBO(BOType.MODULE);
-    private CourseBO courseBO = BOFactory.getInstance().getBO(BOType.COURSE);
+    public Hyperlink hyprlnkCount;
+    public static String moduleId;
+
     public void initialize() throws Exception {
         loadAllCoursesOfStudent("S001");
-        cmbModules.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ModuleTM>() {
-            @Override
-            public void changed(ObservableValue<? extends ModuleTM> observable, ModuleTM oldValue, ModuleTM newValue) {
-                if (newValue ==null){
-                    lblModuleTitle.setText("");
-                    return;
-                }
-                lblModuleTitle.setText(cmbModules.getValue().getId()+" - "+cmbModules.getValue().getTitle());
-                lblDuration.setText(cmbModules.getValue().getDuration());
-                lblCredits.setText(cmbModules.getValue().getCredits());
-            }
-        });
+//        loadAllCourseModules("C001");
+//        getModuleDetails("M001");
+        lblCourseName.setVisible(false);
+
+        cmbModules.setVisible(false);
         cmbCourses.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseTM>() {
             @Override
-            public void changed(ObservableValue<? extends CourseTM> observable, CourseTM oldValue, CourseTM newValue) {
-                if (newValue ==null){
-                    lblCourseName.setText("");
+            public void changed(ObservableValue<? extends CourseTM> observable, CourseTM oldValue, CourseTM selectedCourse) {
+                if(selectedCourse==null){
                     return;
                 }
-                lblCourseName.setText(cmbCourses.getValue().getId()+" - "+cmbCourses.getValue().getTitle());
-                loadAllModules(cmbCourses.getSelectionModel().getSelectedItem().getId());
+                cmbModules.setVisible(true);
+                lblCourseName.setVisible(true);
+                String id = selectedCourse.getId();
+                try {
+                    loadAllCourseModules(id);
+                    lblCourseName.setText(selectedCourse.getTitle());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        cmbModules.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ModuleTM>() {
+            @Override
+            public void changed(ObservableValue<? extends ModuleTM> observable, ModuleTM oldValue, ModuleTM selectedModule) {
+                if(selectedModule==null){
+                    return;
+                }
+                String id = selectedModule.getId();
+                moduleId = id;
+                try {
+                    getModuleDetails(id);
+                    ContentBO contentBO = new ContentBOImpl();
+                    String moduleContentCount = contentBO.findModuleContentCount(id);
+                    hyprlnkCount.setText(moduleContentCount + "files");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
 
-
     public void btnDashboard_OnAction(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource(""));
-        Scene mainScene =  new Scene(root);
-        Stage mainStage = (Stage)this.root.getScene().getWindow();
-        mainStage.setScene(mainScene);
-        mainStage.centerOnScreen();
+        loadView("");
     }
 
     public void btnCourses_OnAction(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/StudentCoursesForm.fxml"));
-        Scene mainScene =  new Scene(root);
-        Stage mainStage = (Stage)this.root.getScene().getWindow();
-        mainStage.setScene(mainScene);
-        mainStage.centerOnScreen();
+        loadView("/view/StudentCoursesForm.fxml");
     }
 
     public void btnModules_OnAction(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/StudentModuleForm.fxml"));
-        Scene mainScene =  new Scene(root);
-        Stage mainStage = (Stage)this.root.getScene().getWindow();
-        mainStage.setScene(mainScene);
-        mainStage.centerOnScreen();
+        loadView("/view/StudentModuleForm.fxml");
     }
 
     public void btnAccount_OnAction(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/StudentAccountForm.fxml"));
+        loadView("/view/StudentAccountForm.fxml");
+    }
+
+    public void loadView(String location) throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource(location));
         Scene mainScene =  new Scene(root);
         Stage mainStage = (Stage)this.root.getScene().getWindow();
         mainStage.setScene(mainScene);
@@ -107,18 +117,31 @@ public class StudentModuleFormController {
 
     public void loadAllCoursesOfStudent(String studentId) throws Exception {
         cmbCourses.getItems().clear();
-        CourseBO courseBO = new CourseBOImpl();
         StudentBO studentBO = new StudentBOImpl();
         List<CourseTM> courses = studentBO.getStudentCourses(studentId);
         ObservableList<CourseTM> courseTM = FXCollections.observableArrayList(courses);
         cmbCourses.setItems(courseTM);
     }
-    private void loadAllModules(String courseId) {
+
+    public void loadAllCourseModules(String courseId) throws Exception {
         cmbModules.getItems().clear();
-        try {
-            cmbModules.setItems(FXCollections.observableArrayList(moduleBO.getCourseModules(courseId)));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ModuleBO moduleBO = new ModuleBOImpl();
+        List<ModuleTM> modules = moduleBO.getCourseModules(courseId);
+        ObservableList<ModuleTM> moduleTMS = FXCollections.observableArrayList(modules);
+        cmbModules.setItems(moduleTMS);
+    }
+
+    //TODO: add description to the module table!
+    public void getModuleDetails(String moduleId) throws Exception {
+        ModuleBOImpl moduleBO = new ModuleBOImpl();
+        ModuleTM module = moduleBO.getModule(moduleId);
+        lblCredits.setText(module.getCredits());
+        lblDuration.setText(module.getDuration());
+        lblDescription.setText("Add description attribute to the Module table!!!!!!!!!!!!!!!!!!!!!!!");
+        lblModuleTitle.setText(module.getTitle());
+    }
+
+    public void hyprlnkCount_OnAction(ActionEvent actionEvent) throws IOException {
+        loadView("/view/StudentModuleContent.fxml");
     }
 }
