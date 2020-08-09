@@ -59,12 +59,6 @@ public class ModuleTM {
 
     @Override
     public String toString() {
-        return "Module{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", duration='" + duration + '\'' +
-                ", credits='" + credits + '\'' +
-                ", courseId='" + courseId + '\'' +
-                '}';
+        return this.title;
     }
 }

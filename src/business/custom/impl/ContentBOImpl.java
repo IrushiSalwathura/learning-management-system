@@ -47,4 +47,9 @@ public class ContentBOImpl implements ContentBO {
         boolean delete = contentDao.delete(id);
         return delete;
     }
+    public String findModuleContentCount(String moduleId) throws Exception {
+        ContentDAO contentDAO = DAOFactory.getInstance().getDAO(DAOType.CONTENT);
+        String moduleContentCount = contentDAO.findModuleContentCount(moduleId);
+        return moduleContentCount;
+    }
 }
