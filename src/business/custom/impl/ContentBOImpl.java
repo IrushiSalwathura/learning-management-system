@@ -66,4 +66,26 @@ public class ContentBOImpl implements ContentBO {
         }
         return contentTMS;
     }
+
+    public String getNewContentId() throws Exception {
+        ContentDAO contentDAO = DAOFactory.getInstance().getDAO(DAOType.CONTENT);
+        String lastContentId = contentDAO.getLastContentId();
+        int num = Integer.parseInt(lastContentId.substring(2,5));
+        System.out.println(num);
+        String newId;
+        if(num==0){
+            newId = "CT001";
+        } else if (num<10) {
+            num++;
+            newId = "CT00" + num;
+        } else if (num<100) {
+            num++;
+            newId = "CT0" + num;
+        }
+        else{
+            num++;
+            newId = "CT" + num;
+        }
+        return newId;
+    }
 }

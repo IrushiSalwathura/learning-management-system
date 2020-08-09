@@ -19,4 +19,5 @@ public interface ContentBO extends SuperBO {
     boolean deleteContent(String id) throws Exception;
     String findModuleContentCount(String moduleId) throws Exception;
     List<ContentTM> getModuleContent(String moduleId) throws Exception;
+    String getNewContentId() throws Exception;
 }
