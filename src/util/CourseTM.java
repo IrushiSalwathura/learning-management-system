@@ -58,6 +58,6 @@ public class CourseTM {
 
     @Override
     public String toString() {
-        return title+" - "+ type;
+        return id +" - "+title+" - "+ type;
     }
 }

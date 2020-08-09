@@ -17,5 +17,6 @@ public interface StudentBO extends SuperBO {
     CourseTM getCourseDetails(String studentId, String courseId) throws Exception;
     List<AnnouncementTM> getAnnouncements(String courseId) throws Exception;
     StudentTM getStudent(String id) throws Exception;
+    String getStudentCount() throws Exception;
 
 }

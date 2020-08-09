@@ -6,6 +6,7 @@ import dao.DAOType;
 import dao.SuperDAO;
 import dao.custom.ContentDAO;
 import dao.custom.CourseDAO;
+import dao.custom.FacultyDAO;
 import dao.custom.LecturerDAO;
 import entity.Course;
 import util.CourseTM;
@@ -85,5 +86,11 @@ public class CourseBOImpl implements CourseBO {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public String getCoursesCount() throws Exception {
+        CourseDAO courseDAO = DAOFactory.getInstance().getDAO(DAOType.COURSE);
+        String courseCount = courseDAO.getCoursesCount();
+        return courseCount;
     }
 }

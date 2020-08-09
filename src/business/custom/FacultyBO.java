@@ -11,5 +11,6 @@ public interface FacultyBO extends SuperBO {
     boolean deleteFaculty(String id) throws Exception;
     boolean updateFaculty(String id, String name, String address) throws Exception;
     public String getNewFacultyId()throws Exception;
+    public String getFacultyCount() throws Exception;
 
 }

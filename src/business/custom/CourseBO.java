@@ -11,4 +11,5 @@ public interface CourseBO extends SuperBO {
     boolean deleteCourse(String id) throws Exception;
     boolean updateCourse(String title, String type, String duration, String id) throws Exception;
     String getNewCourseId() throws Exception;
+    String getCoursesCount() throws Exception;
 }

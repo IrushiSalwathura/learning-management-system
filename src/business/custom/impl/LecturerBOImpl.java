@@ -124,4 +124,10 @@ public class LecturerBOImpl implements LecturerBO {
         return new LectureTM(lectureDetails.getId(),lectureDetails.getCourseId(),lectureDetails.getName(),lectureDetails.getAddress(),lectureDetails.getContact(),
                 lectureDetails.getUsername(),lectureDetails.getPassword(),lectureDetails.getNic(),lectureDetails.getEmail());
     }
+
+    public String getLecturerCount() throws Exception {
+        LecturerDAO lecturerDAO = DAOFactory.getInstance().getDAO(DAOType.LECTURER);
+        String lecturerCount = lecturerDAO.getLecturerCount();
+        return lecturerCount;
+    }
 }

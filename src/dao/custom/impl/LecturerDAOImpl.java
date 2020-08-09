@@ -76,5 +76,14 @@ public class LecturerDAOImpl implements LecturerDAO {
 
     }
 
+    public String getLecturerCount() throws Exception{
+        ResultSet rst = CrudUtil.execute("SELECT COUNT(*) AS Total FROM Lecturer");
+        if (rst.next()){
+            return rst.getString(1);
+        }else{
+            return null;
+        }
+    }
+
 }
 
