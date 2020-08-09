@@ -17,4 +17,5 @@ public interface QueryDAO extends SuperDAO {
     List<Faculty> findLecturerFaculties(String pk) throws Exception;
     List<Course> findLecturerFacultyCourses(String pk1, String pk2 ) throws Exception;
     List<Content> findModuleContent(String moduleId) throws Exception;
+    String getStudentIdUsingUsername(String username) throws Exception;
 }

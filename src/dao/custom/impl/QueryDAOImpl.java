@@ -86,4 +86,15 @@ public class QueryDAOImpl implements QueryDAO {
         }
         return content;
     }
+
+    public String getStudentIdUsingUsername(String username) throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT S.id\n" +
+                "FROM User U\n" +
+                "INNER JOIN Student S ON U.id = S.userId\n" +
+                "WHERE U.username = ?", username);
+        if(resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }

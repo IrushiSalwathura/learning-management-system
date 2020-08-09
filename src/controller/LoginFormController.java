@@ -1,5 +1,7 @@
 package controller;
 
+import business.BOFactory;
+import business.BOType;
 import business.custom.AdminBO;
 import business.custom.LecturerBO;
 import business.custom.StudentBO;
@@ -31,8 +33,8 @@ public class LoginFormController {
     public AnchorPane root;
     public static String loginId;
 
-    private UserBO userBO = new UserBOImpl();
-    private StudentBO studentBO= new StudentBOImpl();
+    private UserBO userBO = BOFactory.getInstance().getBO(BOType.USER);
+    private StudentBO studentBO= BOFactory.getInstance().getBO(BOType.STUDENT);
     private LecturerBO lecturerBO = new LecturerBOImpl();
     private AdminBO adminBO= new AdminBOImpl();
 
@@ -40,6 +42,7 @@ public class LoginFormController {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
         List<UserTM> allUsers = userBO.getAllUsers();
+        loginId=txtUsername.getText();
 
 
         for (UserTM user : allUsers) {
@@ -82,4 +85,5 @@ public class LoginFormController {
         mainStage.setScene(mainScene);
         mainStage.centerOnScreen();
     }
+
 }

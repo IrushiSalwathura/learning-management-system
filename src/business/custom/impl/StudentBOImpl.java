@@ -121,4 +121,9 @@ public class StudentBOImpl implements StudentBO {
         String studentId = studentDAO.getStudentId(userId);
         return studentId;
     }
+    public String getStudentIdUsingUsername(String username) throws Exception{
+        QueryDAO queryDAO = DAOFactory.getInstance().getDAO(DAOType.QUERY);
+        String studentId = queryDAO.getStudentIdUsingUsername(username);
+        return studentId;
+    }
 }

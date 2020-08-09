@@ -20,5 +20,6 @@ public interface StudentBO extends SuperBO {
     String getUserId(String studentId) throws Exception;
     String getStudentCount() throws Exception;
     String getStudentId(String userId) throws Exception;
+    String getStudentIdUsingUsername(String username) throws Exception;
 
 }

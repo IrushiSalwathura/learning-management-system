@@ -24,6 +24,8 @@ import util.CourseTM;
 import java.io.IOException;
 import java.util.List;
 
+import static controller.LoginFormController.loginId;
+
 public class StudentCoursesFormController {
     public AnchorPane root;
     public JFXComboBox<CourseTM> cmbCourses;
@@ -32,11 +34,18 @@ public class StudentCoursesFormController {
     public VBox vBoxAnnouncements;
     public Label lblStudentId;
 
-
     private StudentBO studentBO = BOFactory.getInstance().getBO(BOType.STUDENT);
 
     public void initialize(){
+        lblStudentId.setText(loginId);
         loadAllCourses();
+
+        try {
+            String studentId = studentBO.getStudentIdUsingUsername(loginId);
+            lblStudentId.setText(studentId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         cmbCourses.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseTM>() {
             @Override
             public void changed(ObservableValue<? extends CourseTM> observable, CourseTM oldValue, CourseTM newValue) {
