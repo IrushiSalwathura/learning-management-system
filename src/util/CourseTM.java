@@ -1,5 +1,7 @@
 package util;
 
+import javafx.collections.ObservableList;
+
 public class CourseTM {
     private String id;
     private String title;
@@ -56,6 +58,6 @@ public class CourseTM {
 
     @Override
     public String toString() {
-        return getId();
+        return id +" - "+title+" - "+ type;
     }
 }

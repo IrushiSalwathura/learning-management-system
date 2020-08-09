@@ -65,4 +65,13 @@ public class StudentDAOImpl implements StudentDAO {
         }
         return null;
     }
+
+    public String getStudentCount() throws Exception{
+        ResultSet rst = CrudUtil.execute("SELECT COUNT(*) AS Total FROM Student");
+        if (rst.next()){
+            return rst.getString(1);
+        }else{
+            return null;
+        }
+    }
 }

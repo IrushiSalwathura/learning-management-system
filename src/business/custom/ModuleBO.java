@@ -12,4 +12,5 @@ public interface ModuleBO extends SuperBO {
     boolean deleteModule(String id)throws Exception;
     boolean updateModule(String title,String duration, String credits,String courseId,String id)throws Exception;
     List<ModuleTM> getCourseModules(String courseId) throws Exception;
+    ModuleTM getModule(String moduleId) throws Exception;
 }

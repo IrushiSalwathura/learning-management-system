@@ -1,5 +1,7 @@
 package controller;
 
+import business.BOFactory;
+import business.BOType;
 import business.custom.ContentBO;
 import business.custom.LecturerBO;
 import business.custom.ModuleBO;
@@ -7,6 +9,8 @@ import business.custom.impl.ContentBOImpl;
 import business.custom.impl.LecturerBOImpl;
 import business.custom.impl.ModuleBOImpl;
 import com.jfoenix.controls.JFXComboBox;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,15 +31,51 @@ import java.util.List;
 
 public class LecturerModuleContentController {
     public AnchorPane root;
-    public JFXComboBox cmbCourses;
+    public JFXComboBox<CourseTM> cmbCourses;
     public ListView lstContent;
     public DatePicker txtDate;
-    public ComboBox cmbModuleId;
+    public ComboBox<ModuleTM> cmbModuleId;
+
+    private LecturerBO lecturerBO = BOFactory.getInstance().getBO(BOType.LECTURER);
+    private ModuleBO moduleBO= BOFactory.getInstance().getBO(BOType.MODULE);
+    private ContentBO contentBO = BOFactory.getInstance().getBO(BOType.CONTENT);
 
     public void initialize() throws Exception {
         loadAllCoursesOfLecturerInFaculty("L001","F001");
-        loadAllCourseModules("C001");
-        loadAllModuleContent("M001");
+//        loadAllCourseModules("C001");
+//        loadAllModuleContent("M001");
+        cmbModuleId.setVisible(false);
+
+        cmbCourses.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseTM>() {
+            @Override
+            public void changed(ObservableValue<? extends CourseTM> observable, CourseTM oldValue, CourseTM selectedCourse) {
+                if (selectedCourse==null) {
+                    return;
+                }
+                String courseId  = selectedCourse.getId();
+                try {
+                    loadAllCourseModules(courseId);
+                    cmbModuleId.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        cmbModuleId.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ModuleTM>() {
+            @Override
+            public void changed(ObservableValue<? extends ModuleTM> observable, ModuleTM oldValue, ModuleTM selectedModule) {
+                if(selectedModule==null){
+                    return;
+                }
+                String moduleId = selectedModule.getId();
+                try {
+                    loadAllModuleContent(moduleId);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void btnDashboard_OnAction(ActionEvent actionEvent) throws IOException {
@@ -71,7 +111,6 @@ public class LecturerModuleContentController {
     }
     public void loadAllCoursesOfLecturerInFaculty(String lecturerId, String facultyId) throws Exception {
         cmbCourses.getItems().clear();
-        LecturerBO lecturerBO = new LecturerBOImpl();
         List<CourseTM> lecturerFacultyCourses = lecturerBO.getLecturerFacultyCourses(lecturerId, facultyId);
         ObservableList<CourseTM> courseTMS = FXCollections.observableArrayList(lecturerFacultyCourses);
         cmbCourses.setItems(courseTMS);
@@ -79,7 +118,6 @@ public class LecturerModuleContentController {
 
     public void loadAllCourseModules(String courseId) throws Exception {
         cmbModuleId.getItems().clear();
-        ModuleBO moduleBO= new ModuleBOImpl();
         List<ModuleTM> courseModules = moduleBO.getCourseModules(courseId);
         ObservableList<ModuleTM> moduleTMS = FXCollections.observableArrayList(courseModules);
         cmbModuleId.setItems(moduleTMS);
@@ -87,7 +125,6 @@ public class LecturerModuleContentController {
 
     public void loadAllModuleContent(String moduleId) throws Exception {
         lstContent.getItems().clear();
-        ContentBO contentBO = new ContentBOImpl();
         List<ContentTM> allContent = contentBO.getModuleContent(moduleId);
         ObservableList<ContentTM> contentTMS = FXCollections.observableArrayList(allContent);
         lstContent.setItems(contentTMS);

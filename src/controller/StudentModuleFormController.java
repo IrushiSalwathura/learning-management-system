@@ -1,5 +1,7 @@
 package controller;
 
+import business.BOFactory;
+import business.BOType;
 import business.custom.ContentBO;
 import business.custom.CourseBO;
 import business.custom.ModuleBO;
@@ -46,6 +48,10 @@ public class StudentModuleFormController {
     public Hyperlink hyprlnkCount;
     public static String moduleId;
 
+
+    private ContentBO contentBO = BOFactory.getInstance().getBO(BOType.CONTENT);
+    private ModuleBO moduleBO = BOFactory.getInstance().getBO(BOType.MODULE);
+
     public void initialize() throws Exception {
         loadAllCoursesOfStudent("S001");
 //        loadAllCourseModules("C001");
@@ -81,7 +87,6 @@ public class StudentModuleFormController {
                 moduleId = id;
                 try {
                     getModuleDetails(id);
-                    ContentBO contentBO = new ContentBOImpl();
                     String moduleContentCount = contentBO.findModuleContentCount(id);
                     hyprlnkCount.setText(moduleContentCount + "files");
                 } catch (Exception e) {
@@ -125,7 +130,6 @@ public class StudentModuleFormController {
 
     public void loadAllCourseModules(String courseId) throws Exception {
         cmbModules.getItems().clear();
-        ModuleBO moduleBO = new ModuleBOImpl();
         List<ModuleTM> modules = moduleBO.getCourseModules(courseId);
         ObservableList<ModuleTM> moduleTMS = FXCollections.observableArrayList(modules);
         cmbModules.setItems(moduleTMS);
@@ -133,7 +137,6 @@ public class StudentModuleFormController {
 
     //TODO: add description to the module table!
     public void getModuleDetails(String moduleId) throws Exception {
-        ModuleBOImpl moduleBO = new ModuleBOImpl();
         ModuleTM module = moduleBO.getModule(moduleId);
         lblCredits.setText(module.getCredits());
         lblDuration.setText(module.getDuration());

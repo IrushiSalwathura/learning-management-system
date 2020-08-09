@@ -6,6 +6,8 @@ import dao.DAOType;
 import dao.SuperDAO;
 import dao.custom.ContentDAO;
 import dao.custom.CourseDAO;
+import dao.custom.FacultyDAO;
+import dao.custom.LecturerDAO;
 import entity.Course;
 import util.CourseTM;
 
@@ -13,8 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseBOImpl implements CourseBO {
-
-
+    private CourseDAO courseDAO = DAOFactory.getInstance().getDAO(DAOType.COURSE);
     @Override
     public List<CourseTM> getAllCourses() throws Exception {
         try {
@@ -63,5 +64,33 @@ public class CourseBOImpl implements CourseBO {
             return false;
         }
     }
+    public String getNewCourseId() throws Exception {
+        try {
+            String lastCoursesId = courseDAO.getLasCoursesId();
+            if (lastCoursesId == null) {
+                return "C001";
+            } else {
+                int maxId = Integer.parseInt(lastCoursesId.replace("C", ""));
+                maxId = maxId + 1;
+                String id = "";
+                if (maxId < 10) {
+                    id = "C00" + maxId;
+                } else if (maxId < 100) {
+                    id = "C0" + maxId;
+                } else {
+                    id = "C" + maxId;
+                }
+                return id;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
+    public String getCoursesCount() throws Exception {
+        CourseDAO courseDAO = DAOFactory.getInstance().getDAO(DAOType.COURSE);
+        String courseCount = courseDAO.getCoursesCount();
+        return courseCount;
+    }
 }

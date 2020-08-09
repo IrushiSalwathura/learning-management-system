@@ -6,5 +6,6 @@ import entity.Student;
 public interface StudentDAO extends CrudDAO<Student,String> {
     String getLastStudentId() throws Exception;
     String getUserId(String pk) throws Exception;
+    String getStudentCount() throws Exception;
 
 }
