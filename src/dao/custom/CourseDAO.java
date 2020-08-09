@@ -4,4 +4,5 @@ import dao.CrudDAO;
 import entity.Course;
 
 public interface CourseDAO extends CrudDAO<Course,String> {
+    public String getLasCoursesId() throws Exception;
 }
