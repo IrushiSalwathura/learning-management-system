@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface ContentDAO extends CrudDAO<Content,String> {
     String findModuleContentCount(String moduleId) throws Exception;
+    String getLastContentId() throws Exception;
 }
