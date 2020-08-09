@@ -1,5 +1,7 @@
 package controller;
 
+import business.BOFactory;
+import business.BOType;
 import business.custom.ContentBO;
 import business.custom.ModuleBO;
 import business.custom.StudentBO;
@@ -34,6 +36,10 @@ public class StudentModuleContentController {
     public ListView lstContent;
     public DatePicker txtDate;
     public ComboBox<ModuleTM> cmbModuleId;
+
+    private StudentBO studentBO = BOFactory.getInstance().getBO(BOType.STUDENT);
+    private ContentBO contentBO = BOFactory.getInstance().getBO(BOType.CONTENT);
+    private ModuleBO moduleBO = BOFactory.getInstance().getBO(BOType.MODULE);
 
     public void initialize() throws Exception {
         loadAllStudentCourses("S001");
@@ -109,14 +115,12 @@ public class StudentModuleContentController {
 
     public void loadAllStudentCourses(String studentId) throws Exception {
         cmbCourses.getItems().clear();
-        StudentBO studentBO = new StudentBOImpl();
         List<CourseTM> studentCourses = studentBO.getStudentCourses(studentId);
         ObservableList<CourseTM> courseTMS = FXCollections.observableArrayList(studentCourses);
         cmbCourses.setItems(courseTMS);
     }
 
     public void loadAllCourseModules(String courseId) throws Exception {
-        ModuleBO moduleBO = new ModuleBOImpl();
         List<ModuleTM> courseModules = moduleBO.getCourseModules(courseId);
         ObservableList<ModuleTM> moduleTMS = FXCollections.observableArrayList(courseModules);
         cmbModuleId.getItems().clear();
@@ -124,7 +128,6 @@ public class StudentModuleContentController {
     }
     public void loadAllModuleContent(String moduleId) throws Exception {
         lstContent.getItems().clear();
-        ContentBO contentBO = new ContentBOImpl();
         List<ContentTM> allContent = contentBO.getModuleContent(moduleId);
         ObservableList<ContentTM> contentTMS = FXCollections.observableArrayList(allContent);
         lstContent.setItems(contentTMS);

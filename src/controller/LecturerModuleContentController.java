@@ -1,5 +1,7 @@
 package controller;
 
+import business.BOFactory;
+import business.BOType;
 import business.custom.ContentBO;
 import business.custom.LecturerBO;
 import business.custom.ModuleBO;
@@ -33,6 +35,10 @@ public class LecturerModuleContentController {
     public ListView lstContent;
     public DatePicker txtDate;
     public ComboBox<ModuleTM> cmbModuleId;
+
+    private LecturerBO lecturerBO = BOFactory.getInstance().getBO(BOType.LECTURER);
+    private ModuleBO moduleBO= BOFactory.getInstance().getBO(BOType.MODULE);
+    private ContentBO contentBO = BOFactory.getInstance().getBO(BOType.CONTENT);
 
     public void initialize() throws Exception {
         loadAllCoursesOfLecturerInFaculty("L001","F001");
@@ -105,7 +111,6 @@ public class LecturerModuleContentController {
     }
     public void loadAllCoursesOfLecturerInFaculty(String lecturerId, String facultyId) throws Exception {
         cmbCourses.getItems().clear();
-        LecturerBO lecturerBO = new LecturerBOImpl();
         List<CourseTM> lecturerFacultyCourses = lecturerBO.getLecturerFacultyCourses(lecturerId, facultyId);
         ObservableList<CourseTM> courseTMS = FXCollections.observableArrayList(lecturerFacultyCourses);
         cmbCourses.setItems(courseTMS);
@@ -113,7 +118,6 @@ public class LecturerModuleContentController {
 
     public void loadAllCourseModules(String courseId) throws Exception {
         cmbModuleId.getItems().clear();
-        ModuleBO moduleBO= new ModuleBOImpl();
         List<ModuleTM> courseModules = moduleBO.getCourseModules(courseId);
         ObservableList<ModuleTM> moduleTMS = FXCollections.observableArrayList(courseModules);
         cmbModuleId.setItems(moduleTMS);
@@ -121,7 +125,6 @@ public class LecturerModuleContentController {
 
     public void loadAllModuleContent(String moduleId) throws Exception {
         lstContent.getItems().clear();
-        ContentBO contentBO = new ContentBOImpl();
         List<ContentTM> allContent = contentBO.getModuleContent(moduleId);
         ObservableList<ContentTM> contentTMS = FXCollections.observableArrayList(allContent);
         lstContent.setItems(contentTMS);

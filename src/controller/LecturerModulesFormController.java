@@ -1,5 +1,7 @@
 package controller;
 
+import business.BOFactory;
+import business.BOType;
 import business.custom.LecturerBO;
 import business.custom.ModuleBO;
 import business.custom.impl.LecturerBOImpl;
@@ -31,6 +33,9 @@ public class LecturerModulesFormController {
     public JFXComboBox<FacultyTM> cmbFaculty;
     public ListView<ModuleTM> lstModules;
     public static String lecturerId;
+
+    private LecturerBO lecturerBO = BOFactory.getInstance().getBO(BOType.LECTURER);
+    private ModuleBO moduleBO= BOFactory.getInstance().getBO(BOType.MODULE);
 
     public void initialize() throws Exception {
         lecturerId = "L001";
@@ -117,7 +122,6 @@ public class LecturerModulesFormController {
 
     public void loadAllFacultiesOfLecturer(String lecturerId) throws Exception {
         cmbFaculty.getItems().clear();
-        LecturerBO lecturerBO = new LecturerBOImpl();
         List<FacultyTM> faculties = lecturerBO.getLecturerFaculties(lecturerId);
         ObservableList<FacultyTM> facultyTMS = FXCollections.observableArrayList(faculties);
         cmbFaculty.setItems(facultyTMS);
@@ -125,7 +129,6 @@ public class LecturerModulesFormController {
 
     public void loadAllCoursesOfLecturerInFaculty(String lecturerId, String facultyId) throws Exception {
         cmbCourses.getItems().clear();
-        LecturerBO lecturerBO = new LecturerBOImpl();
         List<CourseTM> lecturerFacultyCourses = lecturerBO.getLecturerFacultyCourses(lecturerId, facultyId);
         ObservableList<CourseTM> courseTMS = FXCollections.observableArrayList(lecturerFacultyCourses);
         cmbCourses.setItems(courseTMS);
@@ -133,7 +136,6 @@ public class LecturerModulesFormController {
 
     public void loadAllCourseModules(String courseId) throws Exception {
         lstModules.getItems().clear();
-        ModuleBO moduleBO= new ModuleBOImpl();
         List<ModuleTM> courseModules = moduleBO.getCourseModules(courseId);
         ObservableList<ModuleTM> moduleTMS = FXCollections.observableArrayList(courseModules);
         lstModules.setItems(moduleTMS);

@@ -33,7 +33,7 @@ public class AdminCoursesFormController {
     public JFXComboBox cmbType;
     public JFXButton btnSave;
 
-    CourseBO courseBO = BOFactory.getInstance().getBO(BOType.COURSE);
+    private CourseBO courseBO = BOFactory.getInstance().getBO(BOType.COURSE);
 
     public void initialize(){
         loadComboType();
