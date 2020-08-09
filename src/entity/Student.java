@@ -8,11 +8,12 @@ public class Student implements SuperEntity{
     private String contact;
     private String nic;
     private String email;
+    private String userId;
 
     public Student() {
     }
 
-    public Student(String id, String facultyId, String name, String address, String contact, String username, String password, String nic, String email) {
+    public Student(String id, String facultyId, String name, String address, String contact, String nic, String email, String userId) {
         this.id = id;
         this.facultyId = facultyId;
         this.name = name;
@@ -20,6 +21,7 @@ public class Student implements SuperEntity{
         this.contact = contact;
         this.nic = nic;
         this.email = email;
+        this.userId = userId;
     }
 
     public String getId() {
@@ -78,6 +80,14 @@ public class Student implements SuperEntity{
         this.email = email;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
         return "StudentTM{" +
@@ -90,4 +100,6 @@ public class Student implements SuperEntity{
                 ", email='" + email + '\'' +
                 '}';
     }
+
+
 }

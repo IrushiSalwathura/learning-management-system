@@ -16,7 +16,7 @@ public class StudentDAOImpl implements StudentDAO {
         ArrayList<Student> students = new ArrayList<>();
         while (rst.next()){
             students.add( new Student(rst.getString(1), rst.getString(2),
-                    rst.getString(3),rst.getString(4),rst.getString(5),rst.getString(6),rst.getString(7),rst.getString(8),rst.getString(9)));
+                    rst.getString(3),rst.getString(4),rst.getString(5),rst.getString(6),rst.getString(7),rst.getString(8)));
         }
         return students;
     }
@@ -26,21 +26,21 @@ public class StudentDAOImpl implements StudentDAO {
         ResultSet rst = CrudUtil.execute("SELECT * FROM Student WHERE id =?",key);
         if (rst.next()){
             return new Student(rst.getString(1), rst.getString(2),
-                    rst.getString(3),rst.getString(4),rst.getString(5),rst.getString(6),rst.getString(7),rst.getString(8),rst.getString(9));
+                    rst.getString(3),rst.getString(4),rst.getString(5),rst.getString(6),rst.getString(7),rst.getString(8));
         }
         return null;
     }
 
     @Override
     public boolean save(Student student) throws Exception {
-        return CrudUtil.execute("INSERT INTO Student VALUES (?,?,?,?,?,?,?,?,?)",
-                student.getId(),student.getFacultyId(),student.getName(),student.getAddress(),student.getContact(),student.getUsername(),student.getPassword(),student.getNic(),student.getEmail());
+        return CrudUtil.execute("INSERT INTO Student VALUES (?,?,?,?,?,?,?,?)",
+                student.getId(),student.getFacultyId(),student.getName(),student.getAddress(),student.getContact(),student.getNic(),student.getEmail(),student.getUserId());
     }
 
     @Override
     public boolean update(Student student) throws Exception {
-        return CrudUtil.execute("UPDATE Student SET facultyId=?, name=?,address=?,contact=?,username=?,password=?,nic=?,email=? WHERE id=?",
-                student.getFacultyId(),student.getName(),student.getAddress(),student.getContact(),student.getUsername(),student.getPassword(),student.getNic(),student.getEmail(),student.getId());
+        return CrudUtil.execute("UPDATE Student SET facultyId=?, name=?,address=?,contact=?,username=?,password=?,nic=?,email=?,userId=? WHERE id=?",
+                student.getFacultyId(),student.getName(),student.getAddress(),student.getContact(),student.getNic(),student.getEmail(),student.getId(),student.getUserId());
     }
 
     @Override

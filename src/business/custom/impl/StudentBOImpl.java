@@ -46,14 +46,14 @@ public class StudentBOImpl implements StudentBO {
         List<StudentTM> students = new ArrayList<>();
         for (Student student : allStudents) {
             students.add(new StudentTM(student.getId(),student.getFacultyId(),student.getName(),student.getAddress(),
-                    student.getContact(),student.getUsername(),student.getPassword(),student.getNic(),student.getEmail()));
+                    student.getContact(),student.getNic(),student.getEmail(),student.getUserId()));
         }
         return students;
     }
 
     @Override
-    public boolean saveStudent(String id, String facultyId, String name, String address, String contact, String username, String password, String nic, String email) throws Exception {
-        return studentDAO.save(new Student(id,facultyId,name,address,contact,username,password,nic,email));
+    public boolean saveStudent(String id, String facultyId, String name, String address, String contact, String nic, String email, String userId) throws Exception {
+        return studentDAO.save(new Student(id,facultyId,name,address,contact,nic,email,userId));
 
     }
 
@@ -64,8 +64,8 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public boolean updateStudent(String facultyId, String name, String address, String contact, String username, String password, String nic, String email, String id) throws Exception {
-        return studentDAO.update(new Student(id,facultyId,name, address,contact,username,password,nic,email));
+    public boolean updateStudent(String facultyId, String name, String address, String contact, String username, String password, String nic, String email, String id, String userId) throws Exception {
+        return studentDAO.update(new Student(id,facultyId,name, address,contact,nic,email,userId));
 
     }
 
@@ -102,8 +102,7 @@ public class StudentBOImpl implements StudentBO {
         StudentDAO studentDAO = DAOFactory.getInstance().getDAO(DAOType.STUDENT);
         Student studentDetails=studentDAO.find(id);
         return new StudentTM(studentDetails.getId(),studentDetails.getFacultyId(),studentDetails.getName(),studentDetails.getAddress(),
-                studentDetails.getContact(), studentDetails.getUsername(),studentDetails.getPassword(),
-                studentDetails.getNic(),studentDetails.getEmail());
+                studentDetails.getContact(),studentDetails.getNic(),studentDetails.getEmail(),studentDetails.getUserId());
     }
 
 }
