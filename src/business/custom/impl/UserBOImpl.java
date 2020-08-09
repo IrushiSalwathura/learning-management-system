@@ -45,4 +45,27 @@ public class UserBOImpl implements UserBO {
         boolean delete = userDAO.delete(userId);
         return delete;
     }
+
+    public String generateNewId() throws Exception {
+        UserDAO userDAO = DAOFactory.getInstance().getDAO(DAOType.USER);
+        String lastUserId = userDAO.findLastUserId();
+        int num = Integer.parseInt(lastUserId.substring(0,3));
+        String newId;
+        if(num==0){
+            newId = "U001";
+        }
+        else if(num<10){
+            num++;
+            newId = "U00"+num;
+        }
+        else if(num<100){
+            num++;
+            newId = "U0"+num;
+        }
+        else{
+            num++;
+            newId = "U" + num;
+        }
+        return newId;
+    }
 }

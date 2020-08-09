@@ -62,7 +62,6 @@ public class AdminStudentFormController {
     private FacultyBO facultyBO = BOFactory.getInstance().getBO(BOType.FACULTY);
 
 
-
     public void initialize(){
 
         readOnly = false;

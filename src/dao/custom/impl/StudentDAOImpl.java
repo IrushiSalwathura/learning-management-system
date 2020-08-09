@@ -40,7 +40,7 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public boolean update(Student student) throws Exception {
         return CrudUtil.execute("UPDATE Student SET facultyId=?, name=?,address=?,contact=?,username=?,password=?,nic=?,email=?,userId=? WHERE id=?",
-                student.getFacultyId(),student.getName(),student.getAddress(),student.getContact(),student.getNic(),student.getEmail(),student.getId(),student.getUserId());
+                student.getFacultyId(),student.getName(),student.getAddress(),student.getContact(),student.getNic(),student.getEmail(),student.getUserId(),student.getId());
     }
 
     @Override

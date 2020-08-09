@@ -4,18 +4,16 @@ public class AdminTM {
     private String id;
     private String name;
     private String contact;
-    private String username;
-    private String password;
+    private String userId;
 
     public AdminTM() {
     }
 
-    public AdminTM(String id, String name, String contact, String username, String password) {
+    public AdminTM(String id, String name, String contact, String userId) {
         this.id = id;
         this.name = name;
         this.contact = contact;
-        this.username = username;
-        this.password = password;
+        this.userId = userId;
     }
 
     public String getId() {
@@ -42,20 +40,12 @@ public class AdminTM {
         this.contact = contact;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -64,8 +54,7 @@ public class AdminTM {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", contact='" + contact + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
+                ", userId='" + userId + '\'' +
                 '}';
     }
 }

@@ -3,9 +3,7 @@ package controller;
 import business.BOFactory;
 import business.BOType;
 import business.custom.CourseBO;
-import business.custom.FacultyBO;
 import business.custom.LecturerBO;
-import business.custom.StudentBO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -25,9 +23,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import util.CourseTM;
-import util.FacultyTM;
-import util.LectureTM;
-import util.StudentTM;
+import util.LecturerTM;
 
 import java.io.IOException;
 import java.util.List;
@@ -43,7 +39,7 @@ public class AdminLecturerFormController {
     public JFXButton btnStudent;
     public JFXButton btnLecturers;
     public JFXComboBox<CourseTM> cmbCourseId;
-    public TableView<LectureTM> tblAdminLecturer;
+    public TableView<LecturerTM> tblAdminLecturer;
     public JFXButton btnAdd;
     public JFXTextField txtId;
     public JFXTextField txtTel;
@@ -95,10 +91,10 @@ public class AdminLecturerFormController {
 
         btnSave.setDisable(true);
 
-        tblAdminLecturer.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<LectureTM>() {
+        tblAdminLecturer.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<LecturerTM>() {
             @Override
-            public void changed(ObservableValue<? extends LectureTM> observable, LectureTM oldValue, LectureTM newValue) {
-                LectureTM selectedLecturerDetails = tblAdminLecturer.getSelectionModel().getSelectedItem();
+            public void changed(ObservableValue<? extends LecturerTM> observable, LecturerTM oldValue, LecturerTM newValue) {
+                LecturerTM selectedLecturerDetails = tblAdminLecturer.getSelectionModel().getSelectedItem();
 
                 if(selectedLecturerDetails == null){
                     btnSave.setText("Save");
@@ -196,13 +192,13 @@ public class AdminLecturerFormController {
 
     private void loadAllLectures() {
         tblAdminLecturer.getItems().clear();
-        List<LectureTM> allLecturers = null;
+        List<LecturerTM> allLecturers = null;
         try {
             allLecturers = lecturerBO.getAllLecturers();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ObservableList<LectureTM>lecturers = FXCollections.observableArrayList(allLecturers);
+        ObservableList<LecturerTM>lecturers = FXCollections.observableArrayList(allLecturers);
         tblAdminLecturer.setItems(lecturers);
     }
 
@@ -315,7 +311,7 @@ public class AdminLecturerFormController {
                 ButtonType.YES, ButtonType.NO);
         Optional<ButtonType> buttonType = alert.showAndWait();
         if (buttonType.get() == ButtonType.YES) {
-            LectureTM selectedItem = tblAdminLecturer.getSelectionModel().getSelectedItem();
+            LecturerTM selectedItem = tblAdminLecturer.getSelectionModel().getSelectedItem();
 
             boolean result = false;
             try {
@@ -364,7 +360,7 @@ public class AdminLecturerFormController {
             }
             btnAdd_OnAction(event);
         }else{
-            LectureTM selectedLecturer = tblAdminLecturer.getSelectionModel().getSelectedItem();
+            LecturerTM selectedLecturer = tblAdminLecturer.getSelectionModel().getSelectedItem();
             boolean result = false;
             try {
                 result = lecturerBO.updateLecturer(String.valueOf(cmbCourseId.getSelectionModel().getSelectedItem()),

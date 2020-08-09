@@ -5,6 +5,7 @@ import dao.custom.UserDAO;
 import entity.User;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,5 +55,13 @@ public class UserDAOImpl implements UserDAO {
             return false;
         }
         return true;
+    }
+
+    public String findLastUserId() throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT id FROM User ORDER BY id DESC LIMIT 1");
+        if(resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
     }
 }

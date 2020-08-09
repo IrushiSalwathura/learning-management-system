@@ -4,19 +4,19 @@ import business.SuperBO;
 import util.AnnouncementTM;
 import util.CourseTM;
 import util.FacultyTM;
-import util.LectureTM;
+import util.LecturerTM;
 
 import java.util.List;
 
 public interface LecturerBO extends SuperBO {
 
-    List<LectureTM> getAllLecturers() throws Exception;
+    List<LecturerTM> getAllLecturers() throws Exception;
 
-    boolean saveLecturer(String id, String courseId, String name,String address, String contact,String username,String password,String nic,String email)throws Exception;
+    boolean saveLecturer(String id, String courseId, String name, String address, String contact, String nic, String email, String userId) throws Exception;
 
     boolean deleteLecturer(String id)throws Exception;
 
-    boolean updateLecturer(String courseId, String name,String address, String contact,String username,String password,String nic,String email,String id)throws Exception;
+    boolean updateLecturer(String courseId, String name, String address, String contact, String nic, String email, String id, String userId) throws Exception;
 
     String getNewLecturerId()throws Exception;
 
@@ -26,5 +26,7 @@ public interface LecturerBO extends SuperBO {
 
     List<AnnouncementTM> getAnnouncements(String courseId) throws Exception;
 
-    LectureTM getLecturer(String id)throws Exception;
+    LecturerTM getLecturer(String id)throws Exception;
+
+    String getUserId(String lecturerId) throws Exception;
 }

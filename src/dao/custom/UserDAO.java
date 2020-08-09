@@ -7,5 +7,5 @@ import entity.User;
 import java.util.List;
 
 public interface UserDAO extends CrudDAO<User,String> {
-
+    String findLastUserId() throws Exception;
 }

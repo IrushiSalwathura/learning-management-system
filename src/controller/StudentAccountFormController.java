@@ -2,7 +2,6 @@ package controller;
 
 import business.BOFactory;
 import business.BOType;
-import business.custom.LecturerBO;
 import business.custom.StudentBO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -18,7 +17,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import util.LectureTM;
 import util.StudentTM;
 
 import java.io.IOException;
