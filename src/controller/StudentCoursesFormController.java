@@ -50,8 +50,10 @@ public class StudentCoursesFormController {
                     lblTitle.setText(courseDetails.getTitle());
                     lblType.setText(courseDetails.getType());
 
+                    vBoxAnnouncements.getChildren().clear();
                     List<AnnouncementTM> announcements = studentBO.getAnnouncements(newValue.toString());
                     for (AnnouncementTM announcement : announcements) {
+                        vBoxAnnouncements.getChildren().clear();
                         Label label = new Label(announcement.toString());
                         vBoxAnnouncements.getChildren().add(label);
                         label.setPrefWidth(806);

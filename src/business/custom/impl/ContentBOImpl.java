@@ -6,6 +6,7 @@ import dao.DAOType;
 import dao.SuperDAO;
 import dao.custom.ContentDAO;
 import dao.custom.QueryDAO;
+import dao.custom.QueryDAO;
 import entity.Content;
 import util.ContentTM;
 import util.ModuleTM;
@@ -48,6 +49,11 @@ public class ContentBOImpl implements ContentBO {
         ContentDAO contentDao = DAOFactory.getInstance().getDAO(DAOType.CONTENT);
         boolean delete = contentDao.delete(id);
         return delete;
+    }
+    public String findModuleContentCount(String moduleId) throws Exception {
+        ContentDAO contentDAO = DAOFactory.getInstance().getDAO(DAOType.CONTENT);
+        String moduleContentCount = contentDAO.findModuleContentCount(moduleId);
+        return moduleContentCount;
     }
 
     public List<ContentTM> getModuleContent(String moduleId) throws Exception {

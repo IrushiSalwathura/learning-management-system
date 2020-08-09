@@ -82,7 +82,7 @@ public class StudentBOImpl implements StudentBO {
 
     public CourseTM getCourseDetails(String studentId, String courseId) throws Exception{
             QueryDAO queryDAO = DAOFactory.getInstance().getDAO(DAOType.QUERY);
-            CustomEntity courseDetails =  queryDAO.getCourseDetails(studentId,courseId);
+            CustomEntity courseDetails =  queryDAO.getStudentCourseDetails(studentId,courseId);
             return new CourseTM(courseDetails.getTitle(),courseDetails.getType());
     }
 
