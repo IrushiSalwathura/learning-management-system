@@ -5,6 +5,7 @@ import business.BOType;
 import business.custom.CourseBO;
 import business.custom.FacultyBO;
 import business.custom.StudentBO;
+import business.custom.UserBO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -60,7 +61,7 @@ public class AdminStudentFormController {
 
     private StudentBO studentBO = BOFactory.getInstance().getBO(BOType.STUDENT);
     private FacultyBO facultyBO = BOFactory.getInstance().getBO(BOType.FACULTY);
-
+    private UserBO userBO= BOFactory.getInstance().getBO(BOType.USER);
 
     public void initialize(){
 
@@ -138,8 +139,18 @@ public class AdminStudentFormController {
                 txtNIC.setText(selectedStudentDetails.getNic());
                 txtTel.setText(selectedStudentDetails.getContact());
                 txtEmail.setText(selectedStudentDetails.getEmail());
-                txtPassword.setText(selectedStudentDetails.getPassword());
-                txtUsername.setText(selectedStudentDetails.getUsername());
+
+                try {
+                    txtPassword.setText(userBO.getUser(studentBO.getUserId(selectedStudentDetails.getId())).getPassword());
+                    txtUsername.setText(userBO.getUser(studentBO.getUserId(selectedStudentDetails.getId())).getUsername());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+
+//                txtPassword.setText(selectedStudentDetails.getPassword());
+//                txtUsername.setText(selectedStudentDetails.getUsername());
 
                 String selectedFacultyId = selectedStudentDetails.getFacultyId();
                 ObservableList<FacultyTM>faculties = cmbFacultyId.getItems();
@@ -265,7 +276,7 @@ public class AdminStudentFormController {
         }
     }
 
-    public void btnSave_OnAction(ActionEvent event) {
+    public void btnSave_OnAction(ActionEvent event) throws Exception {
 
         String facultyId = String.valueOf(cmbFacultyId.getSelectionModel().getSelectedItem());
         String name = txtName.getText();
@@ -285,25 +296,27 @@ public class AdminStudentFormController {
             return;
         }
 
+        StudentTM selectedStudent = tblAdminStudent.getSelectionModel().getSelectedItem();
         if(btnSave.getText().equals("Save")){
             try {
+                userBO.save(studentBO.getUserId(selectedStudent.getId()),txtUsername.getText(),txtPassword.getText(),"Student");
+
                 studentBO.saveStudent(txtId.getText(),
                         String.valueOf(cmbFacultyId.getSelectionModel().getSelectedItem()),
                         txtName.getText(),txtAddress.getText(),
-                        txtTel.getText(),txtUsername.getText(),
-                        txtPassword.getText(),txtNIC.getText(),txtEmail.getText());
+                        txtTel.getText(),txtNIC.getText(),txtEmail.getText(),studentBO.getUserId(selectedStudent.getId()));
                 new Alert(Alert.AlertType.INFORMATION,"Student saved successfully",ButtonType.OK).showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
             }
             btnAdd_OnAction(event);
         }else{
-            StudentTM selectedStudent = tblAdminStudent.getSelectionModel().getSelectedItem();
+            userBO.update(studentBO.getUserId(selectedStudent.getId()),txtUsername.getText(),txtPassword.getText(),"Student");
             boolean result = false;
             try {
                 result = studentBO.updateStudent(String.valueOf(cmbFacultyId.getSelectionModel().getSelectedItem()),
                         txtName.getText(),txtAddress.getText(),txtTel.getText(),txtUsername.getText(),
-                        txtPassword.getText(),txtNIC.getText(),txtEmail.getText(),selectedStudent.getId());
+                        txtPassword.getText(),txtNIC.getText(),txtEmail.getText(),selectedStudent.getId(),studentBO.getUserId(selectedStudent.getId()));
 
                 new Alert(Alert.AlertType.INFORMATION,"User updated successfully",ButtonType.OK).showAndWait();
             } catch (Exception e) {

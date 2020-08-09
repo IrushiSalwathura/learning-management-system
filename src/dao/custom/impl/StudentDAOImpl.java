@@ -57,4 +57,12 @@ public class StudentDAOImpl implements StudentDAO {
             return null;
         }
     }
+
+    public String getUserId(String pk) throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT userId FROM Student WHERE id=?", pk);
+        if(resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }

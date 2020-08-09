@@ -105,4 +105,10 @@ public class StudentBOImpl implements StudentBO {
                 studentDetails.getContact(),studentDetails.getNic(),studentDetails.getEmail(),studentDetails.getUserId());
     }
 
+    public String getUserId(String studentId) throws Exception {
+        StudentDAO studentDAO = DAOFactory.getInstance().getDAO(DAOType.STUDENT);
+        String userId = studentDAO.getUserId(studentId);
+        return userId;
+    }
+
 }
