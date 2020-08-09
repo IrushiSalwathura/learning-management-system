@@ -11,4 +11,6 @@ public interface AdminBO extends SuperBO {
     public boolean deleteAdmin(String id)throws Exception;
     public boolean saveAdmin(String id, String name, String contact, String userId) throws Exception;
     public boolean updateAdmin(String id,String name, String contact, String userId) throws Exception;
+    AdminTM getAdmin(String id) throws Exception;
+    String getUserId(String adminId) throws Exception;
 }

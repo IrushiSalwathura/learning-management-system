@@ -16,9 +16,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #EBEBEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LecturerModuleContentController">
+<AnchorPane fx:id="root" prefHeight="682.0" prefWidth="1301.0" style="-fx-background-color: #EBEBEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LecturerModuleContentController">
    <children>
-      <AnchorPane prefHeight="1000.0" prefWidth="301.0" style="-fx-background-color: #11333D;">
+      <AnchorPane prefHeight="682.0" prefWidth="301.0" style="-fx-background-color: #11333D;">
          <children>
             <Line endX="162.0" endY="-1.52587890625E-5" layoutX="119.0" layoutY="88.0" startX="-100.0" stroke="#e3a1a1" />
             <JFXButton fx:id="btnDashboard" layoutX="38.0" layoutY="158.0" onAction="#btnDashboard_OnAction" prefHeight="53.0" prefWidth="244.0" text="       Dashboard" textFill="#c7d6d5">
@@ -68,7 +68,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="subAnchorPane" layoutX="300.0" prefHeight="1000.0" prefWidth="1001.0" style="-fx-background-color: #EBEBEB;">
+      <AnchorPane fx:id="subAnchorPane" layoutX="291.0" prefHeight="682.0" prefWidth="1010.0" style="-fx-background-color: #EBEBEB;">
          <children>
             <Label layoutX="34.0" layoutY="14.0" prefHeight="63.0" prefWidth="404.0" text="Content">
                <font>
@@ -76,13 +76,14 @@
                </font>
             </Label>
             <Line endX="844.0" endY="-1.52587890625E-5" layoutX="121.0" layoutY="89.0" startX="-100.0" />
-            <AnchorPane layoutX="34.0" layoutY="121.0" prefHeight="865.0" prefWidth="956.0" style="-fx-background-color: #D7D7D7;">
+            <AnchorPane layoutX="26.0" layoutY="111.0" prefHeight="551.0" prefWidth="935.0" style="-fx-background-color: #D7D7D7;">
                <children>
                   <JFXComboBox fx:id="cmbCourses" layoutX="27.0" layoutY="27.0" prefHeight="31.0" prefWidth="871.0" promptText="Course" />
-                  <ButtonBar layoutX="39.0" layoutY="616.0" prefHeight="31.0" prefWidth="626.0" />
-                  <AnchorPane layoutX="27.0" layoutY="150.0" prefHeight="692.0" prefWidth="871.0" style="-fx-background-color: white;">
+                  <ButtonBar layoutX="53.0" layoutY="501.0" prefHeight="31.0" prefWidth="626.0" />
+                  <AnchorPane layoutX="27.0" layoutY="150.0" prefHeight="335.0" prefWidth="871.0" style="-fx-background-color: white;">
                      <children>
-                        <ListView fx:id="lstContent" layoutX="23.0" layoutY="23.0" prefHeight="344.0" prefWidth="820.0" />
+
+                        <ListView fx:id="lstContent" layoutX="23.0" layoutY="23.0" prefHeight="294.0" prefWidth="820.0" />
                         <AnchorPane layoutX="22.0" layoutY="388.0" prefHeight="254.0" prefWidth="821.0">
                            <children>
                               <JFXTextField fx:id="txtTitle" layoutX="18.0" layoutY="114.0" prefHeight="27.0" prefWidth="784.0" promptText="Content Title" />

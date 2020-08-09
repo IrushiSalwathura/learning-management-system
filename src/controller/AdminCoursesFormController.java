@@ -38,10 +38,12 @@ public class AdminCoursesFormController {
     public void initialize(){
         loadComboType();
         loadAllCourses();
+        disableFields();
 
         lstCourses.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseTM>() {
             @Override
             public void changed(ObservableValue<? extends CourseTM> observable, CourseTM oldValue, CourseTM newValue) {
+                enableFields();
                 btnSave.setText("Update");
                 txtId.setText(newValue.getId());
                 txtTitle.setText(newValue.getTitle());
@@ -84,15 +86,15 @@ public class AdminCoursesFormController {
     }
 
     public void btnStudents_OnAction(ActionEvent actionEvent) throws Exception {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/StudentMainForm.fxml"));
-        Scene mainScene =  new Scene(root);
-        Stage mainStage = (Stage)this.root.getScene().getWindow();
-        mainStage.setScene(mainScene);
-        mainStage.centerOnScreen();
+            Parent root = FXMLLoader.load(this.getClass().getResource("/view/AdminStudentForm.fxml"));
+            Scene mainScene =  new Scene(root);
+            Stage mainStage = (Stage)this.root.getScene().getWindow();
+            mainStage.setScene(mainScene);
+            mainStage.centerOnScreen();
     }
 
     public void btnLecturers_OnAction(ActionEvent actionEvent) throws Exception {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/LecturerAccountForm.fxml"));
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/AdminLecturerForm.fxml"));
         Scene mainScene =  new Scene(root);
         Stage mainStage = (Stage)this.root.getScene().getWindow();
         mainStage.setScene(mainScene);
@@ -171,8 +173,10 @@ public class AdminCoursesFormController {
     public void btnAddCourse_OnAction(ActionEvent actionEvent) {
         txtTitle.setText("");
         cmbType.getSelectionModel().clearSelection();
+        cmbType.setPromptText("");
         txtDuration.setText("");
         btnSave.setText("Save");
+        enableFields();
 
         try {
             txtId.setText(courseBO.getNewCourseId());
@@ -193,6 +197,21 @@ public class AdminCoursesFormController {
         cmbType.getItems().add(1,"Bachelor");
         cmbType.getItems().add(2,"Post-Graduate");
 
+    }
+
+    private void disableFields() {
+        txtId.setDisable(true);
+        txtTitle.setDisable(true);
+        cmbType.setDisable(true);
+        txtDuration.setDisable(true);
+    }
+
+    private void enableFields() {
+        txtId.setDisable(false);
+        txtTitle.setDisable(false);
+        cmbType.setDisable(false);
+        txtDuration.setDisable(false);
+        btnSave.setDisable(false);
     }
 
 }

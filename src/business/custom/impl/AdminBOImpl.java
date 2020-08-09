@@ -4,8 +4,11 @@ import business.custom.AdminBO;
 import dao.DAOFactory;
 import dao.DAOType;
 import dao.custom.AdminDAO;
+import dao.custom.LecturerDAO;
 import entity.Admin;
+import entity.Lecturer;
 import util.AdminTM;
+import util.LecturerTM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,5 +58,17 @@ public class AdminBOImpl implements AdminBO {
     @Override
     public boolean updateAdmin(String id,String name, String contact, String userId) throws Exception {
         return adminDAO.update(new Admin(id,name,contact,userId));
+    }
+
+    public AdminTM getAdmin(String id) throws Exception {
+        AdminDAO adminDAO = DAOFactory.getInstance().getDAO(DAOType.ADMIN);
+        Admin adminDetails = adminDAO.find(id);
+        return new AdminTM(adminDetails.getId(),adminDetails.getName(),adminDetails.getContact(),adminDetails.getUserId());
+    }
+
+    public String getUserId(String adminId) throws Exception {
+        AdminDAO adminDAO = DAOFactory.getInstance().getDAO(DAOType.ADMIN);
+        String userId = adminDAO.getUserId(adminId);
+        return userId;
     }
 }

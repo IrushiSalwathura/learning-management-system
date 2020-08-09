@@ -129,6 +129,11 @@ public class AdminModuleFormController {
     }
 
     public void btnAccount_OnAction(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/AdminAccountForm.fxml"));
+        Scene mainScene =  new Scene(root);
+        Stage mainStage = (Stage)this.root.getScene().getWindow();
+        mainStage.setScene(mainScene);
+        mainStage.centerOnScreen();
     }
 
     public void btnStudent_OnAction(ActionEvent actionEvent) throws IOException {

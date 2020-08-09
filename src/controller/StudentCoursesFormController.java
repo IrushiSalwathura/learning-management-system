@@ -27,15 +27,15 @@ import java.util.List;
 public class StudentCoursesFormController {
     public AnchorPane root;
     public JFXComboBox<CourseTM> cmbCourses;
-    public JFXTextField txtStudentID;
     public Label lblType;
     public Label lblTitle;
     public VBox vBoxAnnouncements;
+    public Label lblStudentId;
 
     private StudentBO studentBO = BOFactory.getInstance().getBO(BOType.STUDENT);
 
     public void initialize(){
-        txtStudentID.setText("S001");
+        lblStudentId.setText("S001");
         loadAllCourses();
         cmbCourses.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseTM>() {
             @Override
@@ -46,7 +46,7 @@ public class StudentCoursesFormController {
                     return;
                 }
                 try {
-                    CourseTM courseDetails = studentBO.getCourseDetails(txtStudentID.getText(), newValue.getId());
+                    CourseTM courseDetails = studentBO.getCourseDetails(lblStudentId.getText(), newValue.getId());
                     lblTitle.setText(courseDetails.getTitle());
                     lblType.setText(courseDetails.getType());
 
@@ -100,7 +100,7 @@ public class StudentCoursesFormController {
     private void loadAllCourses() {
         try {
             cmbCourses.getItems().clear();
-            cmbCourses.setItems(FXCollections.observableArrayList(studentBO.getStudentCourses(txtStudentID.getText())));
+            cmbCourses.setItems(FXCollections.observableArrayList(studentBO.getStudentCourses(lblStudentId.getText())));
         } catch (Exception e) {
             e.printStackTrace();
         }

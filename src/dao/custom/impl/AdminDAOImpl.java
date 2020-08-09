@@ -56,4 +56,12 @@ public class AdminDAOImpl implements AdminDAO {
             return null;
         }
     }
+
+    public String getUserId(String pk) throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT userId FROM LM_System.Admin WHERE id=?", pk);
+        if(resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }
