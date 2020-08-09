@@ -116,7 +116,9 @@ public class StudentBOImpl implements StudentBO {
         String studentTotal = studentDAO.getStudentCount();
         return studentTotal;
     }
-
-
-
+    public String getStudentId(String userId) throws Exception {
+        StudentDAO studentDAO = DAOFactory.getInstance().getDAO(DAOType.STUDENT);
+        String studentId = studentDAO.getStudentId(userId);
+        return studentId;
+    }
 }

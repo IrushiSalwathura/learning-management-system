@@ -16,4 +16,5 @@ public interface UserBO extends SuperBO {
     boolean update(String userId, String username, String password, String userRole) throws Exception;
     boolean save(String userId, String userName, String password, String userRole) throws Exception;
     boolean delete(String userId) throws Exception;
+    boolean isValidUser(String username, String password) throws Exception;
 }

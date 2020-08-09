@@ -4,7 +4,8 @@ import dao.CrudDAO;
 import entity.Admin;
 
 public interface AdminDAO extends CrudDAO<Admin,String> {
-    public String getLastAdminId() throws Exception;
-    public String getUserId(String pk) throws Exception;
+    String getLastAdminId() throws Exception;
+    String getUserId(String pk) throws Exception;
+    String getAdminId(String fk) throws Exception;
 
 }

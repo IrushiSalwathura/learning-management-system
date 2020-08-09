@@ -64,4 +64,12 @@ public class AdminDAOImpl implements AdminDAO {
         }
         return null;
     }
+
+    public String getAdminId(String fk) throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT id FROM LM_System.Admin WHERE id=?", fk);
+        if(resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }
