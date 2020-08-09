@@ -1,5 +1,6 @@
 package business.custom;
 
+import business.SuperBO;
 import dao.DAOFactory;
 import dao.DAOType;
 import dao.custom.UserDAO;
@@ -9,7 +10,7 @@ import util.UserTM;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface UserBO {
+public interface UserBO extends SuperBO {
     List<UserTM> getAllUsers() throws Exception;
     UserTM getUser(String userId) throws Exception;
     boolean update(String userId, String username, String password, String userRole) throws Exception;

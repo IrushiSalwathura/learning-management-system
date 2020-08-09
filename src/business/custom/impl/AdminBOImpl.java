@@ -37,14 +37,14 @@ public class AdminBOImpl implements AdminBO {
         List<Admin> allAdmins = adminDAO.findAll();
         ArrayList<AdminTM> admins = new ArrayList<>();
         for (Admin admin : allAdmins) {
-            admins.add(new AdminTM(admin.getId(),admin.getName(),admin.getContact(),admin.getUserName(),admin.getPassword()));
+            admins.add(new AdminTM(admin.getId(),admin.getName(),admin.getContact(),admin.getUserId()));
         }
         return admins;
     }
 
     @Override
-    public boolean saveAdmin(String id, String name, String contact, String username, String password) throws Exception {
-        return adminDAO.save(new Admin(id,name,contact,username,password));
+    public boolean saveAdmin(String id, String name, String contact, String userId) throws Exception {
+        return adminDAO.save(new Admin(id,name,contact,userId));
     }
 
     @Override
@@ -53,7 +53,7 @@ public class AdminBOImpl implements AdminBO {
     }
 
     @Override
-    public boolean updateAdmin(String name, String contact, String username, String password,String id) throws Exception {
-        return adminDAO.update(new Admin(name,contact,username,password,id));
+    public boolean updateAdmin(String id,String name, String contact, String userId) throws Exception {
+        return adminDAO.update(new Admin(id,name,contact,userId));
     }
 }
