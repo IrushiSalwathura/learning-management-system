@@ -86,7 +86,7 @@
       </AnchorPane>
       <AnchorPane layoutX="301.0" prefHeight="646.0" prefWidth="1001.0">
          <children>
-            <Label layoutX="28.0" prefHeight="63.0" prefWidth="404.0" text="WELCOME!">
+            <Label layoutX="28.0" prefHeight="63.0" prefWidth="404.0" text="Dashboard">
                <font>
                   <Font name="Courier" size="24.0" />
                </font>

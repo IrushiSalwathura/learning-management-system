@@ -96,10 +96,6 @@ public class StudentModuleFormController {
         });
     }
 
-    public void btnDashboard_OnAction(ActionEvent actionEvent) throws IOException {
-        loadView("");
-    }
-
     public void btnCourses_OnAction(ActionEvent actionEvent) throws IOException {
         loadView("/view/StudentCoursesForm.fxml");
     }
@@ -140,7 +136,7 @@ public class StudentModuleFormController {
         ModuleTM module = moduleBO.getModule(moduleId);
         lblCredits.setText(module.getCredits());
         lblDuration.setText(module.getDuration());
-        lblDescription.setText("Add description attribute to the Module table!!!!!!!!!!!!!!!!!!!!!!!");
+        lblDescription.setText("Introduction");
         lblModuleTitle.setText(module.getTitle());
     }
 

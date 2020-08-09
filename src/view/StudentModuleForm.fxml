@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -11,21 +10,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="677.0" prefWidth="1301.0" style="-fx-background-color: #EBEBEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentModuleFormController">
+<AnchorPane fx:id="root" prefHeight="670.0" prefWidth="1264.0" style="-fx-background-color: #EBEBEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentModuleFormController">
     <children>
-        <AnchorPane prefHeight="682.0" prefWidth="301.0" style="-fx-background-color: #11333D;">
+        <AnchorPane prefHeight="670.0" prefWidth="301.0" style="-fx-background-color: #11333D;">
             <children>
                 <Line endX="162.0" endY="-1.52587890625E-5" layoutX="119.0" layoutY="88.0" startX="-100.0" stroke="#e3a1a1" />
-                <JFXButton fx:id="btnDashboard" layoutX="38.0" layoutY="158.0" onAction="#btnDashboard_OnAction" prefHeight="53.0" prefWidth="244.0" text="       Dashboard" textFill="#c7d6d5">
-                    <font>
-                        <Font name="DIN Alternate Bold" size="14.0" />
-                    </font>
-                </JFXButton>
-                <ImageView fitHeight="31.0" fitWidth="53.0" layoutX="74.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../assets/transportation.png" />
-                    </image>
-                </ImageView>
                 <JFXButton fx:id="btnCourses" layoutX="38.0" layoutY="254.0" onAction="#btnCourses_OnAction" prefHeight="53.0" prefWidth="244.0" text="Courses" textFill="#c7d6d5">
                     <font>
                         <Font name="DIN Alternate Bold" size="14.0" />
@@ -63,15 +52,15 @@
                 </ImageView>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="300.0" prefHeight="682.0" prefWidth="1001.0" style="-fx-background-color: #EBEBEB;">
+        <AnchorPane layoutX="300.0" prefHeight="670.0" prefWidth="965.0" style="-fx-background-color: #EBEBEB;">
             <children>
                 <Label fx:id="lblCourseName" layoutX="34.0" layoutY="14.0" prefHeight="63.0" prefWidth="595.0" text="CourseID - Bsc. Hons Software Engineering">
                     <font>
                         <Font name="Courier" size="24.0" />
                     </font>
                 </Label>
-                <Line endX="844.0" endY="-1.52587890625E-5" layoutX="121.0" layoutY="89.0" startX="-100.0" />
-                <AnchorPane layoutX="23.0" layoutY="98.0" prefHeight="571.0" prefWidth="956.0" style="-fx-background-color: #D7D7D7;">
+                <Line endX="831.666748046875" endY="7.62939453125E-6" layoutX="121.0" layoutY="89.0" startX="-100.0" />
+                <AnchorPane layoutX="23.0" layoutY="98.0" prefHeight="558.0" prefWidth="917.0" style="-fx-background-color: #D7D7D7;">
                     <children>
                         <AnchorPane layoutX="27.0" layoutY="121.0" prefHeight="103.0" prefWidth="871.0" style="-fx-background-color: white;">
                             <children>
@@ -102,7 +91,6 @@
                             </children>
                         </AnchorPane>
                         <JFXComboBox fx:id="cmbModules" layoutX="27.0" layoutY="27.0" prefHeight="31.0" prefWidth="871.0" promptText="Modules" />
-                        <ButtonBar layoutX="32.0" layoutY="539.0" prefHeight="31.0" prefWidth="626.0" />
                         <AnchorPane layoutX="27.0" layoutY="351.0" prefHeight="92.0" prefWidth="871.0" style="-fx-background-color: white;">
                             <children>
                                 <Label layoutX="34.0" layoutY="7.0" prefHeight="41.0" prefWidth="804.0" text="Credits">
@@ -132,7 +120,7 @@
                                 <Font name="System Bold" size="22.0" />
                             </font>
                         </Label>
-                        <JFXComboBox fx:id="cmbCourses" layoutX="32.0" layoutY="-4.0" prefHeight="31.0" prefWidth="871.0" promptText="Courses" />
+                        <JFXComboBox fx:id="cmbCourses" layoutX="25.0" layoutY="-4.0" prefHeight="31.0" prefWidth="871.0" promptText="Courses" />
                     </children>
                 </AnchorPane>
             </children></AnchorPane>

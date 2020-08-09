@@ -88,14 +88,6 @@ public class LecturerModuleContentController {
         });
     }
 
-    public void btnDashboard_OnAction(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource(""));
-        Scene mainScene =  new Scene(root);
-        Stage mainStage = (Stage)this.root.getScene().getWindow();
-        mainStage.setScene(mainScene);
-        mainStage.centerOnScreen();
-    }
-
     public void btnCourses_OnAction(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(this.getClass().getResource("/view/LecturerCoursesForm.fxml"));
         Scene mainScene =  new Scene(root);

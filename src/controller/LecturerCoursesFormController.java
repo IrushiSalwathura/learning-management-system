@@ -48,10 +48,15 @@ public class LecturerCoursesFormController {
     public void initialize() {
         lblLecturerId.setText("L001");
         loadAllFaculties();
+        cmbCourses.setVisible(false);
 
         cmbFaculty.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<FacultyTM>() {
             @Override
-            public void changed(ObservableValue<? extends FacultyTM> observable, FacultyTM oldValue, FacultyTM newValue) {
+            public void changed(ObservableValue<? extends FacultyTM> observable, FacultyTM oldValue, FacultyTM selectedFaculty) {
+                if (selectedFaculty==null) {
+                    return;
+                }
+                cmbCourses.setVisible(true);
                 loadAllCourses();
             }
         });
@@ -69,7 +74,7 @@ public class LecturerCoursesFormController {
 
                 try {
                     vBoxAnnouncements.getChildren().clear();
-                    List<AnnouncementTM> announcements = lecturerBO.getAnnouncements(newValue.toString());
+                    List<AnnouncementTM> announcements = lecturerBO.getAnnouncements(newValue.getId());
                     for (AnnouncementTM announcement : announcements) {
                         Label label = new Label(announcement.toString());
                         vBoxAnnouncements.getChildren().add(label);
@@ -83,14 +88,6 @@ public class LecturerCoursesFormController {
             }
         });
 
-    }
-
-    public void btnDashboard_OnAction(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource(""));
-        Scene mainScene =  new Scene(root);
-        Stage mainStage = (Stage)this.root.getScene().getWindow();
-        mainStage.setScene(mainScene);
-        mainStage.centerOnScreen();
     }
 
     public void btnCourses_OnAction(ActionEvent actionEvent) throws IOException {
