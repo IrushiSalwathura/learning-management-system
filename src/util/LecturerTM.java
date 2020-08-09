@@ -1,29 +1,27 @@
 package util;
 
-public class LectureTM {
+public class LecturerTM {
     private String id;
     private String courseId;
     private String name;
     private String address;
     private String contact;
-    private String username;
-    private String password;
     private String nic;
     private String email;
+    private String userId;
 
-    public LectureTM() {
+    public LecturerTM() {
     }
 
-    public LectureTM(String id, String courseId, String name, String address, String contact, String username, String password, String nic, String email) {
+    public LecturerTM(String id, String courseId, String name, String address, String contact, String nic, String email, String userId) {
         this.id = id;
         this.courseId = courseId;
         this.name = name;
         this.address = address;
         this.contact = contact;
-        this.username = username;
-        this.password = password;
         this.nic = nic;
         this.email = email;
+        this.userId = userId;
     }
 
     public String getId() {
@@ -66,22 +64,6 @@ public class LectureTM {
         this.contact = contact;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getNic() {
         return nic;
     }
@@ -101,5 +83,13 @@ public class LectureTM {
     @Override
     public String toString() {
         return getId();
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

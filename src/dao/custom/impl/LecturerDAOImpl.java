@@ -6,6 +6,7 @@ import dao.custom.LecturerDAO;
 import entity.Lecturer;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +34,7 @@ public class LecturerDAOImpl implements LecturerDAO {
                     rst.getString(5),
                     rst.getString(6),
                     rst.getString(7),
-                    rst.getString(8),
-                    rst.getString(9)));
+                    rst.getString(8)));
         }
         return lecturers;
     }
@@ -51,8 +51,7 @@ public class LecturerDAOImpl implements LecturerDAO {
                     rst.getString(5),
                     rst.getString(6),
                     rst.getString(7),
-                    rst.getString(8),
-                    rst.getString(9)
+                    rst.getString(8)
             );
         }
         return null;
@@ -65,15 +64,23 @@ public class LecturerDAOImpl implements LecturerDAO {
 
     @Override
     public boolean update(Lecturer lecturer) throws Exception {
-        return CrudUtil.execute("UPDATE Lecturer SET courseId=?, name=?,address=?,contact=?,username=?,password=?,nic=?,email=? WHERE id=?",
-                lecturer.getCourseId(),lecturer.getName(),lecturer.getAddress(),lecturer.getContact(),lecturer.getUsername(),lecturer.getPassword(),lecturer.getNic(),lecturer.getEmail(),lecturer.getId());
+        return CrudUtil.execute("UPDATE Lecturer SET courseId=?, name=?,address=?,contact=?,username=?,password=?,nic=?,email=?,userId=? WHERE id=?",
+                lecturer.getCourseId(),lecturer.getName(),lecturer.getAddress(),lecturer.getContact(),lecturer.getNic(),lecturer.getEmail(),lecturer.getUserId(),lecturer.getId());
     }
 
     @Override
     public boolean save(Lecturer lecturer) throws Exception {
-        return CrudUtil.execute("INSERT INTO Lecturer VALUES (?,?,?,?,?,?,?,?,?)",lecturer.getId(),lecturer.getCourseId(),
-                lecturer.getName(),lecturer.getAddress(),lecturer.getContact(),lecturer.getUsername(),lecturer.getPassword(),lecturer.getNic(),lecturer.getEmail());
+        return CrudUtil.execute("INSERT INTO Lecturer VALUES (?,?,?,?,?,?,?,?)",lecturer.getId(),lecturer.getCourseId(),
+                lecturer.getName(),lecturer.getAddress(),lecturer.getContact(),lecturer.getNic(),lecturer.getEmail(),lecturer.getUserId());
 
+    }
+
+    public String getUserId(String pk) throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT userId FROM LM_System.Lecturer WHERE id=?", pk);
+        if(resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
     }
 
     public String getLecturerCount() throws Exception{

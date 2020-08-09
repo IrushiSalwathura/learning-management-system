@@ -15,7 +15,7 @@ public class AdminDAOImpl implements AdminDAO {
         ArrayList<Admin> admins = new ArrayList<>();
         while (rst.next()){
             admins.add( new Admin(rst.getString(1), rst.getString(2),
-                    rst.getString(3),rst.getString(4),rst.getString(5)));
+                    rst.getString(3),rst.getString(4)));
         }
         return admins;
     }
@@ -25,7 +25,7 @@ public class AdminDAOImpl implements AdminDAO {
         ResultSet rst = CrudUtil.execute("SELECT * FROM Admin WHERE id =?",key);
         if (rst.next()){
             return new Admin(rst.getString(1), rst.getString(2),
-                    rst.getString(3),rst.getString(4),rst.getString(5));
+                    rst.getString(3),rst.getString(4));
         }
         return null;
     }
@@ -33,13 +33,13 @@ public class AdminDAOImpl implements AdminDAO {
     @Override
     public boolean save(Admin admin) throws Exception {
         return CrudUtil.execute("INSERT INTO Admin VALUES (?,?,?,?,?)",
-                admin.getId(),admin.getName(),admin.getContact(),admin.getUserName(),admin.getPassword());
+                admin.getId(),admin.getName(),admin.getContact(),admin.getUserId());
     }
 
     @Override
     public boolean update(Admin admin) throws Exception {
-        return CrudUtil.execute("UPDATE Admin SET name=?, contact=?,username=?,password=? WHERE id=?",
-                admin.getName(),admin.getContact(),admin.getUserName(),admin.getPassword());
+        return CrudUtil.execute("UPDATE Admin SET name=?, contact=?,userId=? WHERE id=?",
+                admin.getName(),admin.getContact(),admin.getUserId(),admin.getId());
     }
 
     @Override

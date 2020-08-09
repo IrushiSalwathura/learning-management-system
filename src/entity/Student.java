@@ -6,24 +6,22 @@ public class Student implements SuperEntity{
     private String name;
     private String address;
     private String contact;
-    private String username;
-    private String password;
     private String nic;
     private String email;
+    private String userId;
 
     public Student() {
     }
 
-    public Student(String id, String facultyId, String name, String address, String contact, String username, String password, String nic, String email) {
+    public Student(String id, String facultyId, String name, String address, String contact, String nic, String email, String userId) {
         this.id = id;
         this.facultyId = facultyId;
         this.name = name;
         this.address = address;
         this.contact = contact;
-        this.username = username;
-        this.password = password;
         this.nic = nic;
         this.email = email;
+        this.userId = userId;
     }
 
     public String getId() {
@@ -82,20 +80,12 @@ public class Student implements SuperEntity{
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -106,10 +96,10 @@ public class Student implements SuperEntity{
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", contact='" + contact + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 ", nic='" + nic + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
+
+
 }

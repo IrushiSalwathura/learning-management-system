@@ -1,15 +1,12 @@
 package business.custom.impl;
 
 import business.custom.LecturerBO;
-import dao.CrudUtil;
 import dao.DAOFactory;
 import dao.DAOType;
-import dao.SuperDAO;
 import dao.custom.*;
 import entity.*;
 import util.*;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,23 +15,22 @@ public class LecturerBOImpl implements LecturerBO {
     private LecturerDAO lecturerDAO = DAOFactory.getInstance().getDAO(DAOType.LECTURER);
 
     @Override
-    public List<LectureTM> getAllLecturers() throws Exception {
+    public List<LecturerTM> getAllLecturers() throws Exception {
 
         List<Lecturer>allLecturers = lecturerDAO.findAll();
-        List<LectureTM>lectures = new ArrayList<>();
+        List<LecturerTM>lectures = new ArrayList<>();
         for (Lecturer lecturer:allLecturers) {
-            lectures.add(new LectureTM(lecturer.getId(),
+            lectures.add(new LecturerTM(lecturer.getId(),
                     lecturer.getCourseId(),lecturer.getName(),
                     lecturer.getAddress(),lecturer.getContact(),
-                    lecturer.getUsername(),lecturer.getPassword(),
-                    lecturer.getNic(),lecturer.getEmail()));
+                    lecturer.getNic(),lecturer.getEmail(),lecturer.getUserId()));
         }
         return lectures;
     }
 
     @Override
-    public boolean saveLecturer(String id, String courseId, String name, String address, String contact, String username, String password, String nic, String email) throws Exception {
-        return lecturerDAO.save(new Lecturer(id,courseId,name,address,contact,username,password,nic,email));
+    public boolean saveLecturer(String id, String courseId, String name, String address, String contact, String nic, String email, String userId) throws Exception {
+        return lecturerDAO.save(new Lecturer(id,courseId,name,address,contact,nic,email,userId));
 
     }
 
@@ -44,8 +40,8 @@ public class LecturerBOImpl implements LecturerBO {
     }
 
     @Override
-    public boolean updateLecturer(String courseId, String name, String address, String contact, String username, String password, String nic, String email, String id) throws Exception {
-        return lecturerDAO.update(new Lecturer(id,courseId,name, address,contact,username,password,nic,email));
+    public boolean updateLecturer(String courseId, String name, String address, String contact, String nic, String email, String id, String userId) throws Exception {
+        return lecturerDAO.update(new Lecturer(id,courseId,name, address,contact,nic,email,userId));
     }
 
     @Override
@@ -118,11 +114,16 @@ public class LecturerBOImpl implements LecturerBO {
     }
 
     @Override
-    public LectureTM getLecturer(String id) throws Exception {
+    public LecturerTM getLecturer(String id) throws Exception {
         LecturerDAO lecturerDAO = DAOFactory.getInstance().getDAO(DAOType.LECTURER);
-        Lecturer lectureDetails=lecturerDAO.find(id);
-        return new LectureTM(lectureDetails.getId(),lectureDetails.getCourseId(),lectureDetails.getName(),lectureDetails.getAddress(),lectureDetails.getContact(),
-                lectureDetails.getUsername(),lectureDetails.getPassword(),lectureDetails.getNic(),lectureDetails.getEmail());
+        Lecturer lecturerDetails=lecturerDAO.find(id);
+        return new LecturerTM(lecturerDetails.getId(),lecturerDetails.getCourseId(),lecturerDetails.getName(),lecturerDetails.getAddress(),lecturerDetails.getContact(),lecturerDetails.getNic(),lecturerDetails.getEmail(),lecturerDetails.getUserId());
+    }
+
+    public String getUserId(String lecturerId) throws Exception {
+        LecturerDAO lecturerDAO = DAOFactory.getInstance().getDAO(DAOType.LECTURER);
+        String userId = lecturerDAO.getUserId(lecturerId);
+        return userId;
     }
 
     public String getLecturerCount() throws Exception {

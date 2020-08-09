@@ -30,6 +30,8 @@ public class BOFactory {
                 return (T) new FacultyBOImpl();
             case ADMIN:
                 return (T) new AdminBOImpl();
+            case USER:
+                return (T) new UserBOImpl();
             default:
                 return null;
         }

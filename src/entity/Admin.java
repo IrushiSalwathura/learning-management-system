@@ -4,18 +4,16 @@ public class Admin implements SuperEntity {
     private String id;
     private String name;
     private String contact;
-    private String userName;
-    private String password;
+    private String userId;
 
     public Admin() {
     }
 
-    public Admin(String id, String name, String contact, String userName, String password) {
+    public Admin(String id, String name, String contact, String userId) {
         this.id = id;
         this.name = name;
         this.contact = contact;
-        this.userName = userName;
-        this.password = password;
+        this.userId = userId;
     }
 
     public String getId() {
@@ -42,20 +40,12 @@ public class Admin implements SuperEntity {
         this.contact = contact;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -64,8 +54,7 @@ public class Admin implements SuperEntity {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", contact='" + contact + '\'' +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
+                ", userId='" + userId + '\'' +
                 '}';
     }
 }

@@ -3,6 +3,7 @@ package controller;
 import business.BOFactory;
 import business.BOType;
 import business.custom.LecturerBO;
+import business.custom.UserBO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -20,7 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import util.LectureTM;
+import util.LecturerTM;
 
 import java.io.IOException;
 
@@ -47,8 +48,8 @@ public class LecturerAccountController {
     public ImageView imgPasswordShow;
     public JFXPasswordField txtPasswordHide;
 
-
     private LecturerBO lecturerBO = BOFactory.getInstance().getBO(BOType.LECTURER);
+    private UserBO userBO = BOFactory.getInstance().getBO(BOType.USER);
 
 
     public void initialize(){
@@ -56,7 +57,7 @@ public class LecturerAccountController {
         imgPasswordShow.setVisible(false);
 
         try {
-            LectureTM lecturerDetails = lecturerBO.getLecturer("L001");
+            LecturerTM lecturerDetails = lecturerBO.getLecturer("L001");
             txtId.setEditable(false);
             txtCourseId.setEditable(false);
             txtId.setText(lecturerDetails.getId());
@@ -64,10 +65,14 @@ public class LecturerAccountController {
             txtName.setText(lecturerDetails.getName());
             txtAddress.setText(lecturerDetails.getAddress());
             txtContact.setText(lecturerDetails.getContact());
-            txtUserName.setText(lecturerDetails.getUsername());
-            txtPasswordShow.setText(lecturerDetails.getPassword());
             txtNIC.setText(lecturerDetails.getNic());
             txtEmail.setText(lecturerDetails.getEmail());
+
+
+            //TODO: Substitute lecturer Id
+            txtUserName.setText(userBO.getUser(lecturerBO.getUserId("L001")).getUsername());
+            txtPasswordShow.setText(userBO.getUser(lecturerBO.getUserId("L001")).getPassword());
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -125,10 +130,18 @@ public class LecturerAccountController {
     public void btnUpdate_OnAction(ActionEvent actionEvent) {
 
         try {
+            LecturerTM lecturerId = lecturerBO.getLecturer("L001");
+            String userId = lecturerBO.getUserId("L001");
+            String userRole = userBO.getUser(userId).getUserRole();
+
+            userBO.update(userId,txtUserName.getText(),txtNewPassword2.getText(),userRole);
+
             lecturerBO.updateLecturer(txtCourseId.getText(),
-                    txtName.getText(),txtAddress.getText(),txtContact.getText(),txtUserName.getText(),
-                    txtNewPassword2.getText(),txtNIC.getText(),
-                    txtEmail.getText(),txtId.getText());
+                    txtName.getText(),txtAddress.getText(),txtContact.getText(),txtNIC.getText(),
+                    txtEmail.getText(),txtId.getText(),
+                    userId);
+
+
             new Alert(Alert.AlertType.INFORMATION,"Lecturer updated successfully", ButtonType.OK).showAndWait();
         } catch (Exception e) {
             e.printStackTrace();

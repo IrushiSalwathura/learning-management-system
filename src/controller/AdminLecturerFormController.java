@@ -3,9 +3,8 @@ package controller;
 import business.BOFactory;
 import business.BOType;
 import business.custom.CourseBO;
-import business.custom.FacultyBO;
 import business.custom.LecturerBO;
-import business.custom.StudentBO;
+import business.custom.UserBO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -25,9 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import util.CourseTM;
-import util.FacultyTM;
-import util.LectureTM;
-import util.StudentTM;
+import util.LecturerTM;
 
 import java.io.IOException;
 import java.util.List;
@@ -43,7 +40,7 @@ public class AdminLecturerFormController {
     public JFXButton btnStudent;
     public JFXButton btnLecturers;
     public JFXComboBox<CourseTM> cmbCourseId;
-    public TableView<LectureTM> tblAdminLecturer;
+    public TableView<LecturerTM> tblAdminLecturer;
     public JFXButton btnAdd;
     public JFXTextField txtId;
     public JFXTextField txtTel;
@@ -60,6 +57,7 @@ public class AdminLecturerFormController {
 
     private LecturerBO lecturerBO = BOFactory.getInstance().getBO(BOType.LECTURER);
     private CourseBO courseBO = BOFactory.getInstance().getBO(BOType.COURSE);
+    private UserBO userBO= BOFactory.getInstance().getBO(BOType.USER);
     
     public void initialize(){
         //basic initialization
@@ -70,6 +68,7 @@ public class AdminLecturerFormController {
 
         //load all courses
         loadAllCourses();
+
 
         //when admin select courseId
         cmbCourseId.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseTM>() {
@@ -95,10 +94,10 @@ public class AdminLecturerFormController {
 
         btnSave.setDisable(true);
 
-        tblAdminLecturer.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<LectureTM>() {
+        tblAdminLecturer.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<LecturerTM>() {
             @Override
-            public void changed(ObservableValue<? extends LectureTM> observable, LectureTM oldValue, LectureTM newValue) {
-                LectureTM selectedLecturerDetails = tblAdminLecturer.getSelectionModel().getSelectedItem();
+            public void changed(ObservableValue<? extends LecturerTM> observable, LecturerTM oldValue, LecturerTM newValue) {
+                LecturerTM selectedLecturerDetails = tblAdminLecturer.getSelectionModel().getSelectedItem();
 
                 if(selectedLecturerDetails == null){
                     btnSave.setText("Save");
@@ -132,8 +131,13 @@ public class AdminLecturerFormController {
                 txtNIC.setText(selectedLecturerDetails.getNic());
                 txtTel.setText(selectedLecturerDetails.getContact());
                 txtEmail.setText(selectedLecturerDetails.getEmail());
-                txtPassword.setText(selectedLecturerDetails.getPassword());
-                txtUsername.setText(selectedLecturerDetails.getUsername());
+
+                try {
+                    txtPassword.setText(userBO.getUser(lecturerBO.getUserId(selectedLecturerDetails.getId())).getPassword());
+                    txtUsername.setText(userBO.getUser(lecturerBO.getUserId(selectedLecturerDetails.getId())).getUsername());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 String selectedCourseId = selectedLecturerDetails.getCourseId();
                 ObservableList<CourseTM> courses = cmbCourseId.getItems();
@@ -196,13 +200,13 @@ public class AdminLecturerFormController {
 
     private void loadAllLectures() {
         tblAdminLecturer.getItems().clear();
-        List<LectureTM> allLecturers = null;
+        List<LecturerTM> allLecturers = null;
         try {
             allLecturers = lecturerBO.getAllLecturers();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ObservableList<LectureTM>lecturers = FXCollections.observableArrayList(allLecturers);
+        ObservableList<LecturerTM>lecturers = FXCollections.observableArrayList(allLecturers);
         tblAdminLecturer.setItems(lecturers);
     }
 
@@ -315,7 +319,7 @@ public class AdminLecturerFormController {
                 ButtonType.YES, ButtonType.NO);
         Optional<ButtonType> buttonType = alert.showAndWait();
         if (buttonType.get() == ButtonType.YES) {
-            LectureTM selectedItem = tblAdminLecturer.getSelectionModel().getSelectedItem();
+            LecturerTM selectedItem = tblAdminLecturer.getSelectionModel().getSelectedItem();
 
             boolean result = false;
             try {
@@ -350,26 +354,29 @@ public class AdminLecturerFormController {
             new Alert(Alert.AlertType.ERROR,"Can not be empty values", ButtonType.OK).show();
             return;
         }
+        LecturerTM selectedLecturer = tblAdminLecturer.getSelectionModel().getSelectedItem();
 
         if(btnSave.getText().equals("Save")){
             try {
+                userBO.save(lecturerBO.getUserId(selectedLecturer.getId()),txtUsername.getText(),txtPassword.getText(),"Lecturer");
+
                 lecturerBO.saveLecturer(txtId.getText(),
                         String.valueOf(cmbCourseId.getSelectionModel().getSelectedItem()),
                         txtName.getText(),txtAddress.getText(),
-                        txtTel.getText(),txtUsername.getText(),
-                        txtPassword.getText(),txtNIC.getText(),txtEmail.getText());
+                        txtTel.getText(),txtNIC.getText(),txtEmail.getText(),lecturerBO.getUserId(selectedLecturer.getId()));
                 new Alert(Alert.AlertType.INFORMATION,"Lecturer saved successfully",ButtonType.OK).showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
             }
             btnAdd_OnAction(event);
         }else{
-            LectureTM selectedLecturer = tblAdminLecturer.getSelectionModel().getSelectedItem();
+//            LecturerTM selectedLecturer = tblAdminLecturer.getSelectionModel().getSelectedItem();
             boolean result = false;
             try {
+                userBO.update(lecturerBO.getUserId(selectedLecturer.getId()),txtUsername.getText(),txtPassword.getText(),"Lecturer");
+
                 result = lecturerBO.updateLecturer(String.valueOf(cmbCourseId.getSelectionModel().getSelectedItem()),
-                        txtName.getText(),txtAddress.getText(),txtTel.getText(),txtUsername.getText(),
-                        txtPassword.getText(),txtNIC.getText(),txtEmail.getText(),selectedLecturer.getId());
+                        txtName.getText(),txtAddress.getText(),txtTel.getText(),txtNIC.getText(),txtEmail.getText(),txtId.getText(),lecturerBO.getUserId(selectedLecturer.getId()));
 
                 new Alert(Alert.AlertType.INFORMATION,"Lecturer updated successfully",ButtonType.OK).showAndWait();
             } catch (Exception e) {
