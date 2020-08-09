@@ -3,6 +3,7 @@ package controller;
 import business.BOFactory;
 import business.BOType;
 import business.custom.StudentBO;
+import business.custom.UserBO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -45,6 +46,8 @@ public class StudentAccountFormController {
     public ImageView imgPasswordHide;
 
     private StudentBO studentBO = BOFactory.getInstance().getBO(BOType.STUDENT);
+    private UserBO userBO= BOFactory.getInstance().getBO(BOType.USER);
+
 
     public void initialize(){
         txtPasswordShow.setVisible(false);
@@ -58,10 +61,11 @@ public class StudentAccountFormController {
             txtName.setText(studentDetails.getName());
             txtAddress.setText(studentDetails.getAddress());
             txtContact.setText(studentDetails.getContact());
-            txtUserName.setText(studentDetails.getUsername());
-            txtPasswordShow.setText(studentDetails.getPassword());
             txtNIC.setText(studentDetails.getNic());
             txtEmail.setText(studentDetails.getEmail());
+
+            txtPasswordShow.setText(userBO.getUser(studentBO.getUserId(studentDetails.getId())).getPassword());
+            txtUserName.setText(userBO.getUser(studentBO.getUserId(studentDetails.getId())).getUsername());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -104,10 +108,16 @@ public class StudentAccountFormController {
 
     public void btnUpdate_OnAction(ActionEvent actionEvent) {
         try {
+            StudentTM student = studentBO.getStudent("S001");
+            String userId = studentBO.getUserId(student.getId());
+            String userRole = userBO.getUser(userId).getUserRole();
+
+            userBO.update(userId,txtUserName.getText(),txtNewPassword2.getText(),userRole);
+
             studentBO.updateStudent(txtFacultyId.getText(),
                     txtName.getText(),txtAddress.getText(),txtContact.getText(),txtUserName.getText(),
                     txtNewPassword2.getText(),txtNIC.getText(),
-                    txtEmail.getText(),txtId.getText());
+                    txtEmail.getText(),txtId.getText(),userId);
             new Alert(Alert.AlertType.INFORMATION,"your details have been updated successfully", ButtonType.OK).showAndWait();
         } catch (Exception e) {
             e.printStackTrace();

@@ -130,15 +130,17 @@ public class LecturerAccountController {
     public void btnUpdate_OnAction(ActionEvent actionEvent) {
 
         try {
-            lecturerBO.updateLecturer(txtCourseId.getText(),
-                    txtName.getText(),txtAddress.getText(),txtContact.getText(),txtNIC.getText(),
-                    txtEmail.getText(),txtId.getText(),
-                    txtId.getText());
-
             LecturerTM lecturerId = lecturerBO.getLecturer("L001");
             String userId = lecturerBO.getUserId("L001");
             String userRole = userBO.getUser(userId).getUserRole();
+
             userBO.update(userId,txtUserName.getText(),txtNewPassword2.getText(),userRole);
+
+            lecturerBO.updateLecturer(txtCourseId.getText(),
+                    txtName.getText(),txtAddress.getText(),txtContact.getText(),txtNIC.getText(),
+                    txtEmail.getText(),txtId.getText(),
+                    userId);
+
 
             new Alert(Alert.AlertType.INFORMATION,"Lecturer updated successfully", ButtonType.OK).showAndWait();
         } catch (Exception e) {
