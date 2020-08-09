@@ -14,6 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import util.LectureTM;
@@ -35,13 +37,21 @@ public class StudentAccountFormController {
     public JFXTextField txtEmail;
     public JFXTextField txtContact;
     public JFXTextField txtUserName;
-    public JFXPasswordField txtCurrentPassword;
     public JFXPasswordField txtNewPassword;
     public JFXPasswordField txtNewPassword2;
     public Button btnUpdate;
     public JFXTextField txtFacultyId;
+    public JFXTextField txtPasswordShow;
+    public JFXPasswordField txtPasswordHide;
+    public ImageView imgPasswordShow;
+    public ImageView imgPasswordHide;
+
     private StudentBO studentBO = BOFactory.getInstance().getBO(BOType.STUDENT);
+
     public void initialize(){
+        txtPasswordShow.setVisible(false);
+        imgPasswordShow.setVisible(false);
+
         try {
             StudentTM studentDetails = studentBO.getStudent("S001");
             txtId.setEditable(false);
@@ -51,7 +61,7 @@ public class StudentAccountFormController {
             txtAddress.setText(studentDetails.getAddress());
             txtContact.setText(studentDetails.getContact());
             txtUserName.setText(studentDetails.getUsername());
-            txtCurrentPassword.setText(studentDetails.getPassword());
+            txtPasswordShow.setText(studentDetails.getPassword());
             txtNIC.setText(studentDetails.getNic());
             txtEmail.setText(studentDetails.getEmail());
 
@@ -104,5 +114,27 @@ public class StudentAccountFormController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void imgPasswordHide_OnMouseClicked(MouseEvent mouseEvent) {
+        txtPasswordHide.setVisible(false);
+        imgPasswordHide.setVisible(false);
+        imgPasswordShow.setVisible(true);
+        txtPasswordShow.setVisible(true);
+
+        txtPasswordShow.requestFocus();
+        txtPasswordShow.deselect();
+        txtPasswordShow.positionCaret(txtPasswordShow.getLength());
+    }
+
+    public void imgPasswordShow_OnMouseClicked(MouseEvent mouseEvent) {
+        imgPasswordShow.setVisible(false);
+        txtPasswordShow.setVisible(false);
+        txtPasswordHide.setVisible(true);
+        imgPasswordHide.setVisible(true);
+
+        txtPasswordHide.requestFocus();
+        txtPasswordHide.deselect();
+        txtPasswordHide.positionCaret(txtPasswordHide.getLength());
     }
 }

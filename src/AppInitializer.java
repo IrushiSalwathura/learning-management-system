@@ -14,11 +14,12 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/StudentModuleContent.fxml"));
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/LecturerAccountForm.fxml"));
         Scene mainScene = new Scene(root);
         primaryStage.setScene(mainScene);
+        primaryStage.setTitle("Learning Management System");
         primaryStage.centerOnScreen();
         primaryStage.show();
-        primaryStage.setHeight(800);
+       // primaryStage.setHeight(800);
     }
 }
