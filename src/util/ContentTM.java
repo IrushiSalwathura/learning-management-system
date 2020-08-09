@@ -62,12 +62,6 @@ public class ContentTM {
 
     @Override
     public String toString() {
-        return "ContentTM{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", date=" + date +
-                ", lecturerID='" + lecturerID + '\'' +
-                ", moduleId='" + moduleId + '\'' +
-                '}';
+        return this.getTitle();
     }
 }
