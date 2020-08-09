@@ -32,10 +32,10 @@ public class StudentCoursesFormController {
     public VBox vBoxAnnouncements;
     public Label lblStudentId;
 
+
     private StudentBO studentBO = BOFactory.getInstance().getBO(BOType.STUDENT);
 
     public void initialize(){
-        lblStudentId.setText("S001");
         loadAllCourses();
         cmbCourses.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseTM>() {
             @Override

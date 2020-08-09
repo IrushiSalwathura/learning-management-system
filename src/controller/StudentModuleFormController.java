@@ -53,7 +53,7 @@ public class StudentModuleFormController {
     private ModuleBO moduleBO = BOFactory.getInstance().getBO(BOType.MODULE);
 
     public void initialize() throws Exception {
-        loadAllCoursesOfStudent("S001");
+//        loadAllCoursesOfStudent(LoginFormController.loginId);
 //        loadAllCourseModules("C001");
 //        getModuleDetails("M001");
         lblCourseName.setVisible(false);

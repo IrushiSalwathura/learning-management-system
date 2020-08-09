@@ -64,4 +64,12 @@ public class UserDAOImpl implements UserDAO {
         }
         return null;
     }
+
+    public boolean isValidUser(String username, String password) throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT COUNT FROM User WHERE username=? AND password=?", username, password);
+        if (resultSet.next()) {
+            return true;
+        }
+        return false;
+    }
 }

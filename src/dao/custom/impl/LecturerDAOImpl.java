@@ -92,5 +92,13 @@ public class LecturerDAOImpl implements LecturerDAO {
         }
     }
 
+    public String getLecturerId(String fk) throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT id FROM LM_System.Lecturer WHERE userId=?", fk);
+        if(resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
+    }
+
 }
 

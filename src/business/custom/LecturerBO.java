@@ -31,4 +31,6 @@ public interface LecturerBO extends SuperBO {
     String getUserId(String lecturerId) throws Exception;
 
     String getLecturerCount() throws Exception;
+
+    String getLecturerId(String userId) throws Exception;
 }

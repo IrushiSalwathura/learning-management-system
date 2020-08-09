@@ -6,6 +6,7 @@ import entity.Module;
 import entity.Student;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,5 +74,13 @@ public class StudentDAOImpl implements StudentDAO {
         }else{
             return null;
         }
+    }
+
+    public String getStudentId(String userId) throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT id FROM Student WHERE userId=?", userId);
+        if(resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
     }
 }

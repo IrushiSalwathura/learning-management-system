@@ -42,7 +42,7 @@ public class StudentModuleContentController {
     private ModuleBO moduleBO = BOFactory.getInstance().getBO(BOType.MODULE);
 
     public void initialize() throws Exception {
-        loadAllStudentCourses("S001");
+        loadAllStudentCourses(LoginFormController.loginId);
 //        loadAllCourseModules("C001");
 //        loadAllModuleContent("M001");
         cmbModuleId.setVisible(false);

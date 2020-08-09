@@ -71,4 +71,10 @@ public class AdminBOImpl implements AdminBO {
         String userId = adminDAO.getUserId(adminId);
         return userId;
     }
+    public String getAdminId(String userId) throws Exception {
+        AdminDAO adminDAO = DAOFactory.getInstance().getDAO(DAOType.ADMIN);
+        String adminId = adminDAO.getAdminId(userId);
+        return adminId;
+    }
+
 }

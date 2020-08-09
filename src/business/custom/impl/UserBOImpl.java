@@ -49,7 +49,7 @@ public class UserBOImpl implements UserBO {
     public String generateNewId() throws Exception {
         UserDAO userDAO = DAOFactory.getInstance().getDAO(DAOType.USER);
         String lastUserId = userDAO.findLastUserId();
-        int num = Integer.parseInt(lastUserId.substring(0,3));
+        int num = Integer.parseInt(lastUserId.substring(1,4));
         String newId;
         if(num==0){
             newId = "U001";
@@ -68,4 +68,12 @@ public class UserBOImpl implements UserBO {
         }
         return newId;
     }
+
+    public boolean isValidUser(String username, String password) throws Exception {
+        UserDAO userDAO = DAOFactory.getInstance().getDAO(DAOType.USER);
+        boolean validUser = userDAO.isValidUser(username, password);
+        return validUser;
+    }
+
+
 }
