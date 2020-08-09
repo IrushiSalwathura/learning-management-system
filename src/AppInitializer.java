@@ -17,8 +17,9 @@ public class AppInitializer extends Application {
         Parent root = FXMLLoader.load(this.getClass().getResource("/view/LecturerModuleContent.fxml"));
         Scene mainScene = new Scene(root);
         primaryStage.setScene(mainScene);
+        primaryStage.setTitle("Learning Management System");
         primaryStage.centerOnScreen();
         primaryStage.show();
-        primaryStage.setHeight(800);
+       // primaryStage.setHeight(800);
     }
 }

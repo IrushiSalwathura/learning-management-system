@@ -116,4 +116,12 @@ public class LecturerBOImpl implements LecturerBO {
         }
         return announcement;
     }
+
+    @Override
+    public LectureTM getLecturer(String id) throws Exception {
+        LecturerDAO lecturerDAO = DAOFactory.getInstance().getDAO(DAOType.LECTURER);
+        Lecturer lectureDetails=lecturerDAO.find(id);
+        return new LectureTM(lectureDetails.getId(),lectureDetails.getCourseId(),lectureDetails.getName(),lectureDetails.getAddress(),lectureDetails.getContact(),
+                lectureDetails.getUsername(),lectureDetails.getPassword(),lectureDetails.getNic(),lectureDetails.getEmail());
+    }
 }
