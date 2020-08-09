@@ -27,14 +27,45 @@ import java.util.List;
 public class LecturerModulesFormController {
     public AnchorPane root;
     public JFXButton btnDashboard;
-    public JFXComboBox cmbCourses;
-    public JFXComboBox cmbFaculty;
+    public JFXComboBox<CourseTM> cmbCourses;
+    public JFXComboBox<FacultyTM> cmbFaculty;
     public ListView<ModuleTM> lstModules;
+    public static String lecturerId;
 
     public void initialize() throws Exception {
-        loadAllFacultiesOfLecturer("L001");
-        loadAllCoursesOfLecturerInFaculty("L001","F001");
-        loadAllCourseModules("C001");
+        lecturerId = "L001";
+        loadAllFacultiesOfLecturer(lecturerId);
+//        loadAllCoursesOfLecturerInFaculty("L001","F001");
+//        loadAllCourseModules("C001");
+        cmbCourses.setVisible(false);
+
+        cmbFaculty.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<FacultyTM>() {
+            @Override
+            public void changed(ObservableValue<? extends FacultyTM> observable, FacultyTM oldValue, FacultyTM selectedFaculty) {
+                if (selectedFaculty==null) {
+                    return;
+                }
+                cmbCourses.setVisible(true);
+                try {
+                    loadAllCoursesOfLecturerInFaculty(lecturerId,selectedFaculty.getId());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        cmbCourses.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseTM>() {
+            @Override
+            public void changed(ObservableValue<? extends CourseTM> observable, CourseTM oldValue, CourseTM selectedCourse) {
+                if(selectedCourse==null){
+                    return;
+                }
+                try {
+                    loadAllCourseModules(selectedCourse.getId());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         lstModules.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ModuleTM>() {
             @Override
