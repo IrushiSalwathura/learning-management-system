@@ -27,4 +27,6 @@ public interface LecturerBO extends SuperBO {
     List<AnnouncementTM> getAnnouncements(String courseId) throws Exception;
 
     LectureTM getLecturer(String id)throws Exception;
+
+    String getLecturerCount() throws Exception;
 }

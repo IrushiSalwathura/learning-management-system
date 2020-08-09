@@ -51,4 +51,12 @@ public class CourseDAOImpl implements CourseDAO {
         return CrudUtil.execute("DELETE FROM Course WHERE id=?",pk);
 
     }
+    public String getCoursesCount() throws Exception{
+        ResultSet rst = CrudUtil.execute("SELECT COUNT(*) AS Total FROM Course");
+        if (rst.next()){
+            return rst.getString(1);
+        }else{
+            return null;
+        }
+    }
 }

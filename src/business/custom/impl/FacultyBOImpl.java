@@ -4,6 +4,7 @@ import business.custom.FacultyBO;
 import dao.DAOFactory;
 import dao.DAOType;
 import dao.custom.FacultyDAO;
+import dao.custom.LecturerDAO;
 import entity.Faculty;
 import util.FacultyTM;
 
@@ -69,5 +70,10 @@ public class FacultyBOImpl implements FacultyBO {
             e.printStackTrace();
             return null;
         }
+    }
+    public String getFacultyCount() throws Exception {
+        FacultyDAO facultyDAO = DAOFactory.getInstance().getDAO(DAOType.FACULTY);
+        String facultyCount = facultyDAO.getFacultyCount();
+        return facultyCount;
     }
 }

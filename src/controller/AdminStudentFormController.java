@@ -205,7 +205,7 @@ public class AdminStudentFormController {
     }
 
     public void btnStudent_OnAction(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/StudentMainForm.fxml"));
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/AdminStudentForm.fxml"));
         Scene mainScene =  new Scene(root);
         Stage mainStage = (Stage)this.root.getScene().getWindow();
         mainStage.setScene(mainScene);
@@ -213,7 +213,7 @@ public class AdminStudentFormController {
     }
 
     public void btnLecturer_OnAction(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/LecturerAccountForm.fxml"));
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/AdminLecturerForm.fxml"));
         Scene mainScene =  new Scene(root);
         Stage mainStage = (Stage)this.root.getScene().getWindow();
         mainStage.setScene(mainScene);

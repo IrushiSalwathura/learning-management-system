@@ -58,4 +58,13 @@ public class FacultyDAOImpl implements FacultyDAO {
     public boolean delete(String key) throws Exception {
         return CrudUtil.execute("DELETE FROM Faculty WHERE id=?",key);
     }
+
+    public String getFacultyCount() throws Exception{
+        ResultSet rst = CrudUtil.execute("SELECT COUNT(*) AS Total FROM Faculty");
+        if (rst.next()){
+            return rst.getString(1);
+        }else{
+            return null;
+        }
+    }
 }
