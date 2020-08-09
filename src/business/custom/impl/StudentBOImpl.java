@@ -4,13 +4,14 @@ import business.custom.StudentBO;
 import dao.DAOFactory;
 import dao.DAOType;
 import dao.SuperDAO;
+import dao.custom.LecturerDAO;
 import dao.custom.QueryDAO;
 import dao.custom.StudentDAO;
 import entity.Course;
+import entity.CustomEntity;
+import entity.Lecturer;
 import entity.Student;
-import util.CourseTM;
-import util.ModuleTM;
-import util.StudentTM;
+import util.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -78,4 +79,31 @@ public class StudentBOImpl implements StudentBO {
         }
         return courses;
     }
+
+    public CourseTM getCourseDetails(String studentId, String courseId) throws Exception{
+            QueryDAO queryDAO = DAOFactory.getInstance().getDAO(DAOType.QUERY);
+            CustomEntity courseDetails =  queryDAO.getCourseDetails(studentId,courseId);
+            return new CourseTM(courseDetails.getTitle(),courseDetails.getType());
+    }
+
+    public List<AnnouncementTM> getAnnouncements(String courseId) throws Exception {
+        QueryDAO queryDAO= DAOFactory.getInstance().getDAO(DAOType.QUERY);
+        List<CustomEntity> announcements = queryDAO.getAnnouncements(courseId);
+        ArrayList<AnnouncementTM> announcement = new ArrayList<>();
+
+        for (CustomEntity ann : announcements) {
+            announcement.add(new AnnouncementTM(ann.getCourseId(),ann.getLecturerId(),ann.getDate(),ann.getAnnouncement()));
+        }
+        return announcement;
+    }
+
+    @Override
+    public StudentTM getStudent(String id) throws Exception {
+        StudentDAO studentDAO = DAOFactory.getInstance().getDAO(DAOType.STUDENT);
+        Student studentDetails=studentDAO.find(id);
+        return new StudentTM(studentDetails.getId(),studentDetails.getFacultyId(),studentDetails.getName(),studentDetails.getAddress(),
+                studentDetails.getContact(), studentDetails.getUsername(),studentDetails.getPassword(),
+                studentDetails.getNic(),studentDetails.getEmail());
+    }
+
 }

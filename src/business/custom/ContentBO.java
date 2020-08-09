@@ -17,4 +17,5 @@ public interface ContentBO {
     boolean updateContent(String id, String title, Date date, String lecturerId, String moduleId) throws Exception;
     boolean deleteContent(String id) throws Exception;
     String findModuleContentCount(String moduleId) throws Exception;
+    List<ContentTM> getModuleContent(String moduleId) throws Exception;
 }

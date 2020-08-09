@@ -9,6 +9,11 @@ public class CourseTM {
     public CourseTM() {
     }
 
+    public CourseTM(String title, String type) {
+        this.title = title;
+        this.type = type;
+    }
+
     public CourseTM(String id, String title, String type, String duration) {
         this.setId(id);
         this.setTitle(title);

@@ -59,6 +59,7 @@ public class ModuleTM {
 
     @Override
     public String toString() {
-        return this.title;
+        return
+                id+ " - " + title;
     }
 }

@@ -1,19 +1,25 @@
 package business.custom;
 
 import business.SuperBO;
+import util.CourseTM;
+import util.FacultyTM;
 import util.LectureTM;
 
 import java.util.List;
 
 public interface LecturerBO extends SuperBO {
 
-    public List<LectureTM> getAllLecturers() throws Exception;
+    List<LectureTM> getAllLecturers() throws Exception;
 
-    public boolean saveLecturer(String id, String courseId, String name,String address, String contact,String username,String password,String nic,String email)throws Exception;
+    boolean saveLecturer(String id, String courseId, String name,String address, String contact,String username,String password,String nic,String email)throws Exception;
 
-    public boolean deleteLecturer(String id)throws Exception;
+    boolean deleteLecturer(String id)throws Exception;
 
-    public boolean updateLecturer(String id, String courseId, String name,String address, String contact,String username,String password,String nic,String email)throws Exception;
+    boolean updateLecturer(String courseId, String name,String address, String contact,String username,String password,String nic,String email,String id)throws Exception;
 
-    public String getNewLecturerId()throws Exception;
+    String getNewLecturerId()throws Exception;
+
+    List<FacultyTM> getLecturerFaculties(String lecturerId) throws Exception;
+
+    List<CourseTM> getLecturerFacultyCourses(String lecturerId, String facultyId) throws Exception;
 }
