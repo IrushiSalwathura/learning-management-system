@@ -58,4 +58,12 @@ public class ContentDAOImpl implements ContentDAO {
         }
         return null;
     }
+
+    public String getLastContentId() throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT id FROM Content ORDER BY id DESC LIMIT 1");
+        if(resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }

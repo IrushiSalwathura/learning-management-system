@@ -8,7 +8,9 @@ import business.custom.ModuleBO;
 import business.custom.impl.ContentBOImpl;
 import business.custom.impl.LecturerBOImpl;
 import business.custom.impl.ModuleBOImpl;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -27,14 +29,18 @@ import util.CourseTM;
 import util.ModuleTM;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class LecturerModuleContentController {
     public AnchorPane root;
     public JFXComboBox<CourseTM> cmbCourses;
     public ListView lstContent;
-    public DatePicker txtDate;
     public ComboBox<ModuleTM> cmbModuleId;
+    public JFXTextField txtDate;
+    public JFXButton btnSave;
+    public JFXTextField txtTitle;
 
     private LecturerBO lecturerBO = BOFactory.getInstance().getBO(BOType.LECTURER);
     private ModuleBO moduleBO= BOFactory.getInstance().getBO(BOType.MODULE);
@@ -45,6 +51,10 @@ public class LecturerModuleContentController {
 //        loadAllCourseModules("C001");
 //        loadAllModuleContent("M001");
         cmbModuleId.setVisible(false);
+        LocalDate today = LocalDate.now();
+        txtDate.setText(today.toString());
+        txtTitle.setVisible(false);
+        btnSave.setVisible(false);
 
         cmbCourses.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseTM>() {
             @Override
@@ -130,7 +140,18 @@ public class LecturerModuleContentController {
         lstContent.setItems(contentTMS);
     }
 
-    public void btnAddContent_OnAction(ActionEvent actionEvent) {
+    public void btnAddContent_OnAction(ActionEvent actionEvent) throws Exception {
+        btnSave.setVisible(true);
+        txtTitle.setVisible(true);
 
+    }
+
+    public void btnSave_OnAction(ActionEvent actionEvent) throws Exception {
+        String moduleId = cmbModuleId.getSelectionModel().getSelectedItem().getId();
+        String newContentId = contentBO.getNewContentId();
+        contentBO.saveContent(newContentId,txtTitle.getText(),Date.valueOf(txtDate.getText()),"L001",moduleId);
+        loadAllModuleContent(moduleId);
+        btnSave.setVisible(false);
+        txtTitle.setVisible(false);
     }
 }
