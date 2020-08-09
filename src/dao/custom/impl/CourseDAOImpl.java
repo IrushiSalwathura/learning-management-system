@@ -9,6 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseDAOImpl implements CourseDAO {
+
+    public String getLasCoursesId() throws Exception {
+        ResultSet rst = CrudUtil.execute("SELECT id FROM Course ORDER BY id DESC LIMIT 1");
+        if (rst.next()) {
+            return rst.getString(1);
+        } else {
+            return null;
+        }
+    }
     public List<Course> findAll() throws Exception{
         ResultSet rst = CrudUtil.execute("SELECT * FROM Course");
         ArrayList<Course> courses = new ArrayList<>();
