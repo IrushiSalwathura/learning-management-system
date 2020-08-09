@@ -4,6 +4,7 @@ import business.BOFactory;
 import business.BOType;
 import business.custom.CourseBO;
 import business.custom.LecturerBO;
+import business.custom.UserBO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -56,6 +57,7 @@ public class AdminLecturerFormController {
 
     private LecturerBO lecturerBO = BOFactory.getInstance().getBO(BOType.LECTURER);
     private CourseBO courseBO = BOFactory.getInstance().getBO(BOType.COURSE);
+    private UserBO userBO= BOFactory.getInstance().getBO(BOType.USER);
     
     public void initialize(){
         //basic initialization
@@ -66,6 +68,7 @@ public class AdminLecturerFormController {
 
         //load all courses
         loadAllCourses();
+
 
         //when admin select courseId
         cmbCourseId.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseTM>() {
@@ -128,8 +131,13 @@ public class AdminLecturerFormController {
                 txtNIC.setText(selectedLecturerDetails.getNic());
                 txtTel.setText(selectedLecturerDetails.getContact());
                 txtEmail.setText(selectedLecturerDetails.getEmail());
-                txtPassword.setText(selectedLecturerDetails.getPassword());
-                txtUsername.setText(selectedLecturerDetails.getUsername());
+
+                try {
+                    txtPassword.setText(userBO.getUser(lecturerBO.getUserId(selectedLecturerDetails.getId())).getPassword());
+                    txtUsername.setText(userBO.getUser(lecturerBO.getUserId(selectedLecturerDetails.getId())).getUsername());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 String selectedCourseId = selectedLecturerDetails.getCourseId();
                 ObservableList<CourseTM> courses = cmbCourseId.getItems();
@@ -346,26 +354,29 @@ public class AdminLecturerFormController {
             new Alert(Alert.AlertType.ERROR,"Can not be empty values", ButtonType.OK).show();
             return;
         }
+        LecturerTM selectedLecturer = tblAdminLecturer.getSelectionModel().getSelectedItem();
 
         if(btnSave.getText().equals("Save")){
             try {
+                userBO.save(lecturerBO.getUserId(selectedLecturer.getId()),txtUsername.getText(),txtPassword.getText(),"Lecturer");
+
                 lecturerBO.saveLecturer(txtId.getText(),
                         String.valueOf(cmbCourseId.getSelectionModel().getSelectedItem()),
                         txtName.getText(),txtAddress.getText(),
-                        txtTel.getText(),txtUsername.getText(),
-                        txtPassword.getText(),txtNIC.getText(),txtEmail.getText());
+                        txtTel.getText(),txtNIC.getText(),txtEmail.getText(),lecturerBO.getUserId(selectedLecturer.getId()));
                 new Alert(Alert.AlertType.INFORMATION,"Lecturer saved successfully",ButtonType.OK).showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
             }
             btnAdd_OnAction(event);
         }else{
-            LecturerTM selectedLecturer = tblAdminLecturer.getSelectionModel().getSelectedItem();
+//            LecturerTM selectedLecturer = tblAdminLecturer.getSelectionModel().getSelectedItem();
             boolean result = false;
             try {
+                userBO.update(lecturerBO.getUserId(selectedLecturer.getId()),txtUsername.getText(),txtPassword.getText(),"Lecturer");
+
                 result = lecturerBO.updateLecturer(String.valueOf(cmbCourseId.getSelectionModel().getSelectedItem()),
-                        txtName.getText(),txtAddress.getText(),txtTel.getText(),txtUsername.getText(),
-                        txtPassword.getText(),txtNIC.getText(),txtEmail.getText(),selectedLecturer.getId());
+                        txtName.getText(),txtAddress.getText(),txtTel.getText(),txtNIC.getText(),txtEmail.getText(),txtId.getText(),lecturerBO.getUserId(selectedLecturer.getId()));
 
                 new Alert(Alert.AlertType.INFORMATION,"Lecturer updated successfully",ButtonType.OK).showAndWait();
             } catch (Exception e) {
