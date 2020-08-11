@@ -38,8 +38,8 @@ public class LecturerModulesFormController {
     private ModuleBO moduleBO= BOFactory.getInstance().getBO(BOType.MODULE);
 
     public void initialize() throws Exception {
-        lecturerId = "L001";
-        loadAllFacultiesOfLecturer(lecturerId);
+//        lecturerId = "L001";
+        loadAllFacultiesOfLecturer("L001");
 //        loadAllCoursesOfLecturerInFaculty("L001","F001");
 //        loadAllCourseModules("C001");
         cmbCourses.setVisible(false);
@@ -52,7 +52,7 @@ public class LecturerModulesFormController {
                 }
                 cmbCourses.setVisible(true);
                 try {
-                    loadAllCoursesOfLecturerInFaculty(lecturerId,selectedFaculty.getId());
+                    loadAllCoursesOfLecturerInFaculty("L001",selectedFaculty.getId());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

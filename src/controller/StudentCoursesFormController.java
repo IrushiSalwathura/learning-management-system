@@ -34,18 +34,24 @@ public class StudentCoursesFormController {
     public VBox vBoxAnnouncements;
     public Label lblStudentId;
 
+
+
     private StudentBO studentBO = BOFactory.getInstance().getBO(BOType.STUDENT);
 
-    public void initialize(){
-        lblStudentId.setText(loginId);
+    static {
+
+    }
+
+    public void setStudentId(String id){
+        lblStudentId.setText(id);
         loadAllCourses();
 
-        try {
-            String studentId = studentBO.getStudentIdUsingUsername(loginId);
-            lblStudentId.setText(studentId);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    }
+
+    public void initialize(){
+//        System.out.println(loginId);
+        lblStudentId.setText("S001");
+        loadAllCourses();
         cmbCourses.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseTM>() {
             @Override
             public void changed(ObservableValue<? extends CourseTM> observable, CourseTM oldValue, CourseTM newValue) {
@@ -55,6 +61,7 @@ public class StudentCoursesFormController {
                     return;
                 }
                 try {
+                    System.out.println(lblStudentId.getText());
                     CourseTM courseDetails = studentBO.getCourseDetails(lblStudentId.getText(), newValue.getId());
                     lblTitle.setText(courseDetails.getTitle());
                     lblType.setText(courseDetails.getType());
