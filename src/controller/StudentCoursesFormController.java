@@ -33,19 +33,19 @@ public class StudentCoursesFormController {
     public Label lblTitle;
     public VBox vBoxAnnouncements;
     public Label lblStudentId;
-
     private StudentBO studentBO = BOFactory.getInstance().getBO(BOType.STUDENT);
 
-    public void initialize(){
-        lblStudentId.setText(loginId);
+    public void setStudentId(String id){
+        lblStudentId.setText(id);
         loadAllCourses();
 
-        try {
-            String studentId = studentBO.getStudentIdUsingUsername(loginId);
-            lblStudentId.setText(studentId);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    }
+
+    public void initialize(){
+//        System.out.println(loginId);
+//        lblStudentId.setText("S001");
+        System.out.println(LoginFormController.loginId);
+        loadAllCourses();
         cmbCourses.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseTM>() {
             @Override
             public void changed(ObservableValue<? extends CourseTM> observable, CourseTM oldValue, CourseTM newValue) {
@@ -55,7 +55,8 @@ public class StudentCoursesFormController {
                     return;
                 }
                 try {
-                    CourseTM courseDetails = studentBO.getCourseDetails(lblStudentId.getText(), newValue.getId());
+                    System.out.println(lblStudentId.getText());
+                    CourseTM courseDetails = studentBO.getCourseDetails(LoginFormController.loginId, newValue.getId());
                     lblTitle.setText(courseDetails.getTitle());
                     lblType.setText(courseDetails.getType());
 
@@ -102,7 +103,7 @@ public class StudentCoursesFormController {
     private void loadAllCourses() {
         try {
             cmbCourses.getItems().clear();
-            cmbCourses.setItems(FXCollections.observableArrayList(studentBO.getStudentCourses(lblStudentId.getText())));
+            cmbCourses.setItems(FXCollections.observableArrayList(studentBO.getStudentCourses(LoginFormController.loginId)));
         } catch (Exception e) {
             e.printStackTrace();
         }

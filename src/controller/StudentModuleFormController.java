@@ -52,8 +52,14 @@ public class StudentModuleFormController {
     private ContentBO contentBO = BOFactory.getInstance().getBO(BOType.CONTENT);
     private ModuleBO moduleBO = BOFactory.getInstance().getBO(BOType.MODULE);
 
+    public void setStudentId(String id) throws Exception {
+//        lblStudentId.setText(id);
+        loadAllCoursesOfStudent(LoginFormController.loginId);
+
+    }
+
     public void initialize() throws Exception {
-//        loadAllCoursesOfStudent(LoginFormController.loginId);
+        loadAllCoursesOfStudent(LoginFormController.loginId);
 //        loadAllCourseModules("C001");
 //        getModuleDetails("M001");
         lblCourseName.setVisible(false);

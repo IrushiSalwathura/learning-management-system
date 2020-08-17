@@ -41,6 +41,13 @@ public class StudentModuleContentController {
     private ContentBO contentBO = BOFactory.getInstance().getBO(BOType.CONTENT);
     private ModuleBO moduleBO = BOFactory.getInstance().getBO(BOType.MODULE);
 
+
+    public void setStudentId(String id) throws Exception {
+//        lblStudentId.setText(id);
+        loadAllStudentCourses(LoginFormController.loginId);
+
+    }
+
     public void initialize() throws Exception {
         loadAllStudentCourses(LoginFormController.loginId);
 //        loadAllCourseModules("C001");

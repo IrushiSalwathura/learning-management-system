@@ -46,7 +46,7 @@ public class AdminAccountFormController {
         imgPasswordShow.setVisible(false);
 
         try {
-            AdminTM adminDetails = adminBO.getAdmin("A001");
+            AdminTM adminDetails = adminBO.getAdmin(LoginFormController.loginId);
             txtId.setEditable(false);
             txtId.setText(adminDetails.getId());
             txtName.setText(adminDetails.getName());
@@ -54,8 +54,8 @@ public class AdminAccountFormController {
 
 
             //TODO: Substitute lecturer Id
-            txtUserName.setText(userBO.getUser(adminBO.getUserId("A001")).getUsername());
-            txtPasswordShow.setText(userBO.getUser(adminBO.getUserId("A001")).getPassword());
+            txtUserName.setText(userBO.getUser(adminBO.getUserId(LoginFormController.loginId)).getUsername());
+            txtPasswordShow.setText(userBO.getUser(adminBO.getUserId(LoginFormController.loginId)).getPassword());
 
 
         } catch (Exception e) {
@@ -149,8 +149,8 @@ public class AdminAccountFormController {
 
     public void btnUpdate_OnAction(ActionEvent actionEvent) {
         try {
-            AdminTM adminId = adminBO.getAdmin("A001");
-            String userId = adminBO.getUserId("A001");
+            AdminTM adminId = adminBO.getAdmin(LoginFormController.loginId);
+            String userId = adminBO.getUserId(LoginFormController.loginId);
             String userRole = userBO.getUser(userId).getUserRole();
 
             userBO.update(userId,txtUserName.getText(),txtNewPassword2.getText(),userRole);
