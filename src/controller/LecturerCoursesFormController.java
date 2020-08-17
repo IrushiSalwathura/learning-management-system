@@ -45,9 +45,12 @@ public class LecturerCoursesFormController {
     private LecturerBO lecturerBO = BOFactory.getInstance().getBO(BOType.LECTURER);
     private AnnouncementBO announcementBO = BOFactory.getInstance().getBO(BOType.ANNOUNCEMENT);
 
-    public void initialize() {
-        lblLecturerId.setText("L001");
+    public void setLecturerId(String id){
+        lblLecturerId.setText(id);
         loadAllFaculties();
+    }
+
+    public void initialize() {
         cmbCourses.setVisible(false);
 
         cmbFaculty.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<FacultyTM>() {
@@ -117,7 +120,7 @@ public class LecturerCoursesFormController {
     private void loadAllFaculties() {
         try {
             cmbFaculty.getItems().clear();
-            cmbFaculty.setItems(FXCollections.observableArrayList(lecturerBO.getLecturerFaculties(lblLecturerId.getText())));
+            cmbFaculty.setItems(FXCollections.observableArrayList(lecturerBO.getLecturerFaculties(LoginFormController.loginId)));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -127,7 +130,7 @@ public class LecturerCoursesFormController {
         try {
             String facultyId = cmbFaculty.getSelectionModel().getSelectedItem().toString();
             cmbCourses.getItems().clear();
-            cmbCourses.setItems(FXCollections.observableArrayList(lecturerBO.getLecturerFacultyCourses(lblLecturerId.getText(),facultyId)));
+            cmbCourses.setItems(FXCollections.observableArrayList(lecturerBO.getLecturerFacultyCourses(LoginFormController.loginId,facultyId)));
         } catch (Exception e) {
             e.printStackTrace();
         }

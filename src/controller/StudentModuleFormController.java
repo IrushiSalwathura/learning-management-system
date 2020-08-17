@@ -54,12 +54,12 @@ public class StudentModuleFormController {
 
     public void setStudentId(String id) throws Exception {
 //        lblStudentId.setText(id);
-        loadAllCoursesOfStudent("S001");
+        loadAllCoursesOfStudent(LoginFormController.loginId);
 
     }
 
     public void initialize() throws Exception {
-        loadAllCoursesOfStudent("S001");
+        loadAllCoursesOfStudent(LoginFormController.loginId);
 //        loadAllCourseModules("C001");
 //        getModuleDetails("M001");
         lblCourseName.setVisible(false);

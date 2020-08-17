@@ -48,6 +48,12 @@ public class StudentAccountFormController {
     private StudentBO studentBO = BOFactory.getInstance().getBO(BOType.STUDENT);
     private UserBO userBO= BOFactory.getInstance().getBO(BOType.USER);
 
+    public void setStudentId(String id) throws Exception {
+//        lblStudentId.setText(id);
+//        loadAllCoursesOfStudent("S001");
+
+    }
+
 
     public void initialize(){
         txtPasswordShow.setVisible(false);

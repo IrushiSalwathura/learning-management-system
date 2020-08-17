@@ -47,7 +47,7 @@ public class LecturerModuleContentController {
     private ContentBO contentBO = BOFactory.getInstance().getBO(BOType.CONTENT);
 
     public void initialize() throws Exception {
-        loadAllCoursesOfLecturerInFaculty("L001","F001");
+        loadAllCoursesOfLecturerInFaculty(LoginFormController.loginId,"F001");
 //        loadAllCourseModules("C001");
 //        loadAllModuleContent("M001");
         cmbModuleId.setVisible(false);
@@ -141,7 +141,7 @@ public class LecturerModuleContentController {
     public void btnSave_OnAction(ActionEvent actionEvent) throws Exception {
         String moduleId = cmbModuleId.getSelectionModel().getSelectedItem().getId();
         String newContentId = contentBO.getNewContentId();
-        contentBO.saveContent(newContentId,txtTitle.getText(),Date.valueOf(txtDate.getText()),"L001",moduleId);
+        contentBO.saveContent(newContentId,txtTitle.getText(),Date.valueOf(txtDate.getText()),LoginFormController.loginId,moduleId);
         loadAllModuleContent(moduleId);
         btnSave.setVisible(false);
         txtTitle.setVisible(false);

@@ -33,14 +33,7 @@ public class StudentCoursesFormController {
     public Label lblTitle;
     public VBox vBoxAnnouncements;
     public Label lblStudentId;
-
-
-
     private StudentBO studentBO = BOFactory.getInstance().getBO(BOType.STUDENT);
-
-    static {
-
-    }
 
     public void setStudentId(String id){
         lblStudentId.setText(id);
@@ -50,7 +43,8 @@ public class StudentCoursesFormController {
 
     public void initialize(){
 //        System.out.println(loginId);
-        lblStudentId.setText("S001");
+//        lblStudentId.setText("S001");
+        System.out.println(LoginFormController.loginId);
         loadAllCourses();
         cmbCourses.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseTM>() {
             @Override
@@ -62,7 +56,7 @@ public class StudentCoursesFormController {
                 }
                 try {
                     System.out.println(lblStudentId.getText());
-                    CourseTM courseDetails = studentBO.getCourseDetails(lblStudentId.getText(), newValue.getId());
+                    CourseTM courseDetails = studentBO.getCourseDetails(LoginFormController.loginId, newValue.getId());
                     lblTitle.setText(courseDetails.getTitle());
                     lblType.setText(courseDetails.getType());
 
@@ -109,7 +103,7 @@ public class StudentCoursesFormController {
     private void loadAllCourses() {
         try {
             cmbCourses.getItems().clear();
-            cmbCourses.setItems(FXCollections.observableArrayList(studentBO.getStudentCourses(lblStudentId.getText())));
+            cmbCourses.setItems(FXCollections.observableArrayList(studentBO.getStudentCourses(LoginFormController.loginId)));
         } catch (Exception e) {
             e.printStackTrace();
         }

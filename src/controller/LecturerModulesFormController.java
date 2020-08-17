@@ -39,7 +39,7 @@ public class LecturerModulesFormController {
 
     public void initialize() throws Exception {
 //        lecturerId = "L001";
-        loadAllFacultiesOfLecturer("L001");
+        loadAllFacultiesOfLecturer(LoginFormController.loginId);
 //        loadAllCoursesOfLecturerInFaculty("L001","F001");
 //        loadAllCourseModules("C001");
         cmbCourses.setVisible(false);
@@ -52,7 +52,7 @@ public class LecturerModulesFormController {
                 }
                 cmbCourses.setVisible(true);
                 try {
-                    loadAllCoursesOfLecturerInFaculty("L001",selectedFaculty.getId());
+                    loadAllCoursesOfLecturerInFaculty(LoginFormController.loginId,selectedFaculty.getId());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

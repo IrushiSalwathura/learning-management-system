@@ -57,7 +57,7 @@ public class LecturerAccountController {
         imgPasswordShow.setVisible(false);
 
         try {
-            LecturerTM lecturerDetails = lecturerBO.getLecturer("L001");
+            LecturerTM lecturerDetails = lecturerBO.getLecturer(LoginFormController.loginId);
             txtId.setEditable(false);
             txtCourseId.setEditable(false);
             txtId.setText(lecturerDetails.getId());
